@@ -4,6 +4,7 @@ require_once 'class/prefijos.php';
 require_once 'class/conexion.php';
 require_once 'class/fecha2022.php';
 require_once 'class/ConsumoPorCarrier.php';
+$conexion = conexion_local('telefonia','127.0.0.1');
 ?>
 	<!-- Start content-wrapper-->
 	<div class="content-wrapper">
@@ -23,7 +24,6 @@ require_once 'class/ConsumoPorCarrier.php';
 									</thead>
 									<tbody>
 										<?php
-											$conexion = conexion_local('telefonia','127.0.0.1');
 											$consumo_marcatel = new ConsumoPorCarrier($conexion,$date,$date,prefijos_marcatel);
 											$consumo_marcatel->consumoDividido();
 										?>
@@ -188,7 +188,7 @@ require_once 'class/ConsumoPorCarrier.php';
 								const myChart = new Chart(ctx, {
 									type: 'doughnut',
 									data: {
-										//labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+										labels: ['Mtel', 'MCM', 'Ipcom', 'Haz'],
 										datasets: [{
 											//label: '# of Votes',
 											data: [
@@ -227,26 +227,10 @@ require_once 'class/ConsumoPorCarrier.php';
 						<div class="table-responsive">
 							<table class="table align-items-center">
 								<tbody>
-									<tr>
-										<td><i class="fa fa-circle text-white mr-2"></i> Direct</td>
-										<td>$5856</td>
-										<td>+55%</td>
-									</tr>
-									<tr>
-										<td><i class="fa fa-circle text-light-1 mr-2"></i>Affiliate</td>
-										<td>$2602</td>
-										<td>+25%</td>
-									</tr>
-									<tr>
-										<td><i class="fa fa-circle text-light-2 mr-2"></i>E-mail</td>
-										<td>$1802</td>
-										<td>+15%</td>
-									</tr>
-									<tr>
-										<td><i class="fa fa-circle text-light-3 mr-2"></i>Other</td>
-										<td>$1105</td>
-										<td>+5%</td>
-									</tr>
+									<?php
+										$costoPesos = new ConsumoPorCarrier($conexion,$date,$date,all_prefijos);
+										$costoPesos->consumoDivididoCarrierMovilFijo();
+									?>
 								</tbody>
 							</table>
 						</div>
@@ -254,7 +238,7 @@ require_once 'class/ConsumoPorCarrier.php';
 				</div>
 			</div>
 			<!--End Row-->
-
+			<!--TABLA CONSUMO POR CAMPANIA-->
 			<div class="row">
 				<div class="col-12 col-lg-12">
 					<div class="card">
