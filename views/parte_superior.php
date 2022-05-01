@@ -50,12 +50,12 @@
             margin: auto;
         }
 		/* Hide scrollbar for Chrome, Safari and Opera */
-        #resultado_telefonia_mensual::-webkit-scrollbar {
+        .hide_scrollbar,#resultado_telefonia_mensual::-webkit-scrollbar {
             display: none;
         }
 
         /* Hide scrollbar for IE, Edge and Firefox */
-        #resultado_telefonia_mensual {
+        .hide_scrollbar,#resultado_telefonia_mensual {
             -ms-overflow-style: none;
             /* IE and Edge */
             scrollbar-width: none;

@@ -41,10 +41,10 @@ if ($carrier == 'marcatel') {
     while ($row = $resultado->fetch_object()) {
         /**REPORTE */
         $row->reporte;
-?>  
+    ?>  
     <br>
     <div class="table-responsive-lg">
-    <table class="table table-hover">
+    <table class="table table-hover" style="font-size: 11px;">
         <thead>
             <tr>
                 <th colspan="7" class="text-center h4 table-light"><?php echo $row->reporte; ?></th>
@@ -60,7 +60,8 @@ if ($carrier == 'marcatel') {
             </tr>
         </thead>
         <tbody>
-<?php   
+            <tr><td colspan="7"></td></tr>
+    <?php   
         foreach ($prefijos_individuales as $prefijo ) {
                     
             $query_campania="SELECT DISTINCT campania FROM reporte_telefonia
@@ -100,7 +101,6 @@ if ($carrier == 'marcatel') {
                             
                         } else {
                             ?>
-                            <tr><td colspan="7"></td></tr>
                             <tr>
                                 <td><?php echo $row_camp->campania; ?></td>
                                 <td><?php echo $prefijo ; ?></td>
@@ -113,7 +113,8 @@ if ($carrier == 'marcatel') {
                                         foreach ($group->obtSucursal() as $sucursalValue) {
                                             echo $sucursalValue." ";
                                         }
-                                    ?></td>
+                                    ?>
+                                </td>
 
 
 

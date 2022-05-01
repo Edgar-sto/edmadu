@@ -96,7 +96,7 @@ $conexion = conexion_local('telefonia','127.0.0.1');
 			<!-- FILA GRAFICAS PESOS -->
 			<div class="row">
 				<div class="col-12 col-lg-8 col-xl-8">
-					<div class="card" style="height: 500px;">
+					<div class="card" style="height: 465px;">
 						<div class="card-header">Site Traffic
 							<div class="card-action">
 								<div class="dropdown">
@@ -153,7 +153,7 @@ $conexion = conexion_local('telefonia','127.0.0.1');
 				</div>
 
 				<div class="col-12 col-lg-4 col-xl-4">
-					<div class="card" style="height: 500px;">
+					<div class="card" style="height: 465px;">
 						<div class="card-header">Costo carrier
 							<div class="card-action">
 								<div class="dropdown">
@@ -198,10 +198,10 @@ $conexion = conexion_local('telefonia','127.0.0.1');
                               					<?php echo $total_haz->consumoMovilFijoUnido() ?>
                             				],
 											backgroundColor: [
-												'rgba(255, 99, 132, 0.2)',
-												'rgba(54, 162, 235, 0.2)',
-												'rgba(255, 206, 86, 0.2)',
-												'rgba(75, 192, 192, 0.2)'
+												'rgba(255, 99, 132, 0.4)',
+												'rgba(54, 162, 235, 0.4)',
+												'rgba(255, 206, 86, 0.4)',
+												'rgba(75, 192, 192, 0.4)'
 												
 											],
 											borderColor: [
@@ -225,7 +225,7 @@ $conexion = conexion_local('telefonia','127.0.0.1');
 							</div>
 						</div>
 						<div class="table-responsive">
-							<table class="table align-items-center">
+							<table class="table align-items-center" style="font-size: 10px;">
 								<tbody>
 									<?php
 										$costoPesos = new ConsumoPorCarrier($conexion,$date,$date,all_prefijos);
@@ -237,7 +237,90 @@ $conexion = conexion_local('telefonia','127.0.0.1');
 					</div>
 				</div>
 			</div>
-			<!--End Row-->
+			<!-- END FILA GRAFICAS PESOS -->
+								
+			<!-- Distribución por carrier, Porcentaje por carrier, Reportes comprobación por fecha -->
+            <div class="row">
+                <!--Distribucion consumo por carrier -->
+                <div class="col-lg-4 col-xl-4 col-12 ">
+					<div class="card" style="height: 465px;">
+						<div class="card-header">Costo carrier
+							<header>
+								<ul class="nav nav-tabs">
+									<li class="active">
+										<a href="#reporte_mtel" data-toggle="tab">Marcatel</a>
+									</li>
+									<li>
+										<a href="#reporte_mcm" data-toggle="tab">Mmc</a>
+									</li>
+									<li>
+										<a href="#reporte_ipcom" data-toggle="tab">Ipcom</a>
+									</li>
+									<li>
+										<a href="#reporte_haz" data-toggle="tab">Haz</a>
+									</li>
+								</ul>
+								<div class="widget-controls">
+									<a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+									<a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+									<a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+									<a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</header>
+						</div>
+					</div>
+                        <div id="consumoReportes" class="body tab-content hide_scrollbar" style="height: 318px; overflow-y: scroll;">
+
+                        </div>
+                    </section>
+                </div>
+                <!-- Porcentaje consumo -->
+                <div class="col-lg-4 col-xl-4 col-12 ">
+                    <section class="widget" id="flotanteCinco">
+                        <header>
+                            <h4>
+                                Porcetaje por carrier
+                            </h4>
+                            <div class="widget-controls">
+                                <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                                <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                            <!-- <div class="actions">
+                                <small class="text-muted pull-right">STO CONTACT CENTER</small>
+                            </div> -->
+                        </header>
+                        <div id="idConsumoPorcentajes" class="body" style="height: 300px;">
+
+                        </div>
+
+                    </section>
+                </div>
+                <!--Reportes comprobación por fecha -->
+                <div class="col-lg-4 col-xl-4 col-12">
+                    <section class="widget" id="consumoPorFecha">
+                        <header>
+                            <h4>
+                                Reportes
+                                <small>
+                                    con consumo por fecha
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                                <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <div id="fechitas" class="body hide_scrollbar" style="height: 300px; overflow-y: scroll; ">
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+
 			<!--TABLA CONSUMO POR CAMPANIA-->
 			<div class="row">
 				<div class="col-12 col-lg-12">

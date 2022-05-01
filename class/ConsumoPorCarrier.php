@@ -139,22 +139,42 @@ class ConsumoPorCarrier
             $pesos_haz_fijo   = $row_consumo_pesos->haz_fijo    * $costo_fijo_haz;
             ?>
             <tr>
-                <td><i class="fa fa-circle text-white mr-2"></i>Marcatel</td>
+                <td>
+                    <svg class="icon icon-tabler icon-tabler-phone" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                    </svg></i> Marcatel
+                </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mtel_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mtel_fijo,2); ?></td>
             </tr>
             <tr>
-                <td><i class="fa fa-circle text-light-1 mr-2"></i>MCM</td>
+                <td>
+                    <svg class="icon icon-tabler icon-tabler-phone" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                    </svg></i> MCM
+                </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mcm_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mcm_fijo,2); ?></td>
             </tr>
             <tr>
-                <td><i class="fa fa-circle text-light-2 mr-2"></i>Ipcom</td>
+                <td>
+                    <svg class="icon icon-tabler icon-tabler-phone" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                    </svg></i> Ipcom
+                </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_ipcom_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_ipcom_fijo,2); ?></td>
             </tr>
             <tr>
-                <td><i class="fa fa-circle text-light-3 mr-2"></i>Haz</td>
+                <td>
+                    <svg class="icon icon-tabler icon-tabler-phone" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                    </svg></i>Haz
+                </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_fijo,2); ?></td>
             </tr>
@@ -219,5 +239,9 @@ class ConsumoPorCarrier
                 //echo number_format($suma_m_f);
             }
         }
+    }
+
+    public function consumoPorCentrosInternos() {
+        
     }
 }
