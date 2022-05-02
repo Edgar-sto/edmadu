@@ -95,6 +95,28 @@ require_once 'views/parte_superior.php';
 				</div>
 			</div>
 		</div>
+		<div class="row mt-1">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<div id="resultado_telefonia_mensual_sucursales">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-1">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<div id="resultado_telefonia_mensual_sucursales_externas">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

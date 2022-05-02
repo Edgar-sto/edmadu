@@ -241,7 +241,4 @@ class ConsumoPorCarrier
         }
     }
 
-    public function consumoPorCentrosInternos() {
-        
-    }
 }
