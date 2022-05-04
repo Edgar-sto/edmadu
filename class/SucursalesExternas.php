@@ -16,16 +16,18 @@ class SucursalesExternas
         <table class="table table-hover" style="font-size: 10px;">
             <thead class="thead-inverse table-light  text-center">
                 <tr>
-                    <th class="fs-5" colspan="7"><?php echo $this->carrier; ?></th>
+                    <th class="fs-5" colspan="9"><?php echo $this->carrier; ?></th>
                 </tr>
                 <tr class="text-right">
                     <th class="text-center"><strong>Campaña</strong></th>
+                    <th><strong>Ubicación</strong></th>
+                    <th><strong>Tipo</strong></th>
                     <th><strong>Movil</strong></th>
                     <th><strong>Fijo</strong></th>
-                    <th><strong>Total</strong></th>
-                    <th><strong>$ Movil</strong></th>
-                    <th><strong>$ Fijo</strong></th>
-                    <th><strong>$ Total</strong></th>
+                    <th><strong>Drop Movil</strong></th>
+                    <th><strong>Drop Fijo</strong></th>
+                    <th><strong>Buzon Movil</strong></th>
+                    <th><strong>Buzon Fijo</strong></th>
                 </tr>
             </thead>
             <tbody>
@@ -52,13 +54,11 @@ class SucursalesExternas
                         break;
                 }
                 $centros_externos_hsbc = "SELECT DISTINCT(nombre_grupo),sucursal FROM sucu_campa_grup
-                WHERE tipo='E';";
+                WHERE tipo='E'  ORDER BY sucursal;";
                 $answer_ext_hsbc = $this->conexion->query($centros_externos_hsbc);
                 while ($row_cons_ext_hsbc = $answer_ext_hsbc->fetch_object()) {
                     $row_cons_ext_hsbc->nombre_grupo;
-                    //echo " ";
                     $row_cons_ext_hsbc->sucursal;
-                    //echo "<br>";
 
                     $search_campania_group="SELECT DISTINCT campania,reporte FROM reporte_telefonia
                     WHERE fecha_inicio>='{$this->f_inicio} 00:00:00' AND fecha_termino<='{$this->f_termino} 23:59:59'
@@ -72,7 +72,8 @@ class SucursalesExternas
                         if (empty($row_cam_group->campania) || empty($row_cam_group->reporte)){
 
                         } else {
-                            if ($row_cam_group->reporte=='10.9.2.5' || $row_cam_group->reporte == '10.9.2.9' ||     $row_cam_group->reporte=='10.9.2.29' || $row_cam_group->reporte=='10.9.2.39') {
+                            if ($row_cam_group->reporte=='10.9.2.5' || $row_cam_group->reporte == '10.9.2.9' ||     $row_cam_group->reporte=='10.9.2.29' || $row_cam_group->reporte=='10.9.2.40' || $row_cam_group->reporte=='10.9.2.48')
+                            {
                                 $consumo_maquilas_hsbc = "SELECT
                                 (SELECT SUM(consumo) FROM reporte_telefonia
                                 WHERE fecha_inicio>='{$this->f_inicio} 00:00:00' AND fecha_termino<='{$this->f_termino} 23:59:59'
@@ -142,7 +143,9 @@ class SucursalesExternas
                                 $buzon_fijo  =  $row_consumo_maq_hsbc->buzon_fijo * $costo_fijo;
                                 ?>
                                 <tr class="text-right">
-                                    <td class=" text-center" rowspan="2"><?php echo $row_cons_ext_hsbc->sucursal; ?></td>
+                                    <td class=" text-center align-content-center" rowspan="2"><?php echo $row_cons_ext_hsbc->sucursal; ?></td>
+                                    <td class=" text-center"><?php echo $row_cam_group->reporte; ?></td>
+                                    <td class=" text-center">Minutos</td>
                                     <td><?php echo number_format($row_consumo_maq_hsbc->movil); ?></td>
                                     <td><?php echo number_format($row_consumo_maq_hsbc->fijo); ?></td>
                                     <td><?php echo number_format($row_consumo_maq_hsbc->drop_movil); ?></td>
@@ -151,7 +154,8 @@ class SucursalesExternas
                                     <td><?php echo number_format($row_consumo_maq_hsbc->buzon_fijo); ?></td>
                                 </tr>
                                 <tr class="text-right">
-                                    
+                                    <td class=" text-center"><?php echo $row_cam_group->campania; ?></td>
+                                    <td class=" text-center">$ Pesos</td>
                                     <td><?php echo "$" . number_format($movil, 2); ?></td>
                                     <td><?php echo "$" . number_format($fijo, 2); ?></td>
                                     <td><?php echo "$" . number_format($drop_movil, 2); ?></td>

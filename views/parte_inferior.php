@@ -107,7 +107,7 @@
 				type: 'POST',
 				data: $('#form_telefonia_mensual').serialize(),
 				beforeSend: function() {
-					$("#resultado_telefonia_mensual_sucursales").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+					$("#resultado_telefonia_mensual_sucursales").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
 				},
 				success: function(res) {
 					$('#resultado_telefonia_mensual_sucursales').html(res);
@@ -121,7 +121,7 @@
 				type: 'POST',
 				data: $('#form_telefonia_mensual').serialize(),
 				beforeSend: function() {
-					$("#resultado_telefonia_mensual_sucursales_externas").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+					$("#resultado_telefonia_mensual_sucursales_externas").html("<div style='text-align:center;'><samp>Calculando registros Externos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
 				},
 				success: function(res) {
 					$('#resultado_telefonia_mensual_sucursales_externas').html(res);
