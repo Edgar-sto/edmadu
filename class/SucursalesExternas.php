@@ -68,6 +68,11 @@ class SucursalesExternas
                     while ($row_cam_group=$answer_campania_group->fetch_object()) {
                         $row_cam_group->campania;
                         $row_cam_group->reporte;
+                        if ($row_cam_group->reporte == '10.9.2.41') {
+                            $fondo = "table-success";
+                        } else {
+                            $fondo = "table-active";
+                        }
 
                         if (empty($row_cam_group->campania) || empty($row_cam_group->reporte)){
 
@@ -141,9 +146,11 @@ class SucursalesExternas
                                 $drop_fijo  =  $row_consumo_maq_hsbc->drop_fijo * $costo_fijo;
                                 $buzon_movil  =  $row_consumo_maq_hsbc->buzon_movil * $costo_movil;
                                 $buzon_fijo  =  $row_consumo_maq_hsbc->buzon_fijo * $costo_fijo;
+
+
                                 ?>
                                 <tr class="text-right">
-                                    <td class=" text-center align-content-center" rowspan="2"><?php echo $row_cons_ext_hsbc->sucursal; ?></td>
+                                    <td class=" text-center align-content-center <?php echo $fondo?>" rowspan="2"><?php echo $row_cons_ext_hsbc->sucursal; ?></td>
                                     <td class=" text-center"><?php echo $row_cam_group->reporte; ?></td>
                                     <td class=" text-center">Minutos</td>
                                     <td><?php echo number_format($row_consumo_maq_hsbc->movil); ?></td>

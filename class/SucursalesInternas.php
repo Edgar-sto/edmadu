@@ -139,7 +139,7 @@ class SucursalesInternas
             "HSBC AC"  => "n/a",
             "HSBC COM" => "n/a",
 
-            "Santander MA" => "SANTADER-STO-REV-LAB','SANTANDER-STO-REVO",
+            "Santander MA" => "SANTADER-STO-REV-LAB','SANTANDER-STO-REVO','SANTANDER-STO-ESP",
 
             "INVEX CE" => "STO-ACELERADOR','STO-ACELERADOR2','STO-INDIGO','STO-PROCERO','Camp_Especiales",
             "INVEX MA" => "STO-LAB','STO-MO','STO-VALDA','1800','01800"

@@ -78,13 +78,14 @@
 		<!--Start sidebar-wrapper-->
 		<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
 			<div class="brand-logo">
-				<a href="index.html">
+				<a href="index.php">
 					<img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
 					<h5 class="logo-text">DashBoard Edmadu</h5>
 				</a>
 			</div>
 			<ul class="sidebar-menu do-nicescrol">
 				<li class="sidebar-header">MENU DE NAVEGACIÓN</li>
+				<!--DASHBOARD-->
 				<li>
 					<a href="index.php">
 						<i class="zmdi zmdi-view-dashboard"></i> <span>Home</span>
@@ -129,7 +130,7 @@
 						<span>Vicis</span>
 					</a>
 				</li>
-				<!--DASHBOARD-->
+				<!--REPORTE TELEFONIA-->
 				<li>
 					<a href="reporte_telefonia.php">
 						<svg class="icon icon-tabler icon-tabler-file-report" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -193,6 +194,23 @@
 						</div>
 					  </div>
 				</li>
+				<!--HERRAMIENTA-->
+				<li>
+					<a href="herramientas.php">
+					<svg class="icon icon-tabler icon-tabler-tools" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" />
+						<line x1="14.5" y1="5.5" x2="18.5" y2="9.5" />
+						<polyline points="12 8 7 3 3 7 8 12" />
+						<line x1="7" y1="8" x2="5.5" y2="9.5" />
+						<polyline points="16 12 21 17 17 21 12 16" />
+						<line x1="16" y1="17" x2="14.5" y2="18.5" />
+					</svg>
+					<span>Herramientas</span>
+						<small class="badge float-right badge-light">Varios</small>
+					</a>
+				</li>
+				<!--FUTBOL-->
 				<li>
 					<a href="futbol.php">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ball-football" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
