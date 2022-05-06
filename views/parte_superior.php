@@ -66,7 +66,9 @@
 			/*background: rgb(112, 128, 144,0.2);*/
 			overflow-y: scroll;
 		}
-		
+		/* .fondo-modal {
+			background-image: url("assets/images/bg-themes/4modal.png");
+		} */
 	</style>
 </head>
 
