@@ -117,6 +117,7 @@ require_once 'views/parte_superior.php';
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </div>
 

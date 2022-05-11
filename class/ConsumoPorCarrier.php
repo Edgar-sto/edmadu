@@ -13,6 +13,27 @@ class ConsumoPorCarrier
 
     public function consumoDividido()
     {
+        switch ($this->carrier) {
+            case "15','777":
+                $costo_movil = 0.11;
+                $costo_fijo = 0.04;
+                break;
+
+            case "28','444":
+                $costo_movil = 0.11;
+                $costo_fijo = 0.04;
+                break;
+
+            case "11','999":
+                $costo_movil = 0.11;
+                $costo_fijo = 0.05;
+                break;
+
+            case "14','555":
+                $costo_movil = 0.09 / 60;
+                $costo_fijo = 0.04 / 60;
+                break;
+        }
         if ($this->carrier == "14','555") {
             $query_consumo = "SELECT SUM(consumo) AS Total,
             (CASE WHEN tipo = 'movil' THEN 'Movil'
@@ -32,11 +53,32 @@ class ConsumoPorCarrier
             while ($row_consumo = $answer_consumo->fetch_object()) {
                 $total_ = $row_consumo->Total;
                 $tipo_  = $row_consumo->Tipo;
-
+                
+                switch ($tipo_) {
+                    case 'Movil':
+                            $total_pss  =  $total_ * $costo_movil;
+                        break;
+                    case 'Drop Movil':
+                        $total_pss  =  $total_ * $costo_movil;
+                        break;
+                    case 'Buzon Movil':
+                        $total_pss  =  $total_ * $costo_movil;
+                        break;
+                    case 'Fijo':
+                        $total_pss  =  $total_ * $costo_fijo;
+                        break;
+                    case 'Drop Fijo':
+                        $total_pss  =  $total_ * $costo_fijo;
+                        break;
+                    case 'Buzon Fijo':
+                        $total_pss  =  $total_ * $costo_fijo;
+                        break;
+                }
                 ?>
                 <tr>
                     <td><?php echo $tipo_; ?></td>
                     <td class="text-right"><?php echo number_format($total_ / 60); ?></td>
+                    <td class="text-right"><?php echo "$ ".number_format($total_pss,2); ?></td>
                 </tr>
                 <?php
             }
@@ -57,12 +99,33 @@ class ConsumoPorCarrier
 
             $answer_consumo = $this->conexion->query($query_consumo);
             while ($row_consumo = $answer_consumo->fetch_object()) {
-                $row_consumo->Total;
-                $row_consumo->Tipo;
+                $total_ = $row_consumo->Total;
+                $tipo_  = $row_consumo->Tipo;
+                switch ($tipo_) {
+                    case 'Movil':
+                            $total_pss  =  $total_ * $costo_movil;
+                        break;
+                    case 'Drop Movil':
+                        $total_pss  =  $total_ * $costo_movil;
+                        break;
+                    case 'Buzon Movil':
+                        $total_pss  =  $total_ * $costo_movil;
+                        break;
+                    case 'Fijo':
+                        $total_pss  =  $total_ * $costo_fijo;
+                        break;
+                    case 'Drop Fijo':
+                        $total_pss  =  $total_ * $costo_fijo;
+                        break;
+                    case 'Buzon Fijo':
+                        $total_pss  =  $total_ * $costo_fijo;
+                        break;
+                }
             ?>
                 <tr>
                     <td><?php echo $row_consumo->Tipo; ?></td>
                     <td class="text-right"><?php echo number_format($row_consumo->Total); ?></td>
+                    <td class="text-right"><?php echo "$ ".number_format($total_pss,2); ?></td>
                 </tr>
             <?php
             }
@@ -173,7 +236,7 @@ class ConsumoPorCarrier
                     <svg class="icon icon-tabler icon-tabler-phone" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                    </svg></i>Haz
+                    </svg></i> Haz
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_fijo,2); ?></td>
@@ -456,7 +519,7 @@ class ConsumoPorCarrier
                         ?>
                         <tr>
                             <td><?php echo $name_carrier?></td>
-                            <td><?php echo $porcent;?>%</td>
+                            <td class="text-right"><?php echo $porcent;?>%</td>
                             <td>
                                 <div class="progress" style="height: 15px;">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>

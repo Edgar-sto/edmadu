@@ -10,7 +10,7 @@ class FechasReportes {
     }
 
     public function reporteConConsumo (){
-    $reportes = array("5", "6", "8", "9", "11", "14", "15", "22","27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","201");
+    $reportes = array(/*"5",*/ "6", /*"8", "9", "11", "14", */"15",/* "22","27", "28","29", */"30",/* "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", */"47",/* "48",*/"57"/*,"60","201"*/);
 
         foreach ($reportes as $value) {
             $consulta="SELECT DISTINCT (DATE_FORMAT(u_start_time,'%Y-%m-%d')) AS fecha FROM reporte_{$value}	
@@ -18,16 +18,16 @@ class FechasReportes {
             $respuesta = $this->conexion->query($consulta);
             while ($row= $respuesta->fetch_object()){
                 $row->fecha;
-                if (empty($row->fecha)) {
+                if (empty($row->fecha) || $row->fecha == 0 ) {
                     ?>
-                        <div class="orden_fechas_hijo col">
+                        <div class="col col-sm p-2 btn-outline-secondary">
                             <label for="">Reporte <?php echo $value; ?></label>
-                            <p class="btn-outline-secondary parrafo_fecha">0</p>
+                            <p class="">0</p>
                         </div>
                     <?php
                 } else {
                     ?>
-                        <div class="orden_fechas_hijo col">
+                        <div class="col col-sm">
                             <label for="">Reporte <?php echo $value; ?></label>
                             <p class="btn-outline-secondary parrafo_fecha"><?php echo $row->fecha; ?></p>
                         </div>

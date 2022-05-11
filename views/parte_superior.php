@@ -69,6 +69,25 @@
 		/* .fondo-modal {
 			background-image: url("assets/images/bg-themes/4modal.png");
 		} */
+
+		.xy-hiden {
+			overflow-y: scroll;
+			overflow-x: scroll;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+		}
+
+		.x-hiden {
+			overflow-x: scroll;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+		}
+
+		.y-hiden {
+			overflow-y: scroll;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+		}
 	</style>
 </head>
 
@@ -147,9 +166,9 @@
 					</a>
 				</li>
 				<!--REPORTE TELEFONIA-->
-				<li>
+				<!-- <li> -->
 					<!--a href="/reporteTelefonia"-->
-					<a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+					<!-- <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
 						<svg class="icon icon-tabler icon-tabler-file-report" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 							<circle cx="17" cy="17" r="4" />
@@ -159,8 +178,8 @@
 						</svg>
 						<span>Reporte Telefonia</span>
 						<small class="badge float-right badge-light">Edgar</small>
-					</a>
-					<div class="collapse multi-collapse" id="multiCollapseExample1">
+					</a> -->
+					<!-- <div class="collapse multi-collapse" id="multiCollapseExample1">
 						<div class="card card-body">
 							<form action="/buscarConsumo" method="POST" >
 								<div class="row d-block p-2">
@@ -194,8 +213,8 @@
 								</div>
 							</form>
 						</div>
-					  </div>
-				</li>
+					  </div> -->
+				<!-- </li> -->
 				<!--HERRAMIENTA-->
 				<li>
 					<a href="herramientas.php">

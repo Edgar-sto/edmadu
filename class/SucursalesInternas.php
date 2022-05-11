@@ -37,7 +37,7 @@ class SucursalesInternas
             'Haz'         =>  "14','555"
         );
         ?>
-        <table class="table" style="font-size: 10px;">
+        <table class="table" style="font-size: 0.6em;">
             <thead class="thead-inverse table-light  text-center">
                 <tr>
                     <th class="fs-5" colspan="4"><?php echo $this->carrier; ?></th>
@@ -112,12 +112,12 @@ class SucursalesInternas
 
                         <tr class="text-right">
                             <td class="<?php echo $fondobg; ?> text-center"><?php echo $campanias ?></td>
-                            <td><?php echo number_format($consumo_movil); ?></td>
+                            <!-- <td><?php echo number_format($consumo_movil); ?></td>
                             <td><?php echo number_format($consumo_fijo); ?></td>
-                            <td><?php echo number_format($total_min); ?></td>
-                            <!-- <td><?php echo "$" . number_format($con_movil, 2); ?></td>
+                            <td><?php echo number_format($total_min); ?></td> -->
+                            <td><?php echo "$" . number_format($con_movil, 2); ?></td>
                             <td><?php echo "$" . number_format($con_fijo, 2); ?></td>
-                            <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td> -->
+                            <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td>
                         </tr>
                     <?php
                     }
@@ -126,7 +126,7 @@ class SucursalesInternas
                 <tr>
                     <th class="align-middle text-center" colspan="2">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEscorza">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEscorza<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-coin" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <circle cx="12" cy="12" r="9" />
@@ -136,7 +136,7 @@ class SucursalesInternas
                         </button>
                     </th>
                     <th class="align-middle text-center" colspan="2">
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEventos">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEventos<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-brand-codesandbox" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M20 7.5v9l-4 2.25l-4 2.25l-4 -2.25l-4 -2.25v-9l4 -2.25l4 -2.25l4 2.25z" />
@@ -153,7 +153,7 @@ class SucursalesInternas
             </tbody>
         </table>
         <!-- Modal -->
-        <div class="modal fade " id="modalEscorza" tabindex="-1" role="dialog" aria-labelledby="modalEscorzaTitle" aria-hidden="true">
+        <div class="modal fade " id="modalEscorza<?php echo $this->carrier; ?>" tabindex="-1" role="dialog" aria-labelledby="modalEscorzaTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header bg-warning">
@@ -163,7 +163,7 @@ class SucursalesInternas
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-hover text-dark" style="font-size: 10px;">
+                    <table class="table table-hover text-dark" style="font-size: 0.6em;">
                     <thead class="thead-inverse text-center text-dark">
                         <tr>
                             <th class="fs-5 text-dark" colspan="4"><?php echo $this->carrier; ?></th>
@@ -177,7 +177,7 @@ class SucursalesInternas
                     </thead>
                     <tbody>
                     </tbody>
-                    <?php
+                        <?php
                         foreach ($campañas_grupos_escorza as $campanias => $grupos) {
                             switch ($this->prefijo) {
                                 case "15','777":
@@ -236,9 +236,9 @@ class SucursalesInternas
 
                                 <tr class="text-right">
                                     <td class="<?php echo $fondobg; ?> text-center"><?php echo $campanias ?></td>
-                                    <td><?php echo "$" . number_format($con_movil, 2); ?></td>
-                                    <td><?php echo "$" . number_format($con_fijo, 2); ?></td>
-                                    <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td>
+                                    <td><?php echo number_format($consumo_movil); ?></td>
+                                    <td><?php echo number_format($consumo_fijo); ?></td>
+                                    <td><?php echo number_format($total_min); ?></td>
                                 </tr>
                             <?php
                             }
@@ -264,7 +264,7 @@ class SucursalesInternas
         </div>
         <?php
     }
-
+ 
     public function consumoRevolucion()
     {
         /****campañas y grupos****/
@@ -291,7 +291,7 @@ class SucursalesInternas
             'Haz'         =>  "14','555"
         );
         ?>
-        <table class="table table-hover" style="font-size: 10px;">
+        <table class="table table-hover" style="font-size: 0.6em;">
             <thead class="thead-inverse table-light  text-center">
                 <tr>
                     <th class="fs-5" colspan="4"><?php echo $this->carrier; ?></th>
@@ -362,12 +362,12 @@ class SucursalesInternas
 
                         <tr class="text-right">
                             <td class="<?php echo $fondobg; ?> text-center"><?php echo $campanias ?></td>
-                            <td><?php echo number_format($consumo_movil); ?></td>
+                            <!-- <td><?php echo number_format($consumo_movil); ?></td>
                             <td><?php echo number_format($consumo_fijo); ?></td>
-                            <td><?php echo number_format($total_min); ?></td>
-                            <!-- <td><?php echo "$" . number_format($con_movil, 2); ?></td>
+                            <td><?php echo number_format($total_min); ?></td> -->
+                            <td><?php echo "$" . number_format($con_movil, 2); ?></td>
                             <td><?php echo "$" . number_format($con_fijo, 2); ?></td>
-                            <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td> -->
+                            <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td>
                         </tr>
 
                 <?php
@@ -377,7 +377,7 @@ class SucursalesInternas
                 <tr>
                     <th class="align-middle text-center" colspan="2">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalRevolucion">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalRevolucion<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-coin" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <circle cx="12" cy="12" r="9" />
@@ -387,7 +387,7 @@ class SucursalesInternas
                         </button>
                     </th>
                     <th  class="align-middle text-center" colspan="2">
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalRevolucionEventos">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalRevolucionEventos<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-brand-codesandbox" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M20 7.5v9l-4 2.25l-4 2.25l-4 -2.25l-4 -2.25v-9l4 -2.25l4 -2.25l4 2.25z" />
@@ -404,7 +404,7 @@ class SucursalesInternas
             </tbody>
         </table>
         <!--Modal-->
-        <div class="modal fade" id="modalRevolucion" tabindex="-1" role="dialog" aria-labelledby="modalRevolucionTitle" aria-hidden="true">
+        <div class="modal fade" id="modalRevolucion<?php echo $this->carrier; ?>" tabindex="-1" role="dialog" aria-labelledby="modalRevolucionTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header bg-warning">
@@ -414,7 +414,7 @@ class SucursalesInternas
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-hover text-dark" style="font-size: 10px;">
+                    <table class="table table-hover text-dark" style="font-size: 0.6em;">
                     <thead class="thead-inverse text-center text-dark">
                         <tr>
                             <th class="fs-5" colspan="3"><?php echo $this->carrier; ?></th>
@@ -482,11 +482,10 @@ class SucursalesInternas
 
                                 <tr class="text-right">
                                     <td class="<?php echo $fondobg; ?> text-center"><?php echo $campanias ?></td>
-                                    <td><?php echo "$" . number_format($con_movil, 2); ?></td>
-                                    <td><?php echo "$" . number_format($con_fijo, 2); ?></td>
-                                    <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td>
+                                    <td><?php echo number_format($consumo_movil); ?></td>
+                                    <td><?php echo number_format($consumo_fijo); ?></td>
+                                    <td><?php echo number_format($total_min); ?></td>
                                 </tr>
-
                         <?php
                             }
                         }
@@ -530,7 +529,7 @@ class SucursalesInternas
             'Haz'         =>  "14','555"
         );
         ?>
-        <table class="table table-hover" style="font-size: 10px;">
+        <table class="table table-hover" style="font-size: 0.6em;">
             <thead class="thead-inverse table-light  text-center">
                 <tr>
                     <th class="fs-5" colspan="4"><?php echo $this->carrier; ?></th>
@@ -601,12 +600,12 @@ class SucursalesInternas
 
                         <tr class="text-right">
                             <td class="<?php echo $fondobg; ?> text-center"><?php echo $campanias ?></td>
-                            <td><?php echo number_format($consumo_movil); ?></td>
+                            <!-- <td><?php echo number_format($consumo_movil); ?></td>
                             <td><?php echo number_format($consumo_fijo); ?></td>
-                            <td><?php echo number_format($total_min); ?></td>
-                            <!-- <td><?php echo "$" . number_format($con_movil, 2); ?></td>
+                            <td><?php echo number_format($total_min); ?></td> -->
+                            <td><?php echo "$" . number_format($con_movil, 2); ?></td>
                             <td><?php echo "$" . number_format($con_fijo, 2); ?></td>
-                            <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td> -->
+                            <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td>
                         </tr>
 
                 <?php
@@ -616,7 +615,7 @@ class SucursalesInternas
                 <tr>
                     <th class="align-middle text-center" colspan="2">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalTlajomulco">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalTlajomulco<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-coin" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <circle cx="12" cy="12" r="9" />
@@ -626,7 +625,7 @@ class SucursalesInternas
                         </button>
                     </th>
                     <th  class="align-middle text-center" colspan="2">
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalTlajomulcoEventos">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalTlajomulcoEventos<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-brand-codesandbox" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M20 7.5v9l-4 2.25l-4 2.25l-4 -2.25l-4 -2.25v-9l4 -2.25l4 -2.25l4 2.25z" />
@@ -643,7 +642,7 @@ class SucursalesInternas
             </tbody>
         </table>
         <!--Modal-->
-        <div class="modal fade" id="modalTlajomulco" tabindex="-1" role="dialog" aria-labelledby="modalTlajomulcoTitle" aria-hidden="true">
+        <div class="modal fade" id="modalTlajomulco<?php echo $this->carrier; ?>" tabindex="-1" role="dialog" aria-labelledby="modalTlajomulcoTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header bg-warning">
@@ -653,7 +652,7 @@ class SucursalesInternas
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-hover text-dark" style="font-size: 10px;">
+                    <table class="table table-hover text-dark" style="font-size: 0.6em;">
                     <thead class="thead-inverse text-center text-dark">
                         <tr>
                             <th class="fs-5" colspan="4"><?php echo $this->carrier; ?></th>
@@ -721,9 +720,9 @@ class SucursalesInternas
 
                                 <tr class="text-right">
                                     <td class="<?php echo $fondobg; ?> text-center"><?php echo $campanias ?></td>
-                                    <td><?php echo "$" . number_format($con_movil, 2); ?></td>
-                                    <td><?php echo "$" . number_format($con_fijo, 2); ?></td>
-                                    <td scope="row"><?php echo "$" . number_format($total_con, 2); ?></td>
+                                    <td><?php echo number_format($consumo_movil); ?></td>
+                                    <td><?php echo number_format($consumo_fijo); ?></td>
+                                    <td><?php echo number_format($total_min); ?></td>
                                 </tr>
 
                         <?php
@@ -746,7 +745,7 @@ class SucursalesInternas
     public function consumoDropBuzon()
     {
         ?>
-        <table class="table table-hover" style="font-size: 10px;">
+        <table class="table table-hover" style="font-size: 0.6em;">
             <thead class="thead-inverse table-light  text-center">
                 <tr>
                     <th class="fs-5" colspan="4"><?php echo $this->carrier; ?></th>
@@ -827,24 +826,24 @@ class SucursalesInternas
 
                     <tr class="text-center">
                         <td class="table-active">DROP</td>
-                        <td><?php echo number_format($dropmovil); ?></td>
+                        <!-- <td><?php echo number_format($dropmovil); ?></td>
                         <td><?php echo number_format($dropfijo); ?></td>
-                        <td><?php echo number_format($t_min_drop); ?></td>
+                        <td><?php echo number_format($t_min_drop); ?></td> -->
 
-                        <!-- <td><?php echo "$" . number_format($total_dropmovil, 2); ?></td>
+                        <td><?php echo "$" . number_format($total_dropmovil, 2); ?></td>
                         <td><?php echo "$" . number_format($total_dropfijo, 2); ?></td>
-                        <td scope="row"><?php echo "$" . number_format($total_drop, 2); ?></td> -->
+                        <td scope="row"><?php echo "$" . number_format($total_drop, 2); ?></td>
                     </tr>
 
                     <tr class="text-center">
                         <td class="table-active">BUZÓN</td>
-                        <td><?php echo number_format($buzonmovil); ?></td>
+                        <!-- <td><?php echo number_format($buzonmovil); ?></td>
                         <td><?php echo number_format($buzonfijo); ?></td>
-                        <td><?php echo number_format($t_min_buzon); ?></td>
-                    <!-- 
+                        <td><?php echo number_format($t_min_buzon); ?></td> -->
+                    
                         <td><?php echo "$" . number_format($total_buzonmovil, 2); ?></td>
                         <td><?php echo "$" . number_format($total_buzonfijo, 2); ?></td>
-                        <td scope="row"><?php echo "$" . number_format($total_buzon, 2); ?></td> -->
+                        <td scope="row"><?php echo "$" . number_format($total_buzon, 2); ?></td>
                     </tr>
 
                 <?php
@@ -853,7 +852,7 @@ class SucursalesInternas
                 <tr>
                     <th class="align-middle text-center" colspan="2">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDropBuzon">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDropBuzon<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-coin" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <circle cx="12" cy="12" r="9" />
@@ -863,7 +862,7 @@ class SucursalesInternas
                         </button>
                     </th>
                     <th  class="align-middle text-center" colspan="2">
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDropBuzonEventos">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDropBuzonEventos<?php echo $this->carrier; ?>">
                             <svg class="icon icon-tabler icon-tabler-brand-codesandbox" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M20 7.5v9l-4 2.25l-4 2.25l-4 -2.25l-4 -2.25v-9l4 -2.25l4 -2.25l4 2.25z" />
@@ -880,7 +879,7 @@ class SucursalesInternas
             </tbody>
         </table>
         <!--Modal-->
-        <div class="modal fade" id="modalDropBuzon" tabindex="-1" role="dialog" aria-labelledby="modalDropBuzonTitle" aria-hidden="true">
+        <div class="modal fade" id="modalDropBuzon<?php echo $this->carrier; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDropBuzonTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header bg-warning">
@@ -890,7 +889,7 @@ class SucursalesInternas
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-hover text-dark" style="font-size: 10px;">
+                    <table class="table table-hover text-dark" style="font-size: 0.6em;">
                     <thead class="thead-inverse text-center text-dark">
                         <tr>
                             <th class="fs-5" colspan="4"><?php echo $this->carrier; ?></th>
@@ -968,24 +967,24 @@ class SucursalesInternas
 
                             <tr class="text-center">
                                 <td class="bg-secondaru">DROP</td>
-                                <!-- <td><?php echo number_format($dropmovil); ?></td>
+                                <td><?php echo number_format($dropmovil); ?></td>
                                 <td><?php echo number_format($dropfijo); ?></td>
-                                <td><?php echo number_format($t_min_drop); ?></td> -->
+                                <td><?php echo number_format($t_min_drop); ?></td>
 
-                                <td><?php echo "$" . number_format($total_dropmovil, 2); ?></td>
+                                <!-- <td><?php echo "$" . number_format($total_dropmovil, 2); ?></td>
                                 <td><?php echo "$" . number_format($total_dropfijo, 2); ?></td>
-                                <td scope="row"><?php echo "$" . number_format($total_drop, 2); ?></td>
+                                <td scope="row"><?php echo "$" . number_format($total_drop, 2); ?></td> -->
                             </tr>
 
                             <tr class="text-center">
                                 <td class="bg-secondaru">BUZÓN</td>
-                                <!-- <td><?php echo number_format($buzonmovil); ?></td>
+                                <td><?php echo number_format($buzonmovil); ?></td>
                                 <td><?php echo number_format($buzonfijo); ?></td>
-                                <td><?php echo number_format($t_min_buzon); ?></td> -->
+                                <td><?php echo number_format($t_min_buzon); ?></td>
 
-                                <td><?php echo "$" . number_format($total_buzonmovil, 2); ?></td>
+                                <!-- <td><?php echo "$" . number_format($total_buzonmovil, 2); ?></td>
                                 <td><?php echo "$" . number_format($total_buzonfijo, 2); ?></td>
-                                <td scope="row"><?php echo "$" . number_format($total_buzon, 2); ?></td>
+                                <td scope="row"><?php echo "$" . number_format($total_buzon, 2); ?></td> -->
                             </tr>
 
                         <?php
@@ -1007,7 +1006,7 @@ class SucursalesInternas
     public function consumoAdministrativo()
     {
         ?>
-        <table class="table table-hover" style="font-size: 10px;">
+        <table class="table table-hover" style="font-size: 0.6em;">
             <thead class="thead-inverse table-light  text-center">
                 <tr>
                     <th class="fs-5" colspan="7"><?php echo $this->carrier; ?></th>
@@ -1015,7 +1014,7 @@ class SucursalesInternas
                 <tr class="text-right">
                     <th class="text-center"><strong>Campaña</strong></th>
                     <th><strong>Movil
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alarm" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg  class="icon icon-tabler icon-tabler-alarm" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="13" r="7" />
                             <polyline points="12 10 12 13 14 13" />
@@ -1023,7 +1022,7 @@ class SucursalesInternas
                             <line x1="17" y1="4" x2="19.75" y2="6" />
                             </svg> 
                             & 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg  class="icon icon-tabler icon-tabler-coin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
@@ -1033,7 +1032,7 @@ class SucursalesInternas
                     </th>
 
                     <th><strong>Fijo
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alarm" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg  class="icon icon-tabler icon-tabler-alarm" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="13" r="7" />
                             <polyline points="12 10 12 13 14 13" />
@@ -1041,7 +1040,7 @@ class SucursalesInternas
                             <line x1="17" y1="4" x2="19.75" y2="6" />
                             </svg> 
                             & 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg  class="icon icon-tabler icon-tabler-coin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
@@ -1050,7 +1049,7 @@ class SucursalesInternas
                         </strong>
                     </th>
                     <th><strong>Total
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alarm" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg  class="icon icon-tabler icon-tabler-alarm" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="13" r="7" />
                             <polyline points="12 10 12 13 14 13" />
@@ -1058,7 +1057,7 @@ class SucursalesInternas
                             <line x1="17" y1="4" x2="19.75" y2="6" />
                             </svg> 
                             & 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg  class="icon icon-tabler icon-tabler-coin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
@@ -1110,12 +1109,12 @@ class SucursalesInternas
                 ?>
 
                     <tr class="text-right">
-                        <td class="bg-secondaru">Administrativo</td>
+                        <td class="table-active align-center" rowspan="2">Administrativo</td>
                         <td><?php echo number_format($fijo); ?></td>
                         <td><?php echo number_format($movil); ?></td>
                         <td><?php echo number_format($fij_mov); ?></td>
                     </tr>
-                    <tr>
+                    <tr class="text-right">
                         <td><?php echo "$" . number_format($fijo_pesos, 2); ?></td>
                         <td><?php echo "$" . number_format($movil_pesos, 2); ?></td>
                         <td scope="row"><?php echo "$" . number_format($total_pesos, 2); ?></td>
