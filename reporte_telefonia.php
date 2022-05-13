@@ -18,7 +18,7 @@ require_once 'views/parte_superior.php';
 								<button class="btn btn-light px-5">Haz</button>
 								<button class="btn btn-light px-5">Voices</button>
 								<button id="btn_down" class="btn btn-light px-5">
-									<svg class="icon icon-tabler icon-tabler-arrow-down-circle" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<svg class="icon icon-tabler icon-tabler-arrow-down-circle" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#53b13a" fill="none" stroke-linecap="round" stroke-linejoin="round">
 										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 										<circle cx="12" cy="12" r="9" />
 										<line x1="8" y1="12" x2="12" y2="16" />

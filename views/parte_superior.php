@@ -70,20 +70,20 @@
 			background-image: url("assets/images/bg-themes/4modal.png");
 		} */
 
-		.xy-hiden {
+		.xy-hiden1 {
 			overflow-y: scroll;
 			overflow-x: scroll;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
 		}
 
-		.x-hiden {
+		.x-hiden1 {
 			overflow-x: scroll;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
 		}
 
-		.y-hiden {
+		.y-hiden1 {
 			overflow-y: scroll;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
@@ -91,7 +91,7 @@
 	</style>
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme9">
 
 	
 	<div id="wrapper">

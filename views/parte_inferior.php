@@ -104,29 +104,64 @@
 	});
 </script>
 
-<!-- SCRIPT BUSQUEDA INDEX -->
+<!-- SCRIPT BUSQUEDA INDEX POR FORMULARIO-->
 <script>
 	$('#btn_consumo_index').click(function() {
 		$.ajax({
-			url: 'views/viewsIndex/distribucion_consumo_por_carrier.php',
+			url: 'views/viewsIndex/consumo_dividido_carrier.php',
 			type: 'POST',
 			data: $('#form_index').serialize(),
 			beforeSend: function() {
-				$("#distribucion_cosumo_por_carrier").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+				$("#fila-uno-consumo-dividido-carrier").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
 			},
 			success: function(res) {
-				$('#distribucion_cosumo_por_carrier').html(res);
+				$('#fila-uno-consumo-dividido-carrier').html(res);
+			}
+		});
+	});
+
+	$('#btn_consumo_index').click(function() {
+		$.ajax({
+			url: 'views/viewsIndex/reportes_con_consumo.php',
+			type: 'POST',
+			data: $('#form_index').serialize(),
+			beforeSend: function() {
+				$("#consumoPorReportes").html("<div style='text-align:center; width: 100%; height: 100vh;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#consumoPorReportes').html(res);
+			}
+		});
+	});
+
+	$('#btn_consumo_index').click(function() {
+		$.ajax({
+			url:  'views/viewsIndex/porcentaje_por_carrier.php',
+			type: 'POST',
+			data: $('#form_index').serialize(),
+			beforeSend: function() {
+				$("#porcentaje-por-carrier").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#porcentaje-por-carrier').html(res);
+			}
+		});
+	});
+
+	$('#btn_consumo_index').click(function() {
+		$.ajax({
+			url:  'views/viewsIndex/consumo_centros_internos.php',
+			type: 'POST',
+			data: $('#form_index').serialize(),
+			beforeSend: function() {
+				$("#centros-internos").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#centros-internos').html(res);
 			}
 		});
 	});
 </script>
-<script>
-	function miAlerta(fecha) {
-		//event.preventDefault();
-		alert("Día " + fecha);
-	}
-</script>
-
 
 </body>
 
