@@ -28,6 +28,7 @@ const prefijo_haz_div   =  array("14", "555");
 
 /**ALL */
 const prefijos_individuales = array("15", "777", "11", "999", "28", "444", "14", "555");
+const prefijos_individuales_por_carrier = array("15','777", "11','999", "28','444", "14','555");
 const prefijos_juntos_minutos = array("15','777','11','999','28','444");
 const prefijos_juntos_segundos = array("14','555");
 

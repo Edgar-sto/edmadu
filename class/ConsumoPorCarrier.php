@@ -359,8 +359,8 @@ class ConsumoPorCarrier
                     <!-- <td>
                         <img src="assets/images/avatars/vicidial.jpg" alt="Logo Vicidial" class="pull-left rounded-circle" style="width:10%; height:5vh;"/>
                     </td> -->
-                    <td>
-                        <?php echo $row_camp->reporte; ?>
+                    <td style="font-size:1.05em;" class="text-left">
+                        <strong><?php echo $row_camp->reporte; ?></strong>
                     </td>
                     <td>
                         <?php echo "$ ".number_format($movil_pesos,2); ?>

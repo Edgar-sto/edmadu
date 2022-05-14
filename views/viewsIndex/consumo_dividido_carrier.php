@@ -15,15 +15,15 @@ $date_start_form  = $_POST['fecha_inicio'];
 $date_end_form    = $_POST['fecha_termino'];
 
 ?>
-<div class="container">
-    <h6 class="tab-header text-left">
+<!-- <div class="container">
+    <h6 class="tab-header text-left"> -->
         <!-- ** Agregar Algoritmo para mostrar las fechas correctas al seleccionarlas ** -->
-        <small class="badge badge-sm float-center badge-light">
+        <!-- <small class="badge badge-sm float-center badge-light">
             Información del día <?php echo $date_start_form; ?> al <?php echo $date_end_form; ?>
         </small>
     </h6>
-</div>
-<div class="container">
+</div> -->
+
 <!-- MARCATEL -->
 <div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
     <!-- <div class="card-body text-center"> -->
@@ -122,5 +122,4 @@ $date_end_form    = $_POST['fecha_termino'];
             ?>
         </tbody>
     </table>
-</div>
 </div>

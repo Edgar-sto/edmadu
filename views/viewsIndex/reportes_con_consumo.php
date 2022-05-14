@@ -22,7 +22,7 @@ $date_end_form  =  $_POST['fecha_termino'];
         </small>
     </h6>
     <div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-        <table class="table table-sm" style="font-size:8px;">
+        <table class="table table-sm" style="font-size:0.85em;">
             <thead>
                 <tr>
                     <th scope="col">Reporte</th>
@@ -48,7 +48,7 @@ $date_end_form  =  $_POST['fecha_termino'];
         </small>
     </h6>
     <div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-        <table class="table table-sm" style="font-size:8px;">
+        <table class="table table-sm" style="font-size:0.85em;">
             <thead>
                 <tr>
                     <th scope="col">Reporte</th>
@@ -74,7 +74,7 @@ $date_end_form  =  $_POST['fecha_termino'];
         </small>
     </h6>
     <div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-        <table class="table table-sm" style="font-size:8px;">
+        <table class="table table-sm" style="font-size:0.85em;">
             <thead>
                 <tr>
                     <th scope="col">Reporte</th>
@@ -100,7 +100,7 @@ $date_end_form  =  $_POST['fecha_termino'];
         </small>
     </h6>
     <div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-        <table class="table table-sm" style="font-size:8px;">
+        <table class="table table-sm" style="font-size:0.85em;">
             <thead>
                 <tr>
                     <th scope="col">Reporte</th>

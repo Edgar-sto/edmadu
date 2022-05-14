@@ -161,6 +161,20 @@
 			}
 		});
 	});
+
+	$('#btn_consumo_index').click(function() {
+		$.ajax({
+			url:  'views/viewsIndex/consumo_por_dia.php',
+			type: 'POST',
+			data: $('#form_index').serialize(),
+			beforeSend: function() {
+				$("#consumo-diario").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#consumo-diario').html(res);
+			}
+		});
+	});
 </script>
 
 </body>

@@ -235,7 +235,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
+								<table class="table table-sm" style="font-size:0.85em;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -261,7 +261,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
+								<table class="table table-sm" style="font-size:0.85em;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -287,7 +287,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
+								<table class="table table-sm" style="font-size:0.85em;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -313,7 +313,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
+								<table class="table table-sm" style="font-size:0.85em;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -374,6 +374,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			<!--Distribucion graficada -->
 		</div>
 
+		<!-- FILA BOTONES CENTROS INTERNOS "CI" -- CENTROS EXTERNOS "CE" "-->
 		<div class="card mt-3">
 			<div class="card mt-1 mb-1">
 				<div class="card-content">
@@ -394,6 +395,8 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 				</div>
 			</div>
 		</div>
+
+		
 		<!-- FILA TRES CENTROS INTERNOS distribucion por centro, campaña, carrier -->
 		<div id="Centros-Internos-STO" class="collapse multi-collapse">
 			<div class="card mt-3">
