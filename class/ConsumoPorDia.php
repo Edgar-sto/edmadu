@@ -71,8 +71,6 @@ class ConsumoPorDia {
                     $fijo_  =   $fijo  * $costo_fijo;
 
                 ?>
-                    <td class=""><?php echo number_format($movil,2);?></td>
-                    <td class=""><?php echo number_format($fijo,2);?></td>
                     <td class=""><?php echo "$" . number_format($movil_,2);?></td>
                     <td class=""><?php echo "$" . number_format($fijo_,2);?></td>
                 <?php
@@ -130,10 +128,8 @@ class ConsumoPorDia {
                         $movil_= $rowConsumo->movil*$costo_movil;
                         $fijo_ = $rowConsumo->fijo*$costo_fijo;    
                     ?> 
-                        <td class=""><?php echo number_format($rowConsumo->movil,2);?></td>
-                        <td class=""><?php echo number_format($rowConsumo->fijo,2);?></td>
-                        <td class=""><?php echo "$" .number_format($movil_,2);?></td>
-                        <td class=""><?php echo "$" .number_format($fijo_,2);?></td>
+                        <td class="table-active"><?php echo "$" .number_format($movil_,2);?></td>
+                        <td class="table-active"><?php echo "$" .number_format($fijo_,2);?></td>
                     <?php
                     }
                 }

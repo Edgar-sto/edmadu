@@ -177,6 +177,23 @@
 	});
 </script>
 
+<!-- SCRIPT HERRAMIENTAS-->
+<script>
+	$('#btn-pixel-em').click(function() {
+		$.ajax({
+			url:  'views/viewstools/pixelEm.php',
+			type: 'POST',
+			data: $('#form-pixel-em').serialize(),
+			beforeSend: function() {
+				$("#convertion-pixel-em").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#convertion-pixel-em').html(res);
+			}
+		});
+	});
+</script>
+
 </body>
 
 </html>

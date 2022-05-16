@@ -40,6 +40,22 @@ require_once 'views/parte_superior.php';
 					</div>
 				</div>
 			</div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title"><h4 class="h4">Convertidor PX -> EM</h4></div>
+                        <div id="convertion-pixel-em">
+
+                        </div>
+                            <form id="form-pixel-em" method="POST">
+                                <label for="tamaniopixel">Convertidor de PX a EM</label>
+                                <input class="form-control" type="text" name="tamaniopixel">
+                                <small id="smallpixel" class="form-text text-muted">Introduce un número en pixel</small>
+                                <button id="btn-pixel-em" type="button" name="submitPixel" class="btn btn-light">Convertir</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>

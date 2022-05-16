@@ -374,8 +374,10 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			<!--Distribucion graficada -->
 		</div>
 
-		<!-- FILA consumo por dia -->
-		<div id="consumoDiarioCarriers" class="collapse multi-collapse">
+		<!-- FILA consumo por dia 
+			No se a agregado a index.html
+		-->
+		<div id="consumoDiarioCarriers" class="">
 			<div class="card mt-3">
 				<div id="consumo-diario">
 					
