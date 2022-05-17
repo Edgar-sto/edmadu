@@ -13,9 +13,9 @@ $conexion = conexion_local('telefonia', '10.9.2.147');
 $date_start_form  = $_POST['fecha_inicio'];
 //echo "<br>";
 $date_end_form    = $_POST['fecha_termino'];
- 
+
 ?>
-<label for="floatingInputValue">Datos por día</label>
+<label for="floatingInputValue">Datos por día de consumo en segundos</label>
 <div class="row">
     <div class="col col-lg-12 col-lg-6 col-lg-3 table-responsive">
         <table class="table table-sm table-hover table-borderless" style="font-size:0.625em;">
@@ -41,7 +41,7 @@ $date_end_form    = $_POST['fecha_termino'];
             <tbody>
                 <?php 
                     $consumo= new ConsumoPorDia($conexion,$date_start_form,$date_end_form,prefijos_individuales_por_carrier);
-                    $consumo->desgloseDiario();
+                    $consumo->desgloseDiarioValorSegundos();
                 ?>
             </tbody>
         </table>

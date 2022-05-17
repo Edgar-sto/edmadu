@@ -175,6 +175,20 @@
 			}
 		});
 	});
+
+	$('#btn_consumo_index').click(function() {
+		$.ajax({
+			url:  'views/viewsIndex/consumo_por_dia_segundos.php',
+			type: 'POST',
+			data: $('#form_index').serialize(),
+			beforeSend: function() {
+				$("#consumo-diario-segundos").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#consumo-diario-segundos').html(res);
+			}
+		});
+	});
 </script>
 
 <!-- SCRIPT HERRAMIENTAS-->
@@ -189,6 +203,34 @@
 			},
 			success: function(res) {
 				$('#convertion-pixel-em').html(res);
+			}
+		});
+	});
+
+	$('#btn_telefonia_21').click(function() {
+		$.ajax({
+			url:  'views/viewstools/dateTele21.php',
+			type: 'POST',
+			data: $('#form_telefonia_21').serialize(),
+			beforeSend: function() {
+				$("#resultado_tele_21").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado_tele_21').html(res);
+			}
+		});
+	});
+
+	$('#btn-generador-pass').click(function() {
+		$.ajax({
+			url:  'views/viewstools/generadorDePass.php',
+			type: 'POST',
+			data: $('#form-generador-pass').serialize(),
+			beforeSend: function() {
+				$("#resultado_generador_de_contraseña").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado_generador_de_contraseña').html(res);
 			}
 		});
 	});

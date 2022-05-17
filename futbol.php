@@ -385,7 +385,13 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			</div>
 		</div>
 
-
+		<div id="consumoDiarioCarriersSegundos" class="">
+			<div class="card mt-3">
+				<div id="consumo-diario-segundos">
+					
+				</div>
+			</div>
+		</div>
 
 
 		
