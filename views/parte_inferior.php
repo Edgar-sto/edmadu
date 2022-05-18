@@ -46,6 +46,8 @@
 
 <!-- Index js -->
 <script src="assets/js/index.js"></script>
+
+
 <!-- SCRIPT OBTENER TELEFONIA MENSUAL -->
 <script>
 	/*Control oculto */
@@ -106,7 +108,7 @@
 
 <!-- SCRIPT BUSQUEDA INDEX POR FORMULARIO-->
 <script>
-	$('#btn_consumo_index').click(function() {
+	$('#btn_pruebas').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/consumo_dividido_carrier.php',
 			type: 'POST',
@@ -120,7 +122,7 @@
 		});
 	});
 
-	$('#btn_consumo_index').click(function() {
+	$('#btn_pruebas').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/reportes_con_consumo.php',
 			type: 'POST',
@@ -134,9 +136,9 @@
 		});
 	});
 
-	$('#btn_consumo_index').click(function() {
+	$('#btn_pruebas').click(function() {
 		$.ajax({
-			url:  'views/viewsIndex/porcentaje_por_carrier.php',
+			url: 'views/viewsIndex/porcentaje_por_carrier.php',
 			type: 'POST',
 			data: $('#form_index').serialize(),
 			beforeSend: function() {
@@ -148,9 +150,9 @@
 		});
 	});
 
-	$('#btn_consumo_index').click(function() {
+	$('#btn_pruebas').click(function() {
 		$.ajax({
-			url:  'views/viewsIndex/consumo_centros_internos.php',
+			url: 'views/viewsIndex/consumo_centros_internos.php',
 			type: 'POST',
 			data: $('#form_index').serialize(),
 			beforeSend: function() {
@@ -162,9 +164,9 @@
 		});
 	});
 
-	$('#btn_consumo_index').click(function() {
+	$('#btn_pruebas').click(function() {
 		$.ajax({
-			url:  'views/viewsIndex/consumo_por_dia.php',
+			url: 'views/viewsIndex/consumo_por_dia.php',
 			type: 'POST',
 			data: $('#form_index').serialize(),
 			beforeSend: function() {
@@ -176,9 +178,9 @@
 		});
 	});
 
-	$('#btn_consumo_index').click(function() {
+	$('#btn_pruebas').click(function() {
 		$.ajax({
-			url:  'views/viewsIndex/consumo_por_dia_segundos.php',
+			url: 'views/viewsIndex/consumo_por_dia_segundos.php',
 			type: 'POST',
 			data: $('#form_index').serialize(),
 			beforeSend: function() {
@@ -195,7 +197,7 @@
 <script>
 	$('#btn-pixel-em').click(function() {
 		$.ajax({
-			url:  'views/viewstools/pixelEm.php',
+			url: 'views/viewstools/pixelEm.php',
 			type: 'POST',
 			data: $('#form-pixel-em').serialize(),
 			beforeSend: function() {
@@ -209,7 +211,7 @@
 
 	$('#btn_telefonia_21').click(function() {
 		$.ajax({
-			url:  'views/viewstools/dateTele21.php',
+			url: 'views/viewstools/dateTele21.php',
 			type: 'POST',
 			data: $('#form_telefonia_21').serialize(),
 			beforeSend: function() {
@@ -223,7 +225,7 @@
 
 	$('#btn-generador-pass').click(function() {
 		$.ajax({
-			url:  'views/viewstools/generadorDePass.php',
+			url: 'views/viewstools/generadorDePass.php',
 			type: 'POST',
 			data: $('#form-generador-pass').serialize(),
 			beforeSend: function() {

@@ -78,7 +78,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							<td>
 								<div class="form-group">
 									<label for="input-1">Acción</label><br>
-									<input id="btn_consumo_index" name="btn_consumo_index" type="button" class="btn btn-light" value="Buscar">
+									<input id="btn_pruebas" name="btn_pruebas" type="button" class="btn btn-light" value="Buscar">
 								</div>
 							</td>
 						</tr>
@@ -380,7 +380,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		<div id="consumoDiarioCarriers" class="">
 			<div class="card mt-3">
 				<div id="consumo-diario">
-					
+					minutos
 				</div>
 			</div>
 		</div>
@@ -388,7 +388,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		<div id="consumoDiarioCarriersSegundos" class="">
 			<div class="card mt-3">
 				<div id="consumo-diario-segundos">
-					
+					segundos
 				</div>
 			</div>
 		</div>
