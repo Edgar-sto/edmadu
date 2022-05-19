@@ -161,7 +161,7 @@ class ConsumoPorCarrier
             AS ipcom_movil,
 
         (SELECT SUM(consumo) FROM reporte_telefonia
-        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date}23:59:59'
+        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
             AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('28','444')
         ) AS ipcom_fijo,
         

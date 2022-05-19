@@ -65,7 +65,7 @@
 	/**Obtener datos telefonía*/
 	$('#btn_telefonia_mensual').click(function() {
 		$.ajax({
-			url: 'views/reporte_telefonia_mensual.php',
+			url: 'views/reporte_telefonia_mensuales.php',
 			type: 'POST',
 			data: $('#form_telefonia_mensual').serialize(),
 			beforeSend: function() {
@@ -108,7 +108,7 @@
 
 <!-- SCRIPT BUSQUEDA INDEX POR FORMULARIO-->
 <script>
-	$('#btn_pruebas').click(function() {
+	$('#btn_consumo_index').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/consumo_dividido_carrier.php',
 			type: 'POST',
@@ -122,7 +122,7 @@
 		});
 	});
 
-	$('#btn_pruebas').click(function() {
+	$('#btn_consumo_index').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/reportes_con_consumo.php',
 			type: 'POST',
@@ -136,7 +136,7 @@
 		});
 	});
 
-	$('#btn_pruebas').click(function() {
+	$('#btn_consumo_index').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/porcentaje_por_carrier.php',
 			type: 'POST',
@@ -150,7 +150,7 @@
 		});
 	});
 
-	$('#btn_pruebas').click(function() {
+	$('#btn_consumo_index').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/consumo_centros_internos.php',
 			type: 'POST',
@@ -164,7 +164,7 @@
 		});
 	});
 
-	$('#btn_pruebas').click(function() {
+	$('#btn_consumo_index').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/consumo_por_dia.php',
 			type: 'POST',
@@ -178,7 +178,7 @@
 		});
 	});
 
-	$('#btn_pruebas').click(function() {
+	$('#btn_consumo_index').click(function() {
 		$.ajax({
 			url: 'views/viewsIndex/consumo_por_dia_segundos.php',
 			type: 'POST',

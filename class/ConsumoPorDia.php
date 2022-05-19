@@ -166,8 +166,8 @@ class ConsumoPorDia {
                     case "28','444":
                         // $costo_movil=0.11;
                         // $costo_fijo=0.04;
-                        $costo_movil_haz=0.09/60;
-                        $costo_fijo_haz=0.04/60;
+                        $costo_movil_haz=0.11/60;
+                        $costo_fijo_haz=0.05/60;
                         
                         $costo_movil= $costo_movil_haz;
                         $costo_fijo=  $costo_fijo_haz;
@@ -205,8 +205,8 @@ class ConsumoPorDia {
                     $fijo_  =   $fijo  * $costo_fijo;
 
                 ?>
-                    <td class="text-right"><?php echo "$" . number_format($movil_,2);?></td>
-                    <td class="text-right"><?php echo "$" . number_format($fijo_,2);?></td>
+                    <td class="text-right"><?php echo number_format($movil_,2);?></td>
+                    <td class="text-right"><?php echo number_format($fijo_,2);?></td>
                 <?php
                 }
             }
@@ -232,8 +232,8 @@ class ConsumoPorDia {
                         case "28','444":
                             // $costo_movil=0.11;
                             // $costo_fijo=0.04;
-                            $costo_movil_haz=0.09/60;
-                            $costo_fijo_haz=0.04/60;
+                            $costo_movil_haz=0.11/60;
+                            $costo_fijo_haz=0.05/60;
                             
                             $costo_movil= $costo_movil_haz;
                             $costo_fijo=  $costo_fijo_haz;
@@ -267,8 +267,8 @@ class ConsumoPorDia {
                         $movil_= $rowConsumo->movil*$costo_movil;
                         $fijo_ = $rowConsumo->fijo*$costo_fijo;    
                     ?> 
-                        <td class="text-right table-active"><?php echo "$" .number_format($movil_,2);?></td>
-                        <td class="text-right table-active"><?php echo "$" .number_format($fijo_,2);?></td>
+                        <td class="text-right table-active"><?php echo number_format($movil_,2);?></td>
+                        <td class="text-right table-active"><?php echo number_format($fijo_,2);?></td>
                     <?php
                     }
                 }

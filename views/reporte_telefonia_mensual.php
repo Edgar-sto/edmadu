@@ -89,7 +89,7 @@ if ($carrier == 'marcatel') {
                     (SELECT SUM(consumo) FROM reporte_telefonia
                     WHERE fecha_inicio>='{$fecha_inicio} 00:00:00' and fecha_termino<='{$fecha_termino} 23:59:59'
                     AND tipo='fijo' AND reporte='{$row->reporte}' AND prefijo IN ('{$prefijo }') AND campania='{$row_camp->campania}'
-                    AND grupo='{$row_grupo->grupo}') AS fijo";
+                    AND grupo='{$row_grupo->grupo}') AS fijo;";
                     
                     $resultado_mf=$conexion->query($query_movil_fijo);
                     $array_mf=array();
@@ -97,7 +97,7 @@ if ($carrier == 'marcatel') {
                         $row_mf->movil;
                         $row_mf->fijo;
                         
-                        if ($row_grupo->grupo == 'N/A') {
+                        if ($row_grupo->grupo == 'N/A') { 
                             
                         } else {
                             ?>

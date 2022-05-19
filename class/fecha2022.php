@@ -38,7 +38,7 @@ if (
     $date = $date->format('Y-m-d');
 } else { // format failed
     $date = new DateTime();
-    $date->sub(new DateInterval('P1D'));
+    $date->sub(new DateInterval('P2D'));
     $date = $date->format('Y-m-d');
 }
 

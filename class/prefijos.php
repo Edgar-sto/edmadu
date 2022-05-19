@@ -6,8 +6,8 @@ const prefijos_marcatel =  "15','777";
 const prefijo_mtel_ind  =  array("15", "777");
 
 /** MCM */
-const carrier_mcm      =  "mcm";
-const prefijos_mcm     =  "11','999";
+const carrier_mcm      =  "mcm";             
+const prefijos_mcm     =  "11','999";        
 const prefijo_mcm_div  =  array("11", "999");
 
 /**IPCOM */
