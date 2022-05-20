@@ -151,6 +151,19 @@
 						<span>Vicis</span>
 					</a>
 				</li>
+				<!--DISTRIBUCION SERVERS-->
+				<li>
+					<a href="distribucionServer.php">
+					<svg class="icon icon-tabler icon-tabler-server" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<rect x="3" y="4" width="18" height="8" rx="3" />
+						<rect x="3" y="12" width="18" height="8" rx="3" />
+						<line x1="7" y1="8" x2="7" y2="8.01" />
+						<line x1="7" y1="16" x2="7" y2="16.01" />
+					</svg>
+						<span>Distribución Server</span>
+					</a>
+				</li>
 				<!--REPORTE TELEFONIA-->
 				<li>
 					<a href="reporte_telefonia.php">

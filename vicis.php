@@ -18,6 +18,7 @@ require_once 'views/parte_superior.php';
                                         <button type="button" class="btn btn-light px-5" id="vici_<?php echo $vici;?>">
                                             <a href="http://10.9.2.<?php echo $vici;?>/vicidial/realtime_report.php" target="_blank"
                                                 rel="noopener noreferrer" class='testbutton'><?php echo $vici;?></a>
+                                            
                                         </button>
                                     <?php
                                     }
