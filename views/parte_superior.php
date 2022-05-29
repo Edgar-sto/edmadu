@@ -91,7 +91,7 @@
 	</style>
 </head>
 
-<body class="bg-theme bg-theme9">
+<body class="bg-theme bg-theme1">
 
 	
 	<div id="wrapper">

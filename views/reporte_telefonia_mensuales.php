@@ -11,28 +11,27 @@ $fecha_termino = $_POST['fecha_termino'];
 
 switch ($carrier) {
     case 'marcatel':
-        $carrier_name      =  "marcatel";
-        $prefijos_juntos =  "15','777";
+        $carrier_name           =  "marcatel";
+        $prefijos_juntos        =  "15','777";
         $prefijos_individuales  =  array("15", "777");
     break;
 
     case 'mcm':
-        $carrier_name      =  "mcm";             
-        $prefijos_juntos=  "11','999";        
+        $carrier_name           =  "mcm";             
+        $prefijos_juntos        =  "11','999";        
         $prefijos_individuales  =  array("11", "999");
         break;
 
     case 'ipcom':
-        $carrier_name      =  "ipcom";
-        $prefijos_juntos  =  "28','444";
+        $carrier_name           =  "ipcom";
+        $prefijos_juntos        =  "28','444";
         $prefijos_individuales  =  array("28", "444");
         break;
     
     default:
-        $carrier_name       =  "haz";
-        $prefijos_juntos =   "14','555";
+        $carrier_name            =  "haz";
+        $prefijos_juntos         =   "14','555";
         $prefijos_individuales   =  array("14", "555");
-    
         break;
 }
 ?>
@@ -135,7 +134,7 @@ switch ($carrier) {
                         <td><?php echo $row_answer->grupo;?></td>
                         <td><?php echo $row_answer->Tipo;?></td>
                         <td></td>
-                        <td class="text-right"><?php echo number_format($row_answer->Total,2);?></td>
+                        <td class="text-right"><?php echo number_format($row_answer->Total);?></td>
                     </tr>
                     <?php
                 }

@@ -92,7 +92,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		<!-- FILA UNO DISTRIBUCION DE CONSUMO POR CARRIER MINUTOS-->
 		<div class="card mt-3">
 			<div class="card-content">
-				<div id="fila-uno-consumo-dividido-carrier" class="row row-group m-0">
+				<div id="fila-uno-consumo-dividido-carrier" class="row row-group m-0 p-4">
 					<!--
 						Área de impresión de resultados por Formulario
 					-->

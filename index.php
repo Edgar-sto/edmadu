@@ -6,7 +6,8 @@ require_once 'class/fecha2022.php';
 require_once 'class/FechaReportes.php';
 require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
-$conexion = conexion_local('telefonia', '127.0.0.1');
+//$conexion = conexion_fedora('telefonia', '10.9.2.234');
+$conexion = conexion_local('telefonia','10.9.2.147');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 ?>
 <!-- Start content-wrapper-->

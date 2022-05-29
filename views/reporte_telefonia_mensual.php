@@ -135,7 +135,7 @@ if ($carrier == 'marcatel') {
                     (SELECT SUM(consumo) FROM reporte_telefonia
                     WHERE fecha_inicio>='{$fecha_inicio} 00:00:00' and fecha_termino<='{$fecha_termino} 23:59:59'
                     AND tipo='drop_fijo' AND reporte='{$row->reporte}' AND prefijo IN ('{$prefijo }') AND campania='{$row_camp->campania}'
-                    AND grupo='N/A') AS drop_fijo";
+                    AND grupo='N/A') AS drop_fijo;";
                         
                     $resultado_DropMF=$conexion->query($query_dmovil_dfijo);
                     while ($row_drop=$resultado_DropMF->fetch_object()) {
@@ -161,7 +161,7 @@ if ($carrier == 'marcatel') {
                     (SELECT SUM(consumo) FROM reporte_telefonia
                     WHERE fecha_inicio>='{$fecha_inicio} 00:00:00' and fecha_termino<='{$fecha_termino} 23:59:59'
                     AND tipo='buzon_fijo' AND reporte='{$row->reporte}' AND prefijo IN ('{$prefijo }') AND campania='{$row_camp->campania}'
-                    AND grupo='N/A') AS buzon_fijo";
+                    AND grupo='N/A') AS buzon_fijo;";
                     
                     $resultado_buzonMF=$conexion->query($query_Bmovil_bfijo);
                     while ($row_buzon=$resultado_buzonMF->fetch_object()) {
@@ -196,4 +196,3 @@ if ($carrier == 'marcatel') {
     ?></div><?php
 //}/**CIERRE DE FOR PARA RECORRER PREFIJOS */
 ?>
-

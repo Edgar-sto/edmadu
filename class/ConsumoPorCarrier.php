@@ -82,6 +82,37 @@ class ConsumoPorCarrier
                 </tr>
                 <?php
             }
+
+            $query_consumo_totales = "SELECT
+            (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$this->carrier}')) AS movil,
+
+            (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$this->carrier}')) AS fijo;";
+
+            $answer_total_consumido = $this->conexion->query($query_consumo_totales);
+            while ($row_totales = $answer_total_consumido->fetch_object()) {
+                    $totales_movil =  $row_totales->movil * $costo_movil;
+                    $totales_fijo  =  $row_totales->fijo * $costo_fijo;
+
+                    $totales_minutos = $row_totales->movil + $row_totales->fijo;
+                    $totales_pesos   = $totales_movil + $totales_fijo;
+
+
+
+                    ?>
+                    <tr class="table-active">
+                        <td>Total</td>
+                        <td class="text-right"><?php echo number_format($totales_minutos / 60); ?></td>
+                        <td class="text-right"><?php echo "$ ".number_format($totales_pesos,2); ?></td>
+                    </tr>
+                    <?php
+            }
+
+
+
         } else {
             $query_consumo = "SELECT SUM(consumo) AS Total,
             (CASE WHEN tipo = 'movil' THEN 'Movil'
@@ -128,6 +159,33 @@ class ConsumoPorCarrier
                     <td class="text-right"><?php echo "$ ".number_format($total_pss,2); ?></td>
                 </tr>
             <?php
+            }
+            $query_consumo_totales = "SELECT
+            (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$this->carrier}')) AS movil,
+
+            (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$this->carrier}')) AS fijo;";
+
+            $answer_total_consumido = $this->conexion->query($query_consumo_totales);
+            while ($row_totales = $answer_total_consumido->fetch_object()) {
+                    $totales_movil =  $row_totales->movil * $costo_movil;
+                    $totales_fijo  =  $row_totales->fijo * $costo_fijo;
+
+                    $totales_minutos = $row_totales->movil + $row_totales->fijo;
+                    $totales_pesos   = $totales_movil + $totales_fijo;
+
+
+
+                    ?>
+                    <tr class="table-active">
+                        <td>Total</td>
+                        <td class="text-right"><?php echo number_format($totales_minutos); ?></td>
+                        <td class="text-right"><?php echo "$ ".number_format($totales_pesos,2); ?></td>
+                    </tr>
+                    <?php
             }
         }
     }
@@ -536,3 +594,4 @@ class ConsumoPorCarrier
         <?php
     }
 }
+ 

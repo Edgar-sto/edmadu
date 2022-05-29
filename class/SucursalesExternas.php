@@ -68,6 +68,7 @@ class SucursalesExternas
                     while ($row_cam_group=$answer_campania_group->fetch_object()) {
                         $row_cam_group->campania;
                         $row_cam_group->reporte;
+                        
                         if ($row_cam_group->reporte == '10.9.2.41') {
                             $fondo = "table-success";
                         } else {

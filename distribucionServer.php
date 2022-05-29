@@ -27,13 +27,27 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                     <i class="icon-options"></i>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void();">10.9.2.64  
-                                                        <small class="badge float-right badge-light">Letra B</small>
-                                                    </a>
-                                                    <a class="dropdown-item" href="javascript:void();">10.9.2.67 
-                                                        <small class="badge float-right badge-light">Letra C</small>
-                                                    </a>
+
+                                                <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <a class="dropdown-item" href="javascript:void();">10.9.2.64  
+                                                                <small class="badge float-right badge-light">Letra B</small>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a class="dropdown-item" href="javascript:void();">10.9.2.67 
+                                                                <small class="badge float-right badge-light">Letra C</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <iframe src="http://10.9.2.5/vicidial/realtime_report.php" width="100%" height="300" style="border:1px solid black;">
+                                                        
+                                                            </iframe>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                     </div>
@@ -46,13 +60,26 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                     <i class="icon-options"></i>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <!-- <a class="dropdown-item" href="javascript:void();">10.9.2.64 
-                                                        <small class="badge float-right badge-light">Letra B</small>
-                                                    </a>
-                                                    <a class="dropdown-item" href="javascript:void();">10.9.2.67
-                                                        <small class="badge float-right badge-light">Letra C</small>
-                                                    </a> -->
+                                                <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
+                                                    <!-- <div class="row">
+                                                        <div class="col">
+                                                            <a class="dropdown-item" href="javascript:void();">10.9.2.64  
+                                                                <small class="badge float-right badge-light">Letra B</small>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a class="dropdown-item" href="javascript:void();">10.9.2.67 
+                                                                <small class="badge float-right badge-light">Letra C</small>
+                                                            </a>
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <iframe src="http://10.9.2.6/vicidial/realtime_report.php" width="100%" height="300" style="border:1px solid black;">
+                                                        
+                                                            </iframe>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                     </div>
@@ -65,7 +92,7 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                     <i class="icon-options"></i>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
+                                                <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                     <a class="dropdown-item" href="javascript:void();">10.9.2.63  
                                                         <small class="badge float-right badge-light">Letra B</small>
                                                     </a>
@@ -81,7 +108,7 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                     <i class="icon-options"></i>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
+                                                <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                     <a class="dropdown-item" href="javascript:void();">10.9.2.24
                                                         <small class="badge float-right badge-light">Letra A</small>
                                                     </a>
@@ -103,7 +130,7 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                     <i class="icon-options"></i>
                                                 </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
+                                                <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                     <a class="dropdown-item" href="javascript:void();">10.9.2.14
                                                         <small class="badge float-right badge-light">Letra B</small>
                                                     </a>
@@ -125,7 +152,7 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                 <i class="icon-options"></i>
                                                 </button>
-                                                <!-- <div class="dropdown-menu dropdown-menu-right">
+                                                <!-- <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                     <a class="dropdown-item" href="javascript:void();">10.9.2.14
                                                         <small class="badge float-right badge-light">Letra B</small>
                                                     </a>
@@ -147,7 +174,7 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                 <i class="icon-options"></i>
                                                 </button>
-                                                <!-- <div class="dropdown-menu dropdown-menu-right">
+                                                <!-- <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                     <a class="dropdown-item" href="javascript:void();">10.9.2.14
                                                         <small class="badge float-right badge-light">Letra B</small>
                                                     </a>
@@ -169,7 +196,7 @@ require_once 'views/parte_superior.php';
                                                 <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                 <i class="icon-options"></i>
                                                 </button>
-                                                <!-- <div class="dropdown-menu dropdown-menu-right">
+                                                <!-- <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                     <a class="dropdown-item" href="javascript:void();">10.9.2.14
                                                         <small class="badge float-right badge-light">Letra B</small>
                                                     </a>
@@ -191,7 +218,7 @@ require_once 'views/parte_superior.php';
                                             <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                             <i class="icon-options"></i>
                                             </button>
-                                            <!-- <div class="dropdown-menu dropdown-menu-right">
+                                            <!-- <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                 <a class="dropdown-item" href="javascript:void();">10.9.2.14
                                                     <small class="badge float-right badge-light">Letra B</small>
                                                 </a>
@@ -213,7 +240,7 @@ require_once 'views/parte_superior.php';
                                             <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                             <i class="icon-options"></i>
                                             </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                 <a class="dropdown-item" href="javascript:void();">10.9.2.50
                                                     <small class="badge float-right badge-light">Letra B</small>
                                                 </a>
@@ -235,7 +262,7 @@ require_once 'views/parte_superior.php';
                                             <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                             <i class="icon-options"></i>
                                             </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                 <!-- <a class="dropdown-item" href="javascript:void();">10.9.2.50
                                                     <small class="badge float-right badge-light">Letra B</small>
                                                 </a> -->
@@ -257,7 +284,7 @@ require_once 'views/parte_superior.php';
                                             <button href="javascript:void();" class=" btn btn-light dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                             <i class="icon-options"></i>
                                             </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="dropdown-menu dropdown-menu-right"  style="width: 475px; height: 220px;">
                                                 <!-- <a class="dropdown-item" href="javascript:void();">10.9.2.50
                                                     <small class="badge float-right badge-light">Letra B</small>
                                                 </a> -->
