@@ -3,7 +3,7 @@ include_once '../class/conexion.php';
 include_once '../class/sucursalesExternas.php';
 
 
-$conexion = conexion_local("telefonia", "127.0.0.1");
+$conexion = conexion_local("telefonia", "10.9.2.234");
 $carrier = $_POST['carrier'];
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_termino = $_POST['fecha_termino'];

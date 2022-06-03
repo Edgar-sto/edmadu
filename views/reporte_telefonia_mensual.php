@@ -3,7 +3,7 @@ include '../class/conexion.php';
 include_once '../class/ReporteTelefoniaMensual.php';
 include_once '../class/ObtenerSucursal.php';
 
-$conexion = conexion_local("telefonia", "127.0.0.1");
+$conexion = conexion_local("telefonia", "10.9.2.234");
 $carrier = $_POST['carrier'];
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_termino = $_POST['fecha_termino'];
@@ -59,7 +59,7 @@ if ($carrier == 'marcatel') {
                 <th scope="col">Consumo Fijo</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-right">
             <tr><td colspan="7"></td></tr>
     <?php   
         foreach ($prefijos_individuales as $prefijo ) {
@@ -120,8 +120,8 @@ if ($carrier == 'marcatel') {
 
                                 <td><?php echo $row_grupo->grupo; ?></td>
                                 <td></td>
-                                <td><?php echo number_format($row_mf->movil);?> </td>
-                                <td><?php echo number_format($row_mf->fijo); ?> </td>
+                                <td><?php echo $row_mf->movil;?> </td>
+                                <td><?php echo $row_mf->fijo; ?> </td>
                             </tr>
                             <?php
                         }
@@ -148,8 +148,8 @@ if ($carrier == 'marcatel') {
                             <td></td>
                             <td>DROP</td>
                             <td></td>
-                            <td><?php echo number_format($row_drop->drop_movil);?></td>
-                            <td><?php echo number_format($row_drop->drop_fijo); ?></td>
+                            <td><?php echo $row_drop->drop_movil;?></td>
+                            <td><?php echo $row_drop->drop_fijo; ?></td>
                         </tr>
                         <?php
                     }
@@ -174,8 +174,8 @@ if ($carrier == 'marcatel') {
                             <td></td>
                             <td>BUZON</td>
                             <td></td>
-                            <td><?php echo number_format($row_buzon->buzon_movil);?> </td>
-                            <td><?php echo number_format($row_buzon->buzon_fijo);?> </td>
+                            <td><?php echo $row_buzon->buzon_movil;?> </td>
+                            <td><?php echo $row_buzon->buzon_fijo;?> </td>
                         </tr>
                         <?php
                     }/**CIERRE WHILE BUZON */
