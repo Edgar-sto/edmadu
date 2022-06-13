@@ -26,6 +26,6 @@ const prefijos_individuales_por_carrier = array("15','777", "11','999", "28','44
 const all_prefijos = array('Marcatel'=>"15','777", 'MCM'=>"11','999", 'Ipcom'=>"28','444", 'Haz'=>"14','555");
 const prefijos_juntos_minutos = array("15','777','11','999','28','444");
 const prefijos_juntos_segundos = array("14','555");
-
+const carrier = "N/A";
 
 ?>

@@ -6,10 +6,16 @@ require_once 'class/fecha2022.php';
 require_once 'class/FechaReportes.php';
 require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
+<<<<<<< Updated upstream
 //$conexion = conexion_fedora('telefonia', '10.9.2.234');
 $conexion = conexion_local('telefonia','10.9.2.147');
+=======
+require_once 'class/SucursalesExternas.php';
+require_once 'class/ConsumoPorDia.php';
+$conexion = conexion_local('telefonia', '10.9.2.234');
+>>>>>>> Stashed changes
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
-?>
+?> 
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -21,8 +27,9 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 					<?php
 
 					foreach ($meses as $mes) {
+
 					?>
-						<div class="col col-sm">
+						<div class="col col-sm text-center">
 							<a class="bg-active text-capitalize" data-toggle="collapse" href="#<?php echo $mes; ?>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
 								<?php echo $mes; ?>
 								<!-- <small class="badge float-right badge-light">Edgar</small> -->
@@ -93,7 +100,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		<!-- FILA UNO DISTRIBUCION DE CONSUMO POR CARRIER MINUTOS-->
 		<div class="card mt-3">
 			<div class="card-content">
-				<div id="fila-uno-consumo-dividido-carrier" class="row row-group m-0">
+				<div id="fila-uno-consumo-dividido-carrier" class="row row-group m-0 p-4">
 					<!--
 						Área de impresión de resultados por Formulario
 					-->
@@ -236,7 +243,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:0.85em;">
+								<table class="table table-sm" style="font-size:8px;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -262,7 +269,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:0.85em;">
+								<table class="table table-sm" style="font-size:8px;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -288,7 +295,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:0.85em;">
+								<table class="table table-sm" style="font-size:8px;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -314,7 +321,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</small>
 							</h6>
 							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:0.85em;">
+								<table class="table table-sm" style="font-size:8px;">
 									<thead>
 										<tr>
 											<th scope="col">Reporte</th>
@@ -336,7 +343,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 				</section>
 			</div>
 			<!-- Porcentaje consumo -->
-			<div class="col-lg-6 col-lg-4 col-12 ">
+			<div id="contenido" class="col-lg-6 col-lg-4 col-12">
 				<section class="card">
 					<div class="card-header">Porcetaje por carrier</div>
 					<div id="porcentaje-por-carrier">
@@ -358,6 +365,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 											<th scope="col">Carrier</th>
 											<th scope="col">Movil</th>
 											<th scope="col">Fijo</th>
+											<th scope="col">Total</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -369,435 +377,102 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								</table>
 							</div>
 						</div>
+						<div class="btn-img row">
+							<div class="col">
+								<!-- <input type="button" id="crearimagen" class="form-control btn btn-light" value="Crear Imagen"> -->
+								<button id="crearimagen" class="form-control">Crear imagen</button>
+							</div>
+							<div class="col">
+								<!-- El div id="img-out" sera el contenedor en donde visualizaremos la imagen exportada -->
+								<div id="salidaimg" align="center"></div>
+							</div>
+						</div>
 					</div>
 				</section>
 			</div>
 			<!--Distribucion graficada -->
 		</div>
 
-		<!-- FILA BOTONES CENTROS INTERNOS "CI" -- CENTROS EXTERNOS "CE" "-->
-		<div class="card mt-3">
-			<div class="card mt-1 mb-1">
-				<div class="card-content">
-					<div class="row row-group m-0">
-						<div class="col-lg-6 col-ms-6 col-sm-12 text-center">
-							<button class="btn btn-light" data-toggle="collapse" href="#Centros-Internos-STO" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="width: 100px;">
-								Centros Internos
-								<!-- <small class="badge float-right badge-light">Edgar</small> -->
-							</button>
-						</div>
-						<div class="col-lg-6 col-ms-6 col-sm-12 text-center">
-							<button class="btn btn-light" data-toggle="collapse" href="#Centros-Externos-STO" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="width: 100px;">
-								Centros Externos
-								<!-- <small class="badge float-right badge-light">Edgar</small> -->
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
-		<!-- FILA TRES CENTROS INTERNOS distribucion por centro, campaña, carrier -->
-		<div id="Centros-Internos-STO" class="collapse multi-collapse">
+		<!-- FILA consumo por dia 
+			No se a agregado a index.html
+		-->
+		<div id="consumoDiarioCarriers" class="">
 			<div class="card mt-3">
-				<div id="centros-internos">
-					<!--
-						Área de impresión de resultados por Formulario
-					-->
-					<!--ESCORZA - REVOLUCION -->
-					<div class="row">
-						<!-- ESCORZA -->
-						<div class="col-lg-12 table-responsive xy-hiden" id=" ">
-							<h4>Escorza</h4>
-							<hr>
-							<div class="row">
-								<div class="col-sm-6 col">
-									<!--Marcatel -->
-									<?php
-									$consumo_escorza_mtel = new SucursalesInternas($conexion, $date, $date, carrier_mtel, prefijos_marcatel);
-									$consumo_escorza_mtel->consumoEscorza();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--MCM -->
-									<?php
-									$consumo_escorza_mcm = new SucursalesInternas($conexion, $date, $date, carrier_mcm, prefijos_mcm);
-									$consumo_escorza_mcm->consumoEscorza();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--Ipcom -->
-									<?php
-									$consumo_escorza_ipcom = new SucursalesInternas($conexion, $date, $date, carrier_ipcom, prefijos_ipcom);
-									$consumo_escorza_ipcom->consumoEscorza();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--Haz -->
-									<?php
-									$consumo_escorza_haz = new SucursalesInternas($conexion, $date, $date, carrier_haz, prefijos_haz);
-									$consumo_escorza_haz->consumoEscorza();
-									?>
-								</div>
-							</div>
-						</div>
-						<!--REVOLUCION -->
-						<div class="col-lg-12 table-responsive xy-hiden" id=" ">
-							<h4>Revolución</h4>
-							<hr>
-							<div class="row">
-								<div class="col-sm-6 col">
-									<!--Marcatel -->
-									<?php
-									$consumo_revolucion_mtel = new SucursalesInternas($conexion, $date, $date, carrier_mtel, prefijos_marcatel);
-									$consumo_revolucion_mtel->consumoRevolucion();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--MCM -->
-									<?php
-									$consumo_revolucion_mcm = new SucursalesInternas($conexion, $date, $date, carrier_mcm, prefijos_mcm);
-									$consumo_revolucion_mcm->consumoRevolucion();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--Ipcom -->
-									<?php
-									$consumo_revolucion_ipcom = new SucursalesInternas($conexion, $date, $date, carrier_ipcom, prefijos_ipcom);
-									$consumo_revolucion_ipcom->consumoRevolucion();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--Haz -->
-									<?php
-									$consumo_revolucion_haz = new SucursalesInternas($conexion, $date, $date, carrier_haz, prefijos_haz);
-									$consumo_revolucion_haz->consumoRevolucion();
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<!--TLAJOMULCO - DROP BUZON - ADMINISTRATIVO -->
-					<div class="row">
-						<!--TLAJOMULCO -->
-						<div class="col-lg-12 table-responsive xy-hiden" id=" ">
-							<h4>Tlajomulco</h4>
-							<hr>
-							<div class="row">
-								<div class="col-sm-6 col">
-									<!--Marcatel -->
-									<?php
-									$consumo_tlajomulco_mtel = new SucursalesInternas($conexion, $date, $date, carrier_mtel, prefijos_marcatel);
-									$consumo_tlajomulco_mtel->consumoTlajomulco();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--MCM -->
-									<?php
-									$consumo_tlajomulco_mcm = new SucursalesInternas($conexion, $date, $date, carrier_mcm, prefijos_mcm);
-									$consumo_tlajomulco_mcm->consumoTlajomulco();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--Ipcom -->
-									<?php
-									$consumo_tlajomulco_ipcom = new SucursalesInternas($conexion, $date, $date, carrier_ipcom, prefijos_ipcom);
-									$consumo_tlajomulco_ipcom->consumoTlajomulco();
-									?>
-								</div>
-								<div class="col-sm-6 col">
-									<!--Haz -->
-									<?php
-									$consumo_tlajomulco_haz = new SucursalesInternas($conexion, $date, $date, carrier_haz, prefijos_haz);
-									$consumo_tlajomulco_haz->consumoTlajomulco();
-									?>
-								</div>
-							</div>
-						</div>
-						<!--DROP BUZON - ADMINISTRATIVO -->
-						<div class="col-lg-12 table-responsive" id=" ">
-							<div class="row">
-								<!--DROP BUZON-->
-								<div class="col-lg-12 table-responsive xy-hiden" id=" ">
-									<h4>Drop - Buzón</h4>
-									<hr>
-									<div class="row">
-										<div class="col-sm-6 col">
-											<!--Marcatel -->
-											<?php
-											$consumo_drop_buzon_mtel = new SucursalesInternas($conexion, $date, $date, carrier_mtel, prefijos_marcatel);
-											$consumo_drop_buzon_mtel->consumoDropBuzon();
-											?>
-										</div>
-										<div class="col-sm-6 col">
-											<!--MCM -->
-											<?php
-											$consumo_drop_buzon_mcm = new SucursalesInternas($conexion, $date, $date, carrier_mcm, prefijos_mcm);
-											$consumo_drop_buzon_mcm->consumoDropBuzon();
-											?>
-										</div>
-										<div class="col-sm-6 col">
-											<!--Ipcom -->
-											<?php
-											$consumo_drop_buzon_ipcom = new SucursalesInternas($conexion, $date, $date, carrier_ipcom, prefijos_ipcom);
-											$consumo_drop_buzon_ipcom->consumoDropBuzon();
-											?>
-										</div>
-										<div class="col-sm-6 col">
-											<!--Haz -->
-											<?php
-											$consumo_drop_buzon_haz = new SucursalesInternas($conexion, $date, $date, carrier_haz, prefijos_haz);
-											$consumo_drop_buzon_haz->consumoDropBuzon();
-											?>
-										</div>
-									</div>
-								</div>
-								<br>
-								<br>
-								<!--ADMINISTRATIVO-->
-								<div class="col-lg-12 table-responsive xy-hiden" id=" ">
-									<h4>Administrativo</h4>
-									<hr>
-									<div class="row">
-										<div class="col-sm-6 col">
-											<!--Marcatel -->
-											<?php
-											$consumo_admin_mtel = new SucursalesInternas($conexion, $date, $date, carrier_mtel, prefijos_marcatel);
-											$consumo_admin_mtel->consumoAdministrativo();
-											?>
-										</div>
-										<div class="col-sm-6 col">
-											<!--MCM -->
-											<?php
-											$consumo_admin_mcm = new SucursalesInternas($conexion, $date, $date, carrier_mcm, prefijos_mcm);
-											$consumo_admin_mcm->consumoAdministrativo();
-											?>
-										</div>
-										<div class="col-sm-6 col">
-											<!--Ipcom -->
-											<?php
-											$consumo_admin_ipcom = new SucursalesInternas($conexion, $date, $date, carrier_ipcom, prefijos_ipcom);
-											$consumo_admin_ipcom->consumoAdministrativo();
-											?>
-										</div>
-										<div class="col-sm-6 col">
-											<!--Haz -->
-											<?php
-											$consumo_admin_haz = new SucursalesInternas($conexion, $date, $date, carrier_haz, prefijos_haz);
-											$consumo_admin_haz->consumoAdministrativo();
-											?>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- FILA CUATRO "Grafica" - "Fechas de reportes" -->
-		<div class="row">
-			<div class="col-12 col-lg-8 col-xl-8">
-				<div class="card" style="height: 465px;">
-					<div class="card-header">Site Traffic
-						<div class="card-action">
-							<div class="dropdown">
-								<a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-									<i class="icon-options"></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="javascript:void();">Action</a>
-									<a class="dropdown-item" href="javascript:void();">Another action</a>
-									<a class="dropdown-item" href="javascript:void();">Something else here</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void();">Separated link</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>New Visitor
-							</li>
-							<li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>Old Visitor
-							</li>
-						</ul>
-						<div class="chart-container-1">
-							<canvas id="chart1"></canvas>
-						</div>
-					</div>
-
-					<div class="row m-0 row-group text-center border-top border-light-3">
-						<div class="col-12 col-lg-4">
-							<div class="p-3">
-								<h5 class="mb-0">45.87M</h5>
-								<small class="mb-0">Overall Visitor <span> <i class="fa fa-arrow-up"></i>
-										2.43%</span></small>
-							</div>
-						</div>
-						<div class="col-12 col-lg-4">
-							<div class="p-3">
-								<h5 class="mb-0">15:48</h5>
-								<small class="mb-0">Visitor Duration <span> <i class="fa fa-arrow-up"></i>
-										12.65%</span></small>
-							</div>
-						</div>
-						<div class="col-12 col-lg-4">
-							<div class="p-3">
-								<h5 class="mb-0">245.65</h5>
-								<small class="mb-0">Pages/Visit <span> <i class="fa fa-arrow-up"></i>
-										5.62%</span></small>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<!--Reportes comprobación por fecha -->
-			<div class="col-lg-4 col-xl-4 col-12">
-				<section class="card">
-					<div class="card-header">Reportes con consumo</div>
-					<div id="fechitas" class="body" style="height: 300px; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-						<div class="row">
-							<?php
-							// $sihayconsumo = new FechasReportes($conexion_21,$date,$date);
-							// $sihayconsumo->reporteConConsumo();
-							?>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-
-		<!--TABLA  CINCO CONSUMO POR CAMPANIA-->
-		<div class="row">
-			<div class="col-12 col-lg-12">
-				<div class="card">
-					<div class="card-header">Recent Order Tables
-						<div class="card-action">
-							<div class="dropdown">
-								<a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-									<i class="icon-options"></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="javascript:void();">Action</a>
-									<a class="dropdown-item" href="javascript:void();">Another action</a>
-									<a class="dropdown-item" href="javascript:void();">Something else here</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void();">Separated link</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="table-responsive">
-						<table class="table align-items-center table-flush table-borderless">
-							<thead>
-								<tr>
-									<th>Product</th>
-									<th>Photo</th>
-									<th>Product ID</th>
-									<th>Amount</th>
-									<th>Date</th>
-									<th>Shipping</th>
+				<div id="consumo-diario">
+				<label for="floatingInputValue">Datos por día</label>
+				<div class="row">
+					<div class="col col-lg-12 col-lg-6 col-lg-3 table-responsive">
+						<table class="table table-sm table-hover table-borderless" style="font-size:0.625em;">
+							<thead class="text-center align-middle">
+								<tr class="">
+									<th scope="col" rowspan="2" class="align-middle">Fechas</th>
+									<th scope="col" colspan="2">Marcatel</th>
+									<th scope="col" colspan="2">MCM</th>
+									<th scope="col" colspan="2">Ipcom</th>
+									<th scope="col" colspan="2">Haz</th> 
+								</tr>
+								<tr class="">
+									<th scope="col">$ Movil</th>
+									<th scope="col">$ Fijo</th>
+									<th scope="col">$ Movil</th>
+									<th scope="col">$ Fijo</th>
+									<th scope="col">$ Movil</th>
+									<th scope="col">$ Fijo</th>
+									<th scope="col">$ Movil</th>
+									<th scope="col">$ Fijo</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Iphone 5</td>
-									<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-									<td>#9405822</td>
-									<td>$ 1250.00</td>
-									<td>03 Aug 2017</td>
-									<td>
-										<div class="progress shadow" style="height: 3px;">
-											<div class="progress-bar" role="progressbar" style="width: 90%">
-											</div>
-										</div>
-									</td>
-								</tr>
-
-								<tr>
-									<td>Earphone GL</td>
-									<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-									<td>#9405820</td>
-									<td>$ 1500.00</td>
-									<td>03 Aug 2017</td>
-									<td>
-										<div class="progress shadow" style="height: 3px;">
-											<div class="progress-bar" role="progressbar" style="width: 60%">
-											</div>
-										</div>
-									</td>
-								</tr>
-
-								<tr>
-									<td>HD Hand Camera</td>
-									<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-									<td>#9405830</td>
-									<td>$ 1400.00</td>
-									<td>03 Aug 2017</td>
-									<td>
-										<div class="progress shadow" style="height: 3px;">
-											<div class="progress-bar" role="progressbar" style="width: 70%">
-											</div>
-										</div>
-									</td>
-								</tr>
-
-								<tr>
-									<td>Clasic Shoes</td>
-									<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-									<td>#9405825</td>
-									<td>$ 1200.00</td>
-									<td>03 Aug 2017</td>
-									<td>
-										<div class="progress shadow" style="height: 3px;">
-											<div class="progress-bar" role="progressbar" style="width: 100%">
-											</div>
-										</div>
-									</td>
-								</tr>
-
-								<tr>
-									<td>Hand Watch</td>
-									<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-									<td>#9405840</td>
-									<td>$ 1800.00</td>
-									<td>03 Aug 2017</td>
-									<td>
-										<div class="progress shadow" style="height: 3px;">
-											<div class="progress-bar" role="progressbar" style="width: 40%">
-											</div>
-										</div>
-									</td>
-								</tr>
-
-								<tr>
-									<td>Clasic Shoes</td>
-									<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-									<td>#9405825</td>
-									<td>$ 1200.00</td>
-									<td>03 Aug 2017</td>
-									<td>
-										<div class="progress shadow" style="height: 3px;">
-											<div class="progress-bar" role="progressbar" style="width: 100%">
-											</div>
-										</div>
-									</td>
-								</tr>
-
+								<?php 
+									$consumo_por_dia= new ConsumoPorDia($conexion,$date,$date,prefijos_individuales_por_carrier);
+									$consumo_por_dia->desgloseDiario();
+								?>
 							</tbody>
 						</table>
 					</div>
 				</div>
+				</div>
 			</div>
 		</div>
-		<!--End Row-->
+
+		<div id="consumoDiarioCarriersSegundos" class="">
+			<div class="card mt-3">
+				<div id="consumo-diario-segundos">
+					
+				</div>
+			</div>
+		</div>
+
+
+		<!-- FILA CON RESPUESTA MAQUILAS CONSUMO EXTERNO -->
+		<div id="consumoDiarioCarriers" class="">
+			<div class="card mt-3">
+				<div id="consumo-diario">
+					<label for="floatingInputValue">Datos de centros externos</label>
+					<div class="container">
+						<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-4 table-responsive" id=" ">
+								<h4>Sucursales Externas</h4>
+								<hr>
+								<?php
+									$consumo_externo_hsbc = new SucursalesExternas($conexion,$date,$date,$carrier,all_prefijos);
+									$consumo_externo_hsbc->consumoExternoHsbc();
+								?>
+							</div>
+							<div class="col col-lg-8 table-responsive">
+								Desglosado
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		
+		
 
 		<!--End Dashboard Content-->
 

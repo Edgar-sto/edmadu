@@ -4,6 +4,7 @@ require_once 'views/parte_superior.php';
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
+        <!-- GENERADOR DE CONTRASEÑA Y CONVERTIDOR PX A REM-EM -->
 		<div class="row mt-3">
 			<div class="col-lg-6">
 				<div class="card">
@@ -42,39 +43,98 @@ require_once 'views/parte_superior.php';
                 </div>
             </div>
 		</div>
-
+        <!-- REVISAR EL LOG DE TELEFONIA -->
         <div class="row mt-3">
-			<div class="col-lg-12">
+			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-body">
-					    <div class="card-title"><h4 class="h4">Dias telefonia 21</h4></div>
-                        <form id="form_telefonia_21" method="POST">
+					    <div class="card-title"><h4 class="h4">Log's Telefonia</h4></div>
+                        <form id="form_logs" method="POST">
                             <table id="tbl_telefonia_21" class="table">
                                 <tbody class="text-center form-group">
                                     <tr>
                                         <td>
                                             <div class="form-group">
-                                                <label for="input-1">Fecha inicio</label>
-                                                <input id="start_date_21" name="start_date_21" type="date" class="form-control">
+                                                <label for="input-1">Fecha</label>
+                                                <input id="date_logs" name="date_logs" type="date" class="form-control">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="input-1">Fecha termino</label>
-                                                <input id="end_date_21" name="end_date_21" type="date" class="form-control">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <label for="input-1">Acción</label><br>
-                                                <input id="btn_telefonia_21" name="btn_telefonia_21" type="button" class="btn btn-light" value="Buscar">
+                                                <label for="input-1">Botón</label><br>
+                                                <input id="btn_logs" name="btn_logs" type="button" class="btn btn-light" value="Buscar">
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </form>
-                        <div id="resultado_tele_21" class="card-content">
+                        <div id="resultado_logs" class="card-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- NÚMEROS BLOQUEADOS ANA -->
+        <div class="row mt-3">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+					    <div class="card-title"><h4 class="h4">Números Ana</h4></div>
+                        <form id="form_ana" method="POST">
+                            <table id="tbl_ana" class="table">
+                                <tbody class="text-center form-group">
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">VICI</label>
+                                                <select name="vici" id="vici" class="form-control">
+                                                    <?php
+                                                        include_once 'class/vicisReportes.php';
+                                                        //var_dump($vicis_reportes);
+                                                        foreach ($vicis_reportes AS $vc) {
+                                                            ?>
+                                                            <option value="<?php echo $vc; ?>">10.9.2.<?php echo $vc; ?></option>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Número</label>
+                                                <input id="numero_ana" name="numero_ana" type="text" class="form-control">
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Fecha inicio</label>
+                                                <input id="date_ana_start" name="date_ana_start" type="date" class="form-control">
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Fecha final</label>
+                                                <input id="date_ana_end" name="date_ana_end" type="date" class="form-control">
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Botón</label><br>
+                                                <input id="btn_numeros_ana" name="btn_numeros_ana" type="button" class="btn btn-light" value="Buscar">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        <div id="resultado_ana" class="card-content">
 
                         </div>
                     </div>

@@ -120,6 +120,10 @@ if ($carrier == 'marcatel') {
 
                                 <td><?php echo $row_grupo->grupo; ?></td>
                                 <td></td>
+<<<<<<< Updated upstream
+=======
+                                
+>>>>>>> Stashed changes
                                 <td><?php echo $row_mf->movil;?> </td>
                                 <td><?php echo $row_mf->fijo; ?> </td>
                             </tr>

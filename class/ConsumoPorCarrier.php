@@ -252,12 +252,19 @@ class ConsumoPorCarrier
 
             $pesos_mtel_movil = $row_consumo_pesos->mtel_movil  * $costo_movil;
             $pesos_mtel_fijo  = $row_consumo_pesos->mtel_fijo   * $costo_fijo;
+            $total_pesos_mtel      = $pesos_mtel_movil + $pesos_mtel_fijo;
+
             $pesos_mcm_movil  = $row_consumo_pesos->mcm_movil   * $costo_movil;
             $pesos_mcm_fijo   = $row_consumo_pesos->mcm_fijo    * $costo_fijo_mcm;
+            $total_pesos_mcm  = $pesos_mcm_movil + $pesos_mcm_fijo;
+
             $pesos_ipcom_movil= $row_consumo_pesos->ipcom_movil * $costo_movil;
             $pesos_ipcom_fijo = $row_consumo_pesos->ipcom_fijo  * $costo_fijo;
+            $total_pesos_ipcom = $pesos_ipcom_movil+$pesos_ipcom_fijo;
+
             $pesos_haz_movil  = $row_consumo_pesos->haz_movil   * $costo_movil_haz;
             $pesos_haz_fijo   = $row_consumo_pesos->haz_fijo    * $costo_fijo_haz;
+            $total_pesos_haz  = $pesos_haz_movil+$pesos_haz_fijo;
             ?>
             <tr>
                 <td>
@@ -268,6 +275,7 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mtel_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mtel_fijo,2); ?></td>
+                <td class="text-right"><?php echo "$ ".number_format($total_pesos_mtel,2); ?></td>
             </tr>
             <tr>
                 <td>
@@ -278,6 +286,7 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mcm_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mcm_fijo,2); ?></td>
+                <td class="text-right"><?php echo "$ ".number_format($total_pesos_mcm,2); ?></td>
             </tr>
             <tr>
                 <td>
@@ -288,6 +297,7 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_ipcom_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_ipcom_fijo,2); ?></td>
+                <td class="text-right"><?php echo "$ ".number_format($total_pesos_ipcom,2); ?></td>
             </tr>
             <tr>
                 <td>
@@ -298,6 +308,7 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_fijo,2); ?></td>
+                <td class="text-right"><?php echo "$ ".number_format($total_pesos_haz,2); ?></td>
             </tr>
             <?php
         }
@@ -588,7 +599,6 @@ class ConsumoPorCarrier
                     }//Llave de cierre while FOR CARRIER
                 }//Llave de cierre del forearch
             ?>
-				</tbody>
 			</table>
 		</div>
         <?php

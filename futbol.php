@@ -8,7 +8,7 @@ require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
 $conexion = conexion_local('telefonia', '10.9.2.234');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
-?>
+?> 
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -27,7 +27,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 								<!-- <small class="badge float-right badge-light">Edgar</small> -->
 							</a>
 						</div>
-						<br>
+						<br> 
 					<?php
 					}
 

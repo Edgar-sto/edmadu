@@ -209,16 +209,16 @@
 		});
 	});
 
-	$('#btn_telefonia_21').click(function() {
+	$('#btn_logs').click(function() {
 		$.ajax({
-			url: 'views/viewstools/dateTele21.php',
+			url: 'views/viewstools/tele_logs.php',
 			type: 'POST',
-			data: $('#form_telefonia_21').serialize(),
+			data: $('#form_logs').serialize(),
 			beforeSend: function() {
-				$("#resultado_tele_21").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+				$("#resultado_logs").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
 			},
 			success: function(res) {
-				$('#resultado_tele_21').html(res);
+				$('#resultado_logs').html(res);
 			}
 		});
 	});
@@ -233,6 +233,20 @@
 			},
 			success: function(res) {
 				$('#resultado_generador_de_contraseña').html(res);
+			}
+		});
+	});
+
+	$('#btn_numeros_ana').click(function() {
+		$.ajax({
+			url: 'views/viewstools/numerosAna.php',
+			type: 'POST',
+			data: $('#form_ana').serialize(),
+			beforeSend: function() {
+				$("#resultado_ana").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado_ana').html(res);
 			}
 		});
 	});

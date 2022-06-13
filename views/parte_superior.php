@@ -42,6 +42,9 @@
 		});
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+	<!-- <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/canvas2image.js"></script>
+	<script src="assets/js/html2canvas.min.js"></script> -->
 	<style>	
 		.contenedor-otros {
             display: grid;
@@ -54,6 +57,7 @@
 		/* Hide scrollbar for Chrome, Safari and Opera */
         .hide_scrollbar,#resultado_telefonia_mensual::-webkit-scrollbar {
             display: none;
+			-webkit-appearance: none;
         }
 
         /* Hide scrollbar for IE, Edge and Firefox */
@@ -77,18 +81,21 @@
 			overflow-x: scroll;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
+			-webkit-appearance: none;
 		}
 
 		.x-hiden1 {
 			overflow-x: scroll;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
+			-webkit-appearance: none;
 		}
 
 		.y-hiden1 {
 			overflow-y: scroll;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
+			-webkit-appearance: none;
 		}
 	</style>
 </head>
@@ -255,8 +262,8 @@
 						<path d="M12 7l4.76 3.45l-1.76 5.55h-6l-1.76 -5.55z" />
 						<path d="M12 7v-4m3 13l2.5 3m-.74 -8.55l3.74 -1.45m-11.44 7.05l-2.56 2.95m.74 -8.55l-3.74 -1.45" />
 					</svg>
-					<span>Futbol</span>
-						<small class="badge float-right badge-light">Liga MX</small>
+					<span>Edgar ∴</span>
+						<small class="badge float-right badge-light">∴</small>
 					</a>
 				</li>
 

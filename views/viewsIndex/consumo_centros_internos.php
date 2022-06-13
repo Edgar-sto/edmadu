@@ -6,7 +6,7 @@ require_once '../../class/prefijos.php';
 require_once '../../class/fecha2022.php';
 require_once '../../class/SucursalesInternas.php';
 
-$conexion = conexion_local('telefonia', '10.9.2.147');
+$conexion = conexion_local('telefonia', '10.9.2.234');
 
 /**DATOS OBTENIDOS POR METODO POST */
 //$carrier_form     = $_POST['carrier'];
