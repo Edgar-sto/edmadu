@@ -4,7 +4,7 @@ include_once '../class/sucursalesExternas.php';
 include_once '../class/ConsumoPorCarrier.php';
 
 
-$conexion = conexion_local("telefonia", "127.0.0.1");
+$conexion = conexion_local("telefonia", "10.9.2.234");
 $carrier = $_POST['carrier'];
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_termino = $_POST['fecha_termino'];
@@ -53,5 +53,19 @@ if ($carrier == 'marcatel') {
 				?>
 			</tbody>
 		</table>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-12">
+        <a class="" role="button" href="http://10.9.2.234/edmadu/export/telefonia.php?fecha_inicio=<?php echo "{$fecha_inicio}"; ?>&&fecha_termino=<?php echo "{$fecha_termino}"; ?>&&carrier=<?php echo "{$carrier}"; ?>">
+            <svg class="icon icon-tabler icon-tabler-file-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                <line x1="12" y1="11" x2="12" y2="17"></line>
+                <polyline points="9 14 12 17 15 14"></polyline>
+            </svg>
+        </a>
     </div>
 </div>

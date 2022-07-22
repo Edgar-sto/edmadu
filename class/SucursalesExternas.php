@@ -68,7 +68,6 @@ class SucursalesExternas
                     while ($row_cam_group=$answer_campania_group->fetch_object()) {
                         $row_cam_group->campania;
                         $row_cam_group->reporte;
-                        
                         if ($row_cam_group->reporte == '10.9.2.41') {
                             $fondo = "table-success";
                         } else {
@@ -180,77 +179,6 @@ class SucursalesExternas
             </tbody>
         </table>
         <?php
-    }
-
-    public function consumoExternoPorMaquila(){
-        
-        foreach ($this->prefijo as $carrier => $prefijo) {
-            
-            switch ($prefijo) {
-                case "15','777":
-                    $costo_movil = 0.11;
-                    $costo_fijo = 0.04;
-                    break;
-    
-                case "28','444":
-                    $costo_movil = 0.11;
-                    $costo_fijo = 0.04;
-                    break;
-    
-                case "11','999":
-                    $costo_movil = 0.11;
-                    $costo_fijo = 0.05;
-                    break;
-    
-                case "14','555":
-                    $costo_movil = 0.09 / 60;
-                    $costo_fijo = 0.04 / 60;
-                    break;
-            }
-            
-
-
-
-
-
-
-
-            $queryUno  =  "SELECT DISTINCT prefijo, campania, grupo, SUM(consumo) AS Total,
-            (CASE WHEN tipo = 'movil' THEN 'Movil'
-              WHEN tipo = 'drop_movil'  THEN 'Drop Movil'
-              WHEN tipo = 'buzon_movil'  THEN 'Buzon Movil'
-              WHEN tipo = 'fijo'  THEN 'Fijo'
-              WHEN tipo = 'drop_fijo'  THEN 'Drop Fijo'
-              WHEN tipo = 'buzon_fijo'  THEN 'Buzon Fijo'
-              END ) AS Tipo
-            FROM reporte_telefonia
-            WHERE prefijo IN ('14','555')
-              AND fecha_inicio>='2022-06-02 00:00:00'
-              AND fecha_termino<='2022-06-02 23:59:59'
-              AND reporte='10.9.2.22'
-              GROUP BY prefijo, campania, grupo, tipo,reporte
-            ORDER BY prefijo,campania,grupo ASC;";
-        ?>
-            <table class="table table-hover" style="font-size: 10px;">
-                <thead class="thead-inverse table-light  text-center">
-                    <tr>
-                        <th class="fs-5" colspan="9"><?php echo $carrier; ?></th>
-                    </tr>
-                    <tr class="text-right">
-                        <th class="text-center"><strong>Campaña</strong></th>
-                        <th><strong>Ubicación</strong></th>
-                        <th><strong>Tipo</strong></th>
-                        <th><strong>Movil</strong></th>
-                        <th><strong>Fijo</strong></th>
-                        <th><strong>Drop Movil</strong></th>
-                        <th><strong>Drop Fijo</strong></th>
-                        <th><strong>Buzon Movil</strong></th>
-                        <th><strong>Buzon Fijo</strong></th>
-                    </tr>
-                </thead>
-            </table>
-        <?php
-        }//Llave de cierre de foreach carrier-prefijo
     }
 }
 ?>

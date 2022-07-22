@@ -40,7 +40,7 @@ require_once 'views/parte_superior.php';
 							<div>
 								<form id="form_telefonia_mensual" method="POST">
 									<table id="tbl_telefonia_mensual" class="table">
-										<tbody class="text-center form-group">
+										<tbody class="text-center form-group aling-center">
 											<tr>
 												<td>
 													<div class="form-group">
@@ -68,7 +68,7 @@ require_once 'views/parte_superior.php';
 												</td>
 												<td>
 													<div class="form-group">
-														<label for="input-1">Acción</label><br>
+														<label for="input-1">Acciones</label><br>
 														<input id="btn_telefonia_mensual" name="btn_telefonia_mensual" type="button" class="btn btn-light" value="Buscar">
 													</div>
 												</td>
@@ -84,7 +84,22 @@ require_once 'views/parte_superior.php';
 				</div>
 			</div>
 		</div>
+		
+		<div class="row mt-3 text-center">
+			
+		</div>
+
 		<div class="row mt-1">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<div id="desgloseGeneral">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
@@ -94,29 +109,28 @@ require_once 'views/parte_superior.php';
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-1">
+		
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
-						<div id="resultado_telefonia_mensual_sucursales">
+						<div id="resultadoTelefoniaCentrosInternos">
 
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row mt-1">
+		<!-- <div class="row mt-1">
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
-						<div id="resultado_telefonia_mensual_sucursales_externas">
+						<div id="resultadoTelefoniaCentrosExternos">
 
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		
 	</div>
 </div>

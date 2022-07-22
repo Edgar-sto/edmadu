@@ -1,6 +1,7 @@
 <?php
 include_once '../class/conexion.php';
 include_once '../class/SucursalesInternas.php';
+include_once '../class/SucursalesExternas.php';
 
 
 $conexion = conexion_local("telefonia", "10.9.2.234");
@@ -30,6 +31,7 @@ if ($carrier == 'marcatel') {
 }
 
 ?>
+<h4>Sucursales Internas</h4>
 <!--ESCORZA - REVOLUCION -->
 <div class="row">
     <!-- ESCORZA -->
@@ -87,5 +89,18 @@ if ($carrier == 'marcatel') {
                 ?>
             </div>
         </div>
+    </div>
+</div>
+<!--MAQUILAS-->
+<br>
+<br>
+<h4>Sucursales Externas</h4>
+<div class="row">
+    <div class="col-lg-6 col-lg-12 table-responsive" id=" ">
+        <hr>
+        <?php
+            $consumo_externo_hsbc = new SucursalesExternas($conexion,$fecha_inicio,$fecha_termino,$carrier,$prefijos_junto);
+            $consumo_externo_hsbc->consumoExternoHsbc();
+        ?>
     </div>
 </div>

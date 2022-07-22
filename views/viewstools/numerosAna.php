@@ -1,5 +1,6 @@
 <?php
     include_once '/var/www/html/edmadu/class/conexion.php';
+    include_once '/var/www/html/edmadu/class/NumerosAnaBloqueo.php';
     $vici  =  $_POST['vici'];
     $numero = $_POST['numero_ana'];
     $date_start = $_POST['date_ana_start'];
@@ -17,15 +18,12 @@
         $nombreDB  = 'asterisk';
     }
     $conexion = conexion_vici($serverDB,$userDB,$passDB,$nombreDB);
-    $num_bloque = new NumerosAnaBloqueo($conexion, $date_start, $date_end);
+    $num_bloque = new NumerosAnaBloqueo($conexion, $date_start, $date_end, $numero);
+    $num_bloque->numeroBloqueo();
+
+    // foreach ($num_bloque->numeroBloqueo() AS $resultados) {
+    //     echo $resultados;
+    //     echo "\n";
+    // }
     
     
-    $queryUno = "SELECT * FROM vicidial_log_archive WHERE phone_number IN ('{}')
-    AND call_date>='2022-04-01 00:00:00' AND call_date<='2022-06-07 23:00:00';";
-
-
-/*datos obtener
- * call_date
- * phone_number
- * status 
- */

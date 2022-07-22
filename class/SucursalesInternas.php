@@ -17,8 +17,7 @@ class SucursalesInternas
         $campañas_grupos_escorza = array(
             "HSBC BT"  => "ADMIN-ESPECIALBALANC','HSBC-STO-ESCOR-LOWBT','HSBC-STO-ESCOR-MEDBT','HSBC-STO-ESCOR-TOPBT','LAB-BT','ADMIN-ESPECIALSUPERV','HSBC-STO-ESCORZA-BT','STO_BALANCE_TRASNFER",
             "HSBC LEC" => "HSBC-STO-ESCORZA-LEC",
-            "HSBC MA"  => "HSBC-GERENTES','HSBC-STO-ESCORZA-MA','HSBC-STO-LABESCO-MA','ADMIN','HSBC-STO-ESCORZA-M','ESPECIAL-CAMPAA','HSBC-STO-ESCORZA-CEC",
-            "HSBC VAL-FOR" => "VALIDACION','STO-FORMALIZACION",
+            "HSBC MA"  => "HSBC-GERENTES','HSBC-STO-ESCORZA-MA','HSBC-STO-LABESCO-MA','ADMIN','VALIDACION','HSBC-STO-ESCORZA-M','ESPECIAL-CAMPAA','STO-FORMALIZACION','HSBC-STO-ESCORZA-CEC",
             "HSBC PPM" => "HSBC-PPM','LAB-PPM','ADMIN-ESPECIALPPM",
             "HSBC SG"  => "HSBC-SEGUROS','STO-STO-ESC-LABSEGUR",
             "HSBC CONS" => "n/a",
@@ -77,7 +76,7 @@ class SucursalesInternas
                             $costo_fijo = 0.04 / 60;
                             break;
                     }
-                    if ($campanias == "HSBC BT" || $campanias == "HSBC LEC" || $campanias == "HSBC MA" || $campanias == "HSBC PPM" || $campanias == "HSBC SG" || $campanias == "HSBC CONS" || $campanias == "HSBC GA" || $campanias == "HSBC AC" || $campanias == "HSBC COM" || $campanias == "HSBC VAL-FOR") {
+                    if ($campanias == "HSBC BT" || $campanias == "HSBC LEC" || $campanias == "HSBC MA" || $campanias == "HSBC PPM" || $campanias == "HSBC SG" || $campanias == "HSBC CONS" || $campanias == "HSBC GA" || $campanias == "HSBC AC" || $campanias == "HSBC COM") {
                         $fondobg = "table-danger";
                     } elseif ($campanias == "Santander MA") {
                         $fondobg = "table-warning";

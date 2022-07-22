@@ -8,8 +8,12 @@ $campania   =   $_POST['campania'];
 $name_group =   $_POST['nameGrupo_sucursal_nueva'];
 $conexion = conexion_local('telefonia', '10.9.2.234');
 
-$nueva_sucursal = new NuevasSucursales($conexion,$vici,$sucursal,$tipo,$campania,$name_group);
-$nueva_sucursal->agregarSucursal();
+// if (isset($sucursal) || isset($name_group)) {
+//     echo "Llena los campos correspondientes!";
+// } else {
+    $nueva_sucursal = new NuevasSucursales($conexion,$vici,$sucursal,$tipo,$campania,$name_group);
+    $nueva_sucursal->agregarSucursal();
+//}
 
 
 ?>

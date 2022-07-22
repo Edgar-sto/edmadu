@@ -20,7 +20,7 @@
 	<div class="right-sidebar-content">
 		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint iste iusto praesentium magni doloremque impedit dicta animi laborum, quaerat eos cumque deleniti dolore labore officiis expedita, incidunt veniam optio pariatur!</p>
 
-	</div>
+	</div> 
 </div>
 <!--end color switcher-->
 
@@ -59,9 +59,10 @@
 	$('#btn_up').click(function() {
 		$('#tbl_telefonia_mensual').hide(200);
 	});
-	$('#btn_telefonia_mensual').click(function() {
-		$('#tbl_telefonia_mensual').hide(200);
-	});
+	// $('#btn_telefonia_mensual').click(function() {
+	// 	$('#tbl_telefonia_mensual').hide(200);
+	// });
+
 	/**Obtener datos telefonía*/
 	$('#btn_telefonia_mensual').click(function() {
 		$.ajax({
@@ -83,24 +84,39 @@
 			type: 'POST',
 			data: $('#form_telefonia_mensual').serialize(),
 			beforeSend: function() {
-				$("#resultado_telefonia_mensual_sucursales").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+				$("#resultadoTelefoniaCentrosInternos").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
 			},
 			success: function(res) {
-				$('#resultado_telefonia_mensual_sucursales').html(res);
+				$('#resultadoTelefoniaCentrosInternos').html(res);
 			}
 		});
 	});
 
 	$('#btn_telefonia_mensual').click(function() {
 		$.ajax({
-			url: 'views/reporte_telefonia_sucursales_externas.php',
+			url: 'views/reporte_telefonia_desgloseGral.php',
 			type: 'POST',
 			data: $('#form_telefonia_mensual').serialize(),
 			beforeSend: function() {
-				$("#resultado_telefonia_mensual_sucursales_externas").html("<div style='text-align:center;'><samp>Calculando registros Externos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+				$("#desgloseGeneral").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
 			},
 			success: function(res) {
-				$('#resultado_telefonia_mensual_sucursales_externas').html(res);
+				$('#desgloseGeneral').html(res);
+			}
+		});
+	});
+
+
+	$('#btn_exp_tele_excel').click(function() {
+		$.ajax({
+			url: 'export/ex_reporte_telefonia_excel.php',
+			type: 'POST',
+			data: $('#form_telefonia_mensual').serialize(),
+			beforeSend: function() {
+				$("#desgloseGeneral").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+			},
+			success: function(res) {
+				$('#desgloseGeneral').html(res);
 			}
 		});
 	});
@@ -191,6 +207,20 @@
 			}
 		});
 	});
+
+	$('#btn_consumo_index').click(function() {
+		$.ajax({
+			url: 'views/viewstools/semaforo_script.php',
+			type: 'POST',
+			data: $('#form_index').serialize(),
+			beforeSend: function() {
+				$("#resultado-semaforo").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado-semaforo').html(res);
+			}
+		});
+	});
 </script>
 
 <!-- SCRIPT HERRAMIENTAS-->
@@ -247,6 +277,65 @@
 			},
 			success: function(res) {
 				$('#resultado_ana').html(res);
+			}
+		});
+	});
+
+	$('#btn_agregar_nueva_sucursal').click(function() {
+		$.ajax({
+			url: 'views/viewstools/nuevasSucursales.php',
+			type: 'POST',
+			data: $('#form_nuevas_sucursales').serialize(),
+			beforeSend: function() {
+				$("#resultadoSucursalNueva").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultadoSucursalNueva').html(res);
+			}
+		});
+	});
+
+	$('#btn_sucursal_vicidial').click(function() {
+		$.ajax({
+			url: 'views/viewsMaquilas/v_sucursales_nuevas.php',
+			type: 'POST',
+			data: $('#form_sucursal_vicidial').serialize(),
+			beforeSend: function() {
+				$("#resultado_sucursal_vicidial").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado_sucursal_vicidial').html(res);
+			}
+		});
+	});
+</script>
+
+<!-- SCRIPT PAGINA MAQUILAS-->
+<script>
+	$('#btn_consumo_maquilas').click(function() {
+		$.ajax({
+			url: 'views/viewsMaquilas/v_maquilas.php',
+			type: 'POST',
+			data: $('#form_maquilas').serialize(),
+			beforeSend: function() {
+				$("#resultado_maquilas").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado_maquilas').html(res);
+			}
+		});
+	});
+
+	$('#btn_maquilas_ara').click(function() {
+		$.ajax({
+			url: 'views/viewsMaquilas/v_maquilas_ara.php',
+			type: 'POST',
+			data: $('#form_maquilas').serialize(),
+			beforeSend: function() {
+				$("#resultado_maquilas").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#resultado_maquilas').html(res);
 			}
 		});
 	});

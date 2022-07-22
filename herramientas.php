@@ -43,9 +43,138 @@ require_once 'views/parte_superior.php';
                 </div>
             </div>
 		</div>
+        <!-- AGREGAR SUCURSALES Y GRUPOS NUEVOS A BASE DE TELEFONIA -->
+        <div class="row mt-3">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+					    <div class="card-title"><h4 class="h4">Agregar Sucursales Nuevas</h4></div>
+                        <form id="form_nuevas_sucursales" method="POST">
+                            <table id="tbl_nuevas_sucursales" class="table">
+                                <tbody class="text-center form-group">
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">VICI</label>
+                                                <select name="vici" id="vici" class="form-control">
+                                                    <?php
+                                                        include_once 'class/vicisReportes.php';
+                                                        //var_dump($vicis_reportes);
+                                                        foreach ($vicis_reportes AS $vc) {
+                                                            ?>
+                                                            <option value="<?php echo $vc; ?>">10.9.2.<?php echo $vc; ?></option>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Sucursal</label>
+                                                <input id="name_sucursal_nueva" name="name_sucursal_nueva" type="text" class="form-control">
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Tipo</label>
+                                                <select name="tipo" id="tipo" class="form-control">
+                                                    <option value="I">Interno</option>
+                                                    <option value="E">Externo</option>
+                                                </select>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Campaña</label>
+                                                <select name="campania" id="campania" class="form-control">
+                                                    <option value="HSBC Activacion">HSBC Activacion</option>
+                                                    <option value="HSBC Balance Transfer">HSBC Balance Transfer</option>
+                                                    <option value="HSBC Comisionistas">HSBC Comisionistas</option>
+                                                    <option value="HSBC Consumo">HSBC Consumo</option>
+                                                    <option value="HSBC Grabacion Automatica">HSBC Grabacion Automatica</option>
+                                                    <option value="HSBC Linea en Cuotas">HSBC Linea en Cuotas</option>
+                                                    <option value="HSBC Mercado Abierto">HSBC Mercado Abierto</option>
+                                                    <option value="HSBC PPM">HSBC PPM</option>
+                                                    <option value="HSBC Seguros">HSBC Seguros</option>
+                                                    <option value="INVEX Campanias Especiales">INVEX Campanias Especiales</option>
+                                                    <option value="INVEX Mercado Abierto">INVEX Mercado Abierto</option>
+                                                    <option value="SANTANDER Mercado Abierto">SANTANDER Mercado Abierto</option>
+                                                </select>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Nombre Grupo</label>
+                                                <input id="nameGrupo_sucursal_nueva" name="nameGrupo_sucursal_nueva" type="text" class="form-control">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Botón</label><br>
+                                                <input id="btn_agregar_nueva_sucursal" name="btn_agregar_nueva_sucursal" type="button" class="btn btn-light" value="Agregar Sucursal">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        <div id="resultadoSucursalNueva" class="card-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Revisar grupos para telefonia  -->
+        <div class="row mt-3">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+					    <div class="card-title"><h4 class="h4">Revisar Sucursales</h4></div>
+                        <form id="form_sucursal_vicidial" method="POST">
+                            <table id="tbl_sucursal_vicidial" class="table">
+                                <tbody class="text-center form-group">
+                                    <tr>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Fecha inicio</label>
+                                                <input id="date_sucursal_start" name="date_sucursal_start" type="date" class="form-control">
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Fecha final</label>
+                                                <input id="date_sucursal_end" name="date_sucursal_end" type="date" class="form-control">
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="input-1">Buscar</label><br>
+                                                <input id="btn_sucursal_vicidial" name="btn_sucursal_vicidial" type="button" class="btn btn-light" value="Buscar Usuario">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        <div id="resultado_sucursal_vicidial" class="card-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- REVISAR EL LOG DE TELEFONIA -->
         <div class="row mt-3">
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
 					    <div class="card-title"><h4 class="h4">Log's Telefonia</h4></div>

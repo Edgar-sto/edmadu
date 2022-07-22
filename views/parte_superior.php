@@ -28,6 +28,10 @@
 	<link href="assets/css/app-style.css" rel="stylesheet" />
 	<!-- Diseño de botnos Vicis-->
 	<link rel="stylesheet" href="assets/css/vicis.css">
+	<!-- Fuentes google JETBRAINS-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 	<!-- Query -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
@@ -97,18 +101,31 @@
 			-ms-overflow-style: none;
 			-webkit-appearance: none;
 		}
+
+		.dataWeek {
+			height: 430px;
+			font-size: 0.6875rem;
+			scrollbar-width: none;
+			overflow-y: scroll;
+			-ms-overflow-style: none;
+		}
+		/* EDGE */
+		.dataWeek::-webkit-scrollbar {
+ 			display: none;
+		}
+
+		body {
+			font-family: 'JetBrains Mono', monospace;
+		}
 	</style>
 </head>
 
 <body class="bg-theme bg-theme1">
-
-	
 	<div id="wrapper">
-
 		<!--Start sidebar-wrapper-->
-		<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+		<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true" style="font-size: 0.6rem;">
 			<div class="brand-logo">
-				<a href="index.php">
+				<a href="index.php" href="javascript:void();">
 					<img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
 					<h5 class="logo-text">DashBoard Edmadu</h5>
 				</a>
@@ -183,8 +200,8 @@
 							<path d="M12 3v4a1 1 0 0 0 1 1h4" />
 							<path d="M11.5 21h-6.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v2m0 3v4" />
 						</svg>
-						<span>Reporte Telefonia</span>
-						<small class="badge float-right badge-light">Telefonía</small>
+						<span>Telefonia</span>
+						<small class="badge float-right badge-light">Reporte</small>
 					</a>
 				</li>
 				<!--REPORTE TELEFONIA-->
@@ -256,43 +273,30 @@
 				<!--FUTBOL-->
 				<li>
 					<a href="futbol.php">
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ball-football" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<svg class="icon icon-tabler icon-tabler-atom" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<circle cx="12" cy="12" r="9" />
-						<path d="M12 7l4.76 3.45l-1.76 5.55h-6l-1.76 -5.55z" />
-						<path d="M12 7v-4m3 13l2.5 3m-.74 -8.55l3.74 -1.45m-11.44 7.05l-2.56 2.95m.74 -8.55l-3.74 -1.45" />
+						<line x1="12" y1="12" x2="12" y2="12.01" />
+						<path d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10" transform="rotate(45 12 12)" />
+						<path d="M12 2a4 10 0 0 0 -4 10a4 10 0 0 0 4 10a4 10 0 0 0 4 -10a4 10 0 0 0 -4 -10" transform="rotate(-45 12 12)" />
 					</svg>
-					<span>Edgar ∴</span>
+					<span>Edgar</span>
 						<small class="badge float-right badge-light">∴</small>
 					</a>
 				</li>
-
+				<!--MAQUILAS-->
 				<li>
-					<a href="profile.php">
-						<i class="zmdi zmdi-face"></i> <span>Profile</span>
+					<a href="maquila.php">
+					<svg class="icon icon-tabler icon-tabler-building-factory" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12" />
+						<path d="M12.5 13h4.5c.025 2.612 .894 5.296 2 8" />
+						<path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1" />
+						<line x1="3" y1="21" x2="22" y2="21" />
+						</svg>
+					<span>Maquilas</span>
+						<small class="badge float-right badge-light">Telefonia</small>
 					</a>
 				</li>
-
-				<li>
-					<a href="login.html" target="_blank">
-						<i class="zmdi zmdi-lock"></i> <span>Login</span>
-					</a>
-				</li>
-
-				<li>
-					<a href="register.html" target="_blank">
-						<i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-					</a>
-				</li>
-
-				<li class="sidebar-header">LABELS</li>
-				<li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a>
-				</li>
-				<li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i>
-						<span>Warning</span></a></li>
-				<li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a>
-				</li>
-
 			</ul>
 
 		</div>
@@ -369,4 +373,4 @@
 		</header>
 		<!--End topbar header-->
 
-		<div class="clearfix"></div>
+		<!-- <div class="clearfix"></div> -->

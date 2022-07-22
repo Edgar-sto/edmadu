@@ -6,14 +6,9 @@ require_once 'class/fecha2022.php';
 require_once 'class/FechaReportes.php';
 require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
-<<<<<<< Updated upstream
-//$conexion = conexion_fedora('telefonia', '10.9.2.234');
-$conexion = conexion_local('telefonia','10.9.2.147');
-=======
 require_once 'class/SucursalesExternas.php';
 require_once 'class/ConsumoPorDia.php';
 $conexion = conexion_local('telefonia', '10.9.2.234');
->>>>>>> Stashed changes
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 ?> 
 <!-- Start content-wrapper-->
@@ -231,7 +226,6 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							</ul>
 						</header>
 					</div>
-
 					<div id="consumoPorReportes" class="body tab-content" style="height: 400px; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
 						<!--
 							Área de impresión de resultados por Formulario
@@ -443,29 +437,161 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			</div>
 		</div>
 
-
-		<!-- FILA CON RESPUESTA MAQUILAS CONSUMO EXTERNO -->
-		<div id="consumoDiarioCarriers" class="">
-			<div class="card mt-3">
-				<div id="consumo-diario">
-					<label for="floatingInputValue">Datos de centros externos</label>
-					<div class="container">
-						<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-4 table-responsive" id=" ">
-								<h4>Sucursales Externas</h4>
-								<hr>
-								<?php
-									$consumo_externo_hsbc = new SucursalesExternas($conexion,$date,$date,$carrier,all_prefijos);
-									$consumo_externo_hsbc->consumoExternoHsbc();
-								?>
-							</div>
-							<div class="col col-lg-8 table-responsive">
-								Desglosado
-							</div>
-						</div>
-						</div>
-					</div>
+		<!-- FILA DISTRIBUCIÓN CE CONSUMO POR CENTROS -->
+		<div class="card mt-3">
+			<h3 class="card-title p-2">Sucusales Internas</h3>
+			<h6 class="tab-header text-center">
+				<small class="badge badge-sm float-center badge-light">
+					De  <?php echo $date;?>  al  <?php echo $date;?>
+				</small>
+			</h6>
+			<div class="row card-content">
+				<div class="col-lg-12">
+					<h4 class="card-header p-3">Escorza</h4>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">	
+					<?php
+						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
+						$EscorzaMtel->consumoEscorza();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
+						$EscorzaMcm->consumoEscorza();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
+						$EscorzaHaz->consumoEscorza();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
+						$EscorzaIpcom->consumoEscorza();
+					?>
+				</div>
+			</div>
+			<br>
+			<div class="row card-content">
+				<div class="col-lg-12">
+					<h4 class="card-header p-3">Revolución</h4>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">	
+					<?php
+						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
+						$EscorzaMtel->consumoRevolucion();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
+						$EscorzaMcm->consumoRevolucion();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
+						$EscorzaHaz->consumoRevolucion();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
+						$EscorzaIpcom->consumoRevolucion();
+					?>
+				</div>
+			</div>
+			<br>
+			<div class="row card-content">
+				<div class="col-lg-12">
+					<h4 class="card-header p-3">Tlájomulco</h4>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">	
+					<?php
+						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
+						$EscorzaMtel->consumoTlajomulco();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
+						$EscorzaMcm->consumoTlajomulco();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
+						$EscorzaHaz->consumoTlajomulco();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
+						$EscorzaIpcom->consumoTlajomulco();
+					?>
+				</div>
+			</div>
+			<br>
+			<div class="row card-content">
+				<div class="col-lg-12">
+					<h4 class="card-header p-3">Drop - Buzón</h4>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">	
+					<?php
+						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
+						$EscorzaMtel->consumoDropBuzon();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
+						$EscorzaMcm->consumoDropBuzon();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
+						$EscorzaHaz->consumoDropBuzon();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
+						$EscorzaIpcom->consumoDropBuzon();
+					?>
+				</div>
+			</div>
+			<br>
+			<div class="row card-content">
+				<div class="col-lg-12">
+					<h4 class="card-header p-3">Administrativo</h4>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">	
+					<?php
+						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
+						$EscorzaMtel->consumoAdministrativo();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
+						$EscorzaMcm->consumoAdministrativo();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
+						$EscorzaHaz->consumoAdministrativo();
+					?>
+				</div>
+				<div class="col-lg-3 card-body table-responsive">
+					<?php
+						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
+						$EscorzaIpcom->consumoAdministrativo();
+					?>
 				</div>
 			</div>
 		</div>

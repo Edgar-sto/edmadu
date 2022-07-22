@@ -82,37 +82,6 @@ class ConsumoPorCarrier
                 </tr>
                 <?php
             }
-
-            $query_consumo_totales = "SELECT
-            (SELECT SUM(consumo) FROM reporte_telefonia
-            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$this->carrier}')) AS movil,
-
-            (SELECT SUM(consumo) FROM reporte_telefonia
-            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$this->carrier}')) AS fijo;";
-
-            $answer_total_consumido = $this->conexion->query($query_consumo_totales);
-            while ($row_totales = $answer_total_consumido->fetch_object()) {
-                    $totales_movil =  $row_totales->movil * $costo_movil;
-                    $totales_fijo  =  $row_totales->fijo * $costo_fijo;
-
-                    $totales_minutos = $row_totales->movil + $row_totales->fijo;
-                    $totales_pesos   = $totales_movil + $totales_fijo;
-
-
-
-                    ?>
-                    <tr class="table-active">
-                        <td>Total</td>
-                        <td class="text-right"><?php echo number_format($totales_minutos / 60); ?></td>
-                        <td class="text-right"><?php echo "$ ".number_format($totales_pesos,2); ?></td>
-                    </tr>
-                    <?php
-            }
-
-
-
         } else {
             $query_consumo = "SELECT SUM(consumo) AS Total,
             (CASE WHEN tipo = 'movil' THEN 'Movil'
@@ -159,33 +128,6 @@ class ConsumoPorCarrier
                     <td class="text-right"><?php echo "$ ".number_format($total_pss,2); ?></td>
                 </tr>
             <?php
-            }
-            $query_consumo_totales = "SELECT
-            (SELECT SUM(consumo) FROM reporte_telefonia
-            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$this->carrier}')) AS movil,
-
-            (SELECT SUM(consumo) FROM reporte_telefonia
-            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$this->carrier}')) AS fijo;";
-
-            $answer_total_consumido = $this->conexion->query($query_consumo_totales);
-            while ($row_totales = $answer_total_consumido->fetch_object()) {
-                    $totales_movil =  $row_totales->movil * $costo_movil;
-                    $totales_fijo  =  $row_totales->fijo * $costo_fijo;
-
-                    $totales_minutos = $row_totales->movil + $row_totales->fijo;
-                    $totales_pesos   = $totales_movil + $totales_fijo;
-
-
-
-                    ?>
-                    <tr class="table-active">
-                        <td>Total</td>
-                        <td class="text-right"><?php echo number_format($totales_minutos); ?></td>
-                        <td class="text-right"><?php echo "$ ".number_format($totales_pesos,2); ?></td>
-                    </tr>
-                    <?php
             }
         }
     }
@@ -252,19 +194,12 @@ class ConsumoPorCarrier
 
             $pesos_mtel_movil = $row_consumo_pesos->mtel_movil  * $costo_movil;
             $pesos_mtel_fijo  = $row_consumo_pesos->mtel_fijo   * $costo_fijo;
-            $total_pesos_mtel      = $pesos_mtel_movil + $pesos_mtel_fijo;
-
             $pesos_mcm_movil  = $row_consumo_pesos->mcm_movil   * $costo_movil;
             $pesos_mcm_fijo   = $row_consumo_pesos->mcm_fijo    * $costo_fijo_mcm;
-            $total_pesos_mcm  = $pesos_mcm_movil + $pesos_mcm_fijo;
-
             $pesos_ipcom_movil= $row_consumo_pesos->ipcom_movil * $costo_movil;
             $pesos_ipcom_fijo = $row_consumo_pesos->ipcom_fijo  * $costo_fijo;
-            $total_pesos_ipcom = $pesos_ipcom_movil+$pesos_ipcom_fijo;
-
             $pesos_haz_movil  = $row_consumo_pesos->haz_movil   * $costo_movil_haz;
             $pesos_haz_fijo   = $row_consumo_pesos->haz_fijo    * $costo_fijo_haz;
-            $total_pesos_haz  = $pesos_haz_movil+$pesos_haz_fijo;
             ?>
             <tr>
                 <td>
@@ -275,7 +210,6 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mtel_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mtel_fijo,2); ?></td>
-                <td class="text-right"><?php echo "$ ".number_format($total_pesos_mtel,2); ?></td>
             </tr>
             <tr>
                 <td>
@@ -286,7 +220,6 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mcm_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_mcm_fijo,2); ?></td>
-                <td class="text-right"><?php echo "$ ".number_format($total_pesos_mcm,2); ?></td>
             </tr>
             <tr>
                 <td>
@@ -297,7 +230,6 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_ipcom_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_ipcom_fijo,2); ?></td>
-                <td class="text-right"><?php echo "$ ".number_format($total_pesos_ipcom,2); ?></td>
             </tr>
             <tr>
                 <td>
@@ -308,7 +240,6 @@ class ConsumoPorCarrier
                 </td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_movil,2); ?></td>
                 <td class="text-right"><?php echo "$ ".number_format($pesos_haz_fijo,2); ?></td>
-                <td class="text-right"><?php echo "$ ".number_format($total_pesos_haz,2); ?></td>
             </tr>
             <?php
         }
@@ -599,9 +530,9 @@ class ConsumoPorCarrier
                     }//Llave de cierre while FOR CARRIER
                 }//Llave de cierre del forearch
             ?>
+				</tbody>
 			</table>
 		</div>
         <?php
     }
 }
- 

@@ -6,7 +6,7 @@ require_once 'views/parte_superior.php';
 
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
-    <div class="container-fluid">
+     <div class="container-fluid">
         <div class="row mt-3">
             <img src="assets/images/avatars/vicidial.jpg" class="rounded d-block" style="width: 100px; height: 100px;">
         </div>
@@ -306,15 +306,6 @@ require_once 'views/parte_superior.php';
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 <?php 
 
 include_once 'views/parte_inferior.php';

@@ -6,6 +6,7 @@ require_once 'class/fecha2022.php';
 require_once 'class/FechaReportes.php';
 require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
+require_once 'class/SemaforoScript.php';
 $conexion = conexion_local('telefonia', '10.9.2.234');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 ?> 
@@ -17,43 +18,138 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		<div class="card mt-1 mb-1">
 			<div class="card-content">
 				<div class="row row-group m-0">
-					<?php
+					<div class="col col-sm">
+						<a class="bg-active text-capitalize" data-toggle="collapse" href="#datos_telefonia" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+							Telefonia
+							<!-- <small class="badge float-right badge-light">Edgar</small> -->
+						</a>
+					</div>
+				</div>
+				<br>
+				<div class="row row-group m-0">
+					<div class="collapse multi-collapse col-12 col-6" id="datos_telefonia">
 
-					foreach ($meses as $mes) {
-					?>
-						<div class="col col-sm">
-							<a class="bg-active text-capitalize" data-toggle="collapse" href="#<?php echo $mes; ?>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-								<?php echo $mes; ?>
-								<!-- <small class="badge float-right badge-light">Edgar</small> -->
-							</a>
-						</div>
-						<br> 
-					<?php
-					}
-
-					foreach ($anno2022 as $mese => $d) {
-					?>
-						<div class="collapse multi-collapse" id="<?php echo $mese; ?>">
-							<div class="card card-body">
-								<div class="table-responsive">
-									<h5 class="card-title text-capitalize"><?php echo $mese; ?></h5>
-									<p class="card-text">
-										<?php foreach ($d as $dia) { ?>
-											<a href="#" class="link-light" onclick="miAlerta('2022-<?php echo $mese; ?>-<?php echo $dia; ?>')"><?php echo $dia; ?></a>
-										<?php } ?>
-									</p>
-								</div>
+						<div class="card card-body">
+							<div class="table-responsive">
+								<h5 class="card-title text-capitalize">Datos Telefonía</h5>
+								<p class="card-text table-responsive xy-hiden">
+									<table class="table table-dark" style="font-size: 0.6875rem;">
+										<thead>
+											<tr class="text-top">
+												<th rowspan="2">Carrier</th>
+												<th rowspan="2" >Prefijo</th>
+												<th colspan="2" class="text-center">Costos</th>
+												<th rowspan="2">Porcentaje</th>
+											</tr>
+											<tr>
+												<th>Movil</th>
+												<th>Fijo</th>
+											</tr>
+										</thead>
+										<tbody class="table-light"> 
+											<tr>
+												<td>Marcatel</td>
+												<td>15 - 777</td>
+												<td>$ 0.11</td>
+												<td>$ 0.04</td>
+												<td>5%</td>
+											</tr>
+											<tr>
+												<td>MCM</td>
+												<td>11 - 999</td>
+												<td>$ 0.11</td>
+												<td>$ 0.05</td>
+												<td>5%</td>
+											</tr>
+											<tr>
+												<td>Ipcom</td>
+												<td>28 - 444</td>
+												<td>$ 0.11</td>
+												<td>$ 0.04</td>
+												<td>20%</td>
+											</tr>
+											<tr>
+												<td>Haz</td>
+												<td>14 - 555</td>
+												<td>$ 0.09/60</td>
+												<td>$ 0.04/60</td>
+												<td>70%</td>
+											</tr>
+										</tbody>
+									</table>
+								</p>
+								<p class="card-text table-responsive xy-hiden">
+									<table class="table table-dark" style="font-size: 0.6875rem;">
+										<thead>
+											<tr class="text-top">
+												<th >Tipo Consumo</th>
+												<th >Dial Status</th>
+												<th >Grupo</th>
+												<th >Status</th>
+												<th >Tipo</th>
+											</tr>
+										</thead>
+										<tbody class="table-light"> 
+											<tr>
+												<td>DROP</td>
+												<td>ANSWER</td>
+												<td> </td>
+												<td>NOT IN (NA,AA)</td>
+												<td>movil - fijo</td>
+											</tr>
+											<tr>
+												<td>BUZON</td>
+												<td>ANSWER</td>
+												<td> </td>
+												<td>IN (NA,AA)</td>
+												<td>movil - fijo</td>
+											</tr>
+											<tr>
+												<td>CAMPAÑA0</td>
+												<td>ANSWER</td>
+												<td> </td>
+												<td> </td>
+												<td>movil - fijo</td>
+											</tr>
+										</tbody>
+									</table>
+								</p>
+								<p class="card-text table-responsive xy-hiden">
+									<table class="table table-dark" style="font-size: 0.6875rem;">
+										<thead>
+											<tr class="text-top">
+												<th >Vicis Externos</th>
+												<th >Vicis Intrusos</th>
+											</tr>
+										</thead>
+										<tbody class="table-light"> 
+											<tr>
+												<td>10.9.2.22</td>
+												<td>10.9.2.39</td>
+											</tr>
+											<tr>
+												<td>10.9.2.27</td>
+												<td>10.9.2.48</td>
+											</tr>
+											<tr>
+												<td>10.9.2.28</td>
+												<td> </td>
+											</tr>
+											<tr>
+												<td>10.9.2.41</td>
+												<td> </td>
+											</tr>
+											<tr>
+												<td>10.9.2.57</td>
+												<td> </td>
+											</tr>
+										</tbody>
+									</table>
+								</p>
 							</div>
-							<script>
-								function miAlerta(fecha) {
-									//event.preventDefault();
-									alert("Día" + fecha);
-								}
-							</script>
 						</div>
-					<?php
-					}
-					?>
+
+					</div>
 				</div>
 			</div>
 		</div>
@@ -85,6 +181,27 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 					</tbody>
 				</table>
 			</form>
+		</div>
+		<!-- SEMAFORO  -->
+		<div class="card mt-1">
+			<div class="card-content">
+				<div class="col-12 table-responsive xy-hiden">
+					<div id="resultado-semaforo" class="text-center">
+						<label for="">Semaforo</label>
+						<div class="row">
+							<div class="col-lg-4">Principal</div>
+							<div class="col-lg-4">Eventos</div>
+							<div class="col-lg-4">Segundos</div>
+						</div>
+						<div class="row">
+							<?php
+								$semaforo = new SemaforoScript($conexion, $date, $date);
+								$semaforo->semaforo();
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- END Fila N -->
 
@@ -195,6 +312,16 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							</tbody>
 						</table>
 					</div>
+					<!-- CONSUMO ADMINISTRATIVO -->
+					<!-- <div class="col-12 table-responsive xy-hiden">
+						<h4>Administrativo</h4>
+						<hr>
+						<?php
+							$consumo_admin = new SucursalesInternas($conexion,$date, $date, $carrier,$prefijos_junto);
+							$consumo_admin->consumoAdministrativo();
+						?>
+					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -374,9 +501,22 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			<!--Distribucion graficada -->
 		</div>
 
+		<!-- FILA CONSUMO POR SEMANA -->
+		<div class="card mt-3">
+			<div class="card-content">
+				<div class="card-header">Consumo por Semana</div>
+				<div id="consumo-por-semana" class="col-12 table-responsive dataWeek">
+					<?php
+						include_once 'views/viewstools/consumo_por_semana.php';
+					?>
+				</div>
+			</div>
+		</div>
+
 		<!-- FILA consumo por dia 
 			No se a agregado a index.html
 		-->
+		<!-- FILA consumo dividido por día en minutos -->
 		<div id="consumoDiarioCarriers" class="">
 			<div class="card mt-3">
 				<div id="consumo-diario">
@@ -384,7 +524,8 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 				</div>
 			</div>
 		</div>
-
+		
+		<!-- FILA consumo dividido por día en segundos -->
 		<div id="consumoDiarioCarriersSegundos" class="">
 			<div class="card mt-3">
 				<div id="consumo-diario-segundos">
@@ -392,12 +533,6 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 				</div>
 			</div>
 		</div>
-
-
-		
-
-		
-		
 
 		<!--End Dashboard Content-->
 

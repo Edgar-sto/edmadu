@@ -4,7 +4,7 @@ include '../class/conexion.php';
 include_once '../class/ReporteTelefoniaMensual.php';
 include_once '../class/ObtenerSucursal.php';
 
-$conexion = conexion_local("telefonia", "10.9.2.234");
+$conexion = conexion_local("telefonia", "127.0.0.1");
 $carrier = $_POST['carrier'];
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_termino = $_POST['fecha_termino'];
