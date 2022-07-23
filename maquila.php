@@ -48,7 +48,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							<script>
 								function miAlerta(fecha) {
 									//event.preventDefault();
-									alert("Día" + fecha);
+									alert("Día" + fecha); 
 								}
 							</script>
 						</div>
