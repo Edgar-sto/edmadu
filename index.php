@@ -10,56 +10,12 @@ require_once 'class/SucursalesExternas.php';
 require_once 'class/ConsumoPorDia.php';
 $conexion = conexion_local('telefonia', '10.9.2.234');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
+
 ?> 
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
 		<!-- START Fila N -->
-		<!-- CALENDARIO  -->
-		<div class="card mt-1 mb-1">
-			<div class="card-content">
-				<div class="row row-group m-0">
-					<?php
-
-					foreach ($meses as $mes) {
-
-					?>
-						<div class="col col-sm text-center">
-							<a class="bg-active text-capitalize" data-toggle="collapse" href="#<?php echo $mes; ?>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-								<?php echo $mes; ?>
-								<!-- <small class="badge float-right badge-light">Edgar</small> -->
-							</a>
-						</div>
-						<br>
-					<?php
-					}
-
-					foreach ($anno2022 as $mese => $d) {
-					?>
-						<div class="collapse multi-collapse" id="<?php echo $mese; ?>">
-							<div class="card card-body">
-								<div class="table-responsive">
-									<h5 class="card-title text-capitalize"><?php echo $mese; ?></h5>
-									<p class="card-text">
-										<?php foreach ($d as $dia) { ?>
-											<a href="#" class="link-light" onclick="miAlerta('2022-<?php echo $mese; ?>-<?php echo $dia; ?>')"><?php echo $dia; ?></a>
-										<?php } ?>
-									</p>
-								</div>
-							</div>
-							<script>
-								function miAlerta(fecha) {
-									//event.preventDefault();
-									alert("Día" + fecha);
-								}
-							</script>
-						</div>
-					<?php
-					}
-					?>
-				</div>
-			</div>
-		</div>
 		<!-- FORMULARIO  -->
 		<div class="card mt-1">
 			<form id="form_index" method="POST">
@@ -100,104 +56,67 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 						Área de impresión de resultados por Formulario
 					-->
 					<!-- MARCATEL -->
-					<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-						<!-- <div class="card-body text-center"> -->
-						<table class="table table-sm" style="font-size: 0.6em;">
-							<thead class="text-center align-middle">
-								<tr class="">
-									<th scope="col" colspan="3">
-										<h4>Marcatel</h4>
-									</th>
-								</tr>
-								<tr>
-									<th scope="col">Tipo</th>
-									<th scope="col">Minutos</th>
-									<th scope="col">Pesos</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_marcatel);
-								$consumo_marcatel->consumoDividido();
-								?>
-							</tbody>
-						</table>
-						<!-- </div> -->
+					<div class="col-sm-3 col-12 col-lg-6">
+						<div class="card m-3" style="width: 100%;">
+							<div class="card-header">
+								<h5 class="card-title">Marcatel</h5>
+							</div>
+							<div class="card-body">
+									<div class="table-responsive-lg card-text">
+										<table class="table table-sm table-hover">
+											<thead class="">
+												<tr>
+													<th scope="col">Movil</th>
+													<th scope="col">Fijo</th>
+													<th scope="col">Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<?php
+													$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
+													$consumo_marcatel->consumoMovilFijo();
+													?>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+							</div>
+						</div>
 					</div>
 					<!-- MCM -->
-					<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-						<!-- <div class="card-body"> -->
-						<table class="table table-sm" style="font-size: 0.6em;">
-							<thead class="text-center align-middle">
-								<tr class="">
-									<th scope="col" colspan="3">
-										<h4>MCM</h4>
-									</th>
-								</tr>
-								<tr>
-									<th scope="col">Tipo</th>
-									<th scope="col">Minutos</th>
-									<th scope="col">Pesos</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
-								$consumo_marcatel->consumoDividido();
-								?>
-							</tbody>
-						</table>
-						<!-- </div> -->
+					<div class="col-sm-3 col-12 col-lg-6">
+						<div class="card m-3" style="width: 100%;">
+							<div class="card-header">
+								<h5 class="card-title">MCM</h5>
+							</div>
+							<div class="card-body">
+									<div class="table-responsive-lg card-text">
+										<table class="table table-sm table-hover">
+											<thead class="">
+												<tr>
+													<th scope="col">Movil</th>
+													<th scope="col">Fijo</th>
+													<th scope="col">Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<?php
+													$consumo_mcm = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
+													$consumo_mcm->consumoMovilFijo();
+													?>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+							</div>
+						</div>
 					</div>
 					<!-- IPCOM -->
-					<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-						<!-- <div class="card-body"> -->
-						<table class="table table-sm" style="font-size: 0.6em;">
-							<thead class="text-center align-middle">
-								<tr class="">
-									<th scope="col" colspan="3">
-										<h4>Ipcom</h4>
-									</th>
-								</tr>
-								<tr>
-									<th scope="col">Tipo</th>
-									<th scope="col">Minutos</th>
-									<th scope="col">Pesos</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_ipcom);
-								$consumo_marcatel->consumoDividido();
-								?>
-							</tbody>
-						</table>
-						<!-- </div> -->
-					</div>
+					
 					<!-- HAZ -->
-					<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-						<!-- <div class="card-body"> -->
-						<table class="table table-sm" style="font-size: 0.6em;">
-							<thead class="text-center align-middle">
-								<tr class="">
-									<th scope="col" colspan="3">
-										<h4>Haz</h4>
-									</th>
-								</tr>
-								<tr>
-									<th scope="col">Tipo</th>
-									<th scope="col">Minutos</th>
-									<th scope="col">Pesos</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_haz);
-								$consumo_marcatel->consumoDividido();
-								?>
-							</tbody>
-						</table>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -369,16 +288,6 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 										?>
 									</tbody>
 								</table>
-							</div>
-						</div>
-						<div class="btn-img row">
-							<div class="col">
-								<!-- <input type="button" id="crearimagen" class="form-control btn btn-light" value="Crear Imagen"> -->
-								<button id="crearimagen" class="form-control">Crear imagen</button>
-							</div>
-							<div class="col">
-								<!-- El div id="img-out" sera el contenedor en donde visualizaremos la imagen exportada -->
-								<div id="salidaimg" align="center"></div>
 							</div>
 						</div>
 					</div>

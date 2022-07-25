@@ -151,17 +151,17 @@ class ConsumoPorCarrier
             AS mcm_movil,
         
         (SELECT SUM(consumo) FROM reporte_telefonia
-        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
             AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('11','999') )
             AS mcm_fijo,
         
         (SELECT SUM(consumo) FROM reporte_telefonia
-        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
             AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('28','444') )
             AS ipcom_movil,
 
         (SELECT SUM(consumo) FROM reporte_telefonia
-        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+         WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
             AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('28','444')
         ) AS ipcom_fijo,
         
@@ -535,4 +535,129 @@ class ConsumoPorCarrier
 		</div>
         <?php
     }
+
+    public function consumoMovilFijo()
+    {
+        //TOTAL CONSUMIDO GENERAL CON TODOS LOS CARRIER
+        
+        echo $query_consumo_pesos = "SELECT
+        (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('15','777') )
+            AS mtel_movil,
+
+        (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('15','777') )
+            AS mtel_fijo,
+        
+        (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('11','999') )
+            AS mcm_movil,
+        
+        (SELECT SUM(consumo) FROM reporte_telefonia
+        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('11','999') )
+            AS mcm_fijo,
+        
+        (SELECT SUM(consumo) FROM reporte_telefonia
+        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('28','444') )
+            AS ipcom_movil,
+
+        (SELECT SUM(consumo) FROM reporte_telefonia
+        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('28','444')
+        ) AS ipcom_fijo,
+        
+        (SELECT SUM(consumo) FROM reporte_telefonia
+        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('14','555') )
+            AS haz_movil,
+        
+        (SELECT SUM(consumo) FROM reporte_telefonia
+        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('14','555') )
+        AS haz_fijo;";
+
+        $answer_consumo_pesos = $this->conexion->query($query_consumo_pesos);
+        while ($row_consumo_pesos = $answer_consumo_pesos->fetch_object()) {
+            //DATOS OBTENIDOS POR CONSULTA
+            switch ($this->carrier) {
+                
+                case "15','777":
+                    $costo_movil = 0.11;
+                    $costo_fijo = 0.04;
+                    $consumoEnMinutosMovil  =  $row_consumo_pesos->mtel_movil;
+                    $consumoEnMinutosFijo  =  $row_consumo_pesos->mtel_fijo;
+                    break;
+    
+                case "28','444":
+                    $costo_movil = 0.11;
+                    $costo_fijo = 0.04;
+                    $consumoEnMinutosMovil  =  $row_consumo_pesos->mcm_movil;
+                    $consumoEnMinutosFijo  =  $row_consumo_pesos->mcm_fijo;
+                    break;
+    
+                case "11','999":
+                    $costo_movil = 0.11;
+                    $costo_fijo = 0.05;
+                    $consumoEnMinutosMovil  =  $row_consumo_pesos->ipcom_movil;
+                    $consumoEnMinutosFijo  =  $row_consumo_pesos->ipcom_fijo;
+                    break;
+    
+                case "14','555":
+                    $costo_movil = 0.09 / 60;
+                    $costo_fijo = 0.04 / 60;
+                    $consumoEnMinutosMovil  =  $row_consumo_pesos->haz_movil;
+                    $consumoEnMinutosFijo  =  $row_consumo_pesos->haz_fijo;
+                    break;
+            }
+            
+            $costo_movil     = 0.11;
+            $costo_fijo      = 0.04;
+            $costo_fijo_mcm  = 0.05;
+            $costo_movil_haz = 0.09/60;
+            $costo_fijo_haz  = 0.04/60;
+
+            $pesos_total_general = ($row_consumo_pesos->mtel_movil  * $costo_movil) 
+            + ($row_consumo_pesos->mtel_fijo   * $costo_fijo) 
+            + ($row_consumo_pesos->mcm_movil   * $costo_movil) 
+            + ($row_consumo_pesos->mcm_fijo    * $costo_fijo_mcm)
+            + ($row_consumo_pesos->ipcom_movil * $costo_movil)
+            + ($row_consumo_pesos->ipcom_fijo  * $costo_fijo)
+            + ($row_consumo_pesos->haz_movil   * $costo_movil_haz)
+            + ($row_consumo_pesos->haz_fijo    * $costo_fijo_haz);
+
+
+
+            $pesos_consumo_movil = $consumoEnMinutosMovil  * $costo_movil;
+            $pesos_consumo_fijo  = $consumoEnMinutosFijo   * $costo_fijo;
+            $pesos_total_por_carrier  =  $pesos_consumo_fijo + $pesos_consumo_movil;
+
+            echo $porcent=round((($pesos_total_por_carrier/$pesos_total_general)*100),2); 
+
+
+
+            ?>
+            <td><?php echo "$ ".$pesos_consumo_movil ;?></td>
+            <td><?php echo "$ ".$pesos_consumo_fijo;?></td>
+            <td><?php echo "$ ".$pesos_total_por_carrier;?></td>
+            <td>
+                <div>
+					<div class="progress" style="height: 15px;">
+						<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>
+					</div>
+				</div>
+            </td>
+
+            <?php
+
+
+            //var_dump($totalPorCarrier,$pesos_consumo_movil,$pesos_consumo_fijo,$pesos_total);
+
+        }
+        //return $totalPorCarrier;
+    }    
 }
