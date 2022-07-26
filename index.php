@@ -56,7 +56,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 						Área de impresión de resultados por Formulario
 					-->
 					<!-- MARCATEL -->
-					<div class="col-sm-3 col-12 col-lg-6">
+					<div class="col-sm-3 col-12 col-lg-6 text-center">
 						<div class="card m-3" style="width: 100%;">
 							<div class="card-header">
 								<h5 class="card-title">Marcatel</h5>
@@ -72,12 +72,12 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
+												
 													<?php
-													$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
+													$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_marcatel);
 													$consumo_marcatel->consumoMovilFijo();
 													?>
-												</tr>
+												
 											</tbody>
 										</table>
 									</div>
@@ -85,7 +85,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 						</div>
 					</div>
 					<!-- MCM -->
-					<div class="col-sm-3 col-12 col-lg-6">
+					<div class="col-sm-3 col-12 col-lg-6 text-center">
 						<div class="card m-3" style="width: 100%;">
 							<div class="card-header">
 								<h5 class="card-title">MCM</h5>
@@ -113,10 +113,64 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							</div>
 						</div>
 					</div>
-					<!-- IPCOM -->
-					
 					<!-- HAZ -->
-					
+					<div class="col-sm-3 col-12 col-lg-6 text-center">
+						<div class="card m-3" style="width: 100%;">
+							<div class="card-header">
+								<h5 class="card-title">Haz</h5>
+							</div>
+							<div class="card-body">
+									<div class="table-responsive-lg card-text">
+										<table class="table table-sm table-hover">
+											<thead class="">
+												<tr>
+													<th scope="col">Movil</th>
+													<th scope="col">Fijo</th>
+													<th scope="col">Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<?php
+													$consumo_haz = new ConsumoPorCarrier($conexion, $date, $date, prefijos_haz);
+													$consumo_haz->consumoMovilFijo();
+													?>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+							</div>
+						</div>
+					</div>
+					<!-- IPCOM -->
+					<div class="col-sm-3 col-12 col-lg-6 text-center">
+						<div class="card m-3" style="width: 100%;">
+							<div class="card-header">
+								<h5 class="card-title">Ipcom</h5>
+							</div>
+							<div class="card-body">
+									<div class="table-responsive-lg card-text">
+										<table class="table table-sm table-hover">
+											<thead class="">
+												<tr>
+													<th scope="col">Movil</th>
+													<th scope="col">Fijo</th>
+													<th scope="col">Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<?php
+													$consumo_ipcom = new ConsumoPorCarrier($conexion, $date, $date, prefijos_ipcom);
+													$consumo_ipcom->consumoMovilFijo();
+													?>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
