@@ -535,144 +535,254 @@ class ConsumoPorCarrier
 		</div>
         <?php
     }
-
-    public function consumoMovilFijo()
+    
+    public function porcentaje()
     {
-        //TOTAL CONSUMIDO GENERAL CON TODOS LOS CARRIER
-        //echo $this->carrier;
-        $query_consumo_pesos = "SELECT
-            (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('15','777') )
-                AS mtel_movil,
+        $all_prefijos_min   =   "15','777','11','999','28','444";
+        $all_prefijos_seg   =   "14','555";
+        $all_prefijos_mini      =   array(
+            'Marcatel'    =>  "15','777",
+            'MCM'         =>  "11','999",
+            'Ipcom'       =>  "28','444");
+        $all_prefijos_segu      =   array(
+            'Haz'         =>  "14','555");
 
-            (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('15','777') )
-                AS mtel_fijo,
-            
-            (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('11','999') )
-                AS mcm_movil,
-            
-            (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('11','999') )
-                AS mcm_fijo,
-            
-            (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('28','444') )
-                AS ipcom_movil,
 
+        $query_consumo_total_min = "SELECT
             (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('28','444')) 
-                AS ipcom_fijo,
-            
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$all_prefijos_min}')) AS movil,
             (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('14','555') )
-                AS haz_movil,
-            
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$all_prefijos_min}')) AS fijo;";
+            $ans_consumo = $this->conexion->query($query_consumo_total_min);
+            while ($row_consumo = $ans_consumo->fetch_object()) 
+            {
+                $costo_movil=0.11;
+                $costo_fijo=0.04;
+
+                $movil = $row_consumo->movil * $costo_movil;
+                $fijo = $row_consumo->fijo  * $costo_fijo;
+                $suma_m_f = $movil + $fijo;
+            }
+        $query_consumo_total_seg = "SELECT
             (SELECT SUM(consumo) FROM reporte_telefonia
-                WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('14','555') )
-                AS haz_fijo;";
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$all_prefijos_seg}')) AS movil,
+            (SELECT SUM(consumo) FROM reporte_telefonia
+            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+            AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$all_prefijos_seg}')) AS fijo;";
+            $ans_consumo = $this->conexion->query($query_consumo_total_seg);
+            while ($row_consumo = $ans_consumo->fetch_object()) {
 
-        $answer_consumo_pesos = $this->conexion->query($query_consumo_pesos);
-        while ($row_consumo_pesos = $answer_consumo_pesos->fetch_object()) {
+                $costo_movil_haz=0.09/60;
+                $costo_fijo_haz=0.04/60;
+                    
+                $costo_movil= $costo_movil_haz;
+                $costo_fijo=  $costo_fijo_haz;
 
-            $consumoEnMinutosMovil  =  $row_consumo_pesos->mtel_movil;
-            $consumoEnMinutosFijo  =  $row_consumo_pesos->mtel_fijo;
-            $consumoEnMinutosMovil  =  $row_consumo_pesos->mcm_movil;
-            $consumoEnMinutosFijo  =  $row_consumo_pesos->mcm_fijo;
-            $consumoEnMinutosMovil  =  $row_consumo_pesos->ipcom_movil;
-            $consumoEnMinutosFijo  =  $row_consumo_pesos->ipcom_fijo;
-            $consumoEnMinutosMovil  =  $row_consumo_pesos->haz_movil;
-            $consumoEnMinutosFijo  =  $row_consumo_pesos->haz_fijo;
+                $movil = $row_consumo->movil * $costo_movil;
+                $fijo = $row_consumo->fijo  * $costo_fijo;
+                $suma_m_f_seg = $movil + $fijo;
+            }
 
-            //DATOS OBTENIDOS POR CONSULTA
-            switch ($this->carrier) {
+        $total_consumido    = $suma_m_f + $suma_m_f_seg;
+        $total_consumido_   = number_format($total_consumido,2);
+        ?>
+        <h6 class="tab-header text-center">
+		    <small class="badge badge-sm float-center badge-light">
+                De  <?php echo $this->start_date;?>  al  <?php echo $this->end_date;?>
+			</small>
+		</h6>
+        <div class="table-responsive">
+			<table class="table table-sm"> 
+				<thead>
+                    <tr>
+						<th scope="col">Carrier</th>
+                        <th scope="col">Móvil</th>
+                        <th scope="col">Fijo</th>
+                        <th scope="col">Total</th>
+						<th scope="col">Porcentaje</th>
+						<th scope="col">Grafico</th>
+					</tr>
+				</thead>
+				<tbody>
+                <?php
+                foreach ($all_prefijos_mini as $name_carrier => $prefijos) {
+                    $query_for_carrier  = "SELECT
+                        (SELECT SUM(consumo) FROM reporte_telefonia
+                        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+                        AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$prefijos}')) AS movil,  
+                        (SELECT SUM(consumo) FROM reporte_telefonia
+                        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+                        AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$prefijos}')) AS fijo;";
+                    $ans_query_for_carrier = $this->conexion->query($query_for_carrier);
+                    while ($row_for_carrier = $ans_query_for_carrier->fetch_object()) {
+                        switch ($prefijos) {
+                            case "15','777":
+                                $costo_movil=0.11;
+                                $costo_fijo=0.04;
+                                break;
                 
+                            case "28','444":
+                                $costo_movil=0.11;
+                                $costo_fijo=0.04;
+                                break;
+                            
+                            case "11','999":
+                                $costo_movil=0.11;
+                                $costo_fijo=0.05;
+                                break;
+                        }
+
+                        $movil_all= $row_for_carrier->movil * $costo_movil;
+                        $fijo_all = $row_for_carrier->fijo  * $costo_fijo;
+                        $total_for_carrier= $movil_all+$fijo_all;
+
+                        $porcent=round((($total_for_carrier/$total_consumido)*100),2);                
+                        ?>
+                        <tr class="text-right">
+                            <td class="text-left"><?php echo $name_carrier?></td>
+                            <td><?php echo "$ ". number_format($movil_all,2);?></td>
+                            <td><?php echo "$ ". number_format($fijo_all,2);?></td>
+                            <td><?php echo "$ ". number_format($total_for_carrier,2);?></td>
+                            <td ><?php echo $porcent;?>%</td>
+                            <td>
+                                <div class="progress" style="height: 15px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php
+                    }//Llave de cierre while FOR CARRIER
+                }//Llave de cierre del forearch
+                foreach ($all_prefijos_segu as $name_carrier => $prefijos) {
+                    $query_for_carrier  = "SELECT
+                        (SELECT SUM(consumo) FROM reporte_telefonia
+                        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+                        AND tipo IN ('movil','drop_movil','buzon_movil') AND prefijo IN ('{$prefijos}')) AS movil,  
+                        (SELECT SUM(consumo) FROM reporte_telefonia
+                        WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+                        AND tipo IN ('fijo','drop_fijo','buzon_fijo') AND prefijo IN ('{$prefijos}')) AS fijo;";
+                    $ans_query_for_carrier = $this->conexion->query($query_for_carrier);
+                    while ($row_for_carrier = $ans_query_for_carrier->fetch_object()) {
+        
+                        $costo_movil_haz=0.09/60;
+                        $costo_fijo_haz=0.04/60;
+        
+                        $movil_haz = $row_for_carrier->movil * $costo_movil_haz;
+                        $fijo_haz = $row_for_carrier->fijo  * $costo_fijo_haz;
+                        
+                        $total_for_carrier=$movil_haz + $fijo_haz;
+        
+                        $porcent=round((($total_for_carrier/$total_consumido)*100),2); 
+                        ?>
+                        <tr class="text-right">
+                            <td class="text-left"><?php echo $name_carrier?></td>
+                            <td><?php echo "$ ".number_format($movil_haz,2);?></td>
+                            <td><?php echo "$ ".number_format($fijo_haz,2);?></td>
+                            <td><?php echo "$ ".number_format($total_for_carrier,2);?></td>
+                            <td ><?php echo $porcent;?>%</td>
+                            <td>
+                                <div class="progress" style="height: 15px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php
+                    }//Llave de cierre while FOR CARRIER
+                }//Llave de cierre del forearch
+            ?>
+				</tbody>
+			</table>
+		</div>
+        <?php
+    }
+
+    public function consumoInterno() {
+        /****campañas y grupos****/
+        $hsbc_escorza = array(
+            "HSBC" => "ADMIN-ESPECIALBALANC','HSBC-STO-ESCOR-LOWBT','HSBC-STO-ESCOR-MEDBT','HSBC-STO-ESCOR-TOPBT','LAB-BT','ADMIN-ESPECIALSUPERV','HSBC-STO-ESCORZA-BT','STO_BALANCE_TRASNFER','HSBC-STO-ESCORZA-LEC','HSBC-GERENTES','HSBC-STO-ESCORZA-MA','HSBC-STO-LABESCO-MA','ADMIN','VALIDACION','HSBC-STO-ESCORZA-M','ESPECIAL-CAMPAA','STO-FORMALIZACION','HSBC-STO-ESCORZA-CEC','HSBC-PPM','LAB-PPM','ADMIN-ESPECIALPPM','HSBC-SEGUROS','STO-STO-ESC-LABSEGUR"
+        );
+
+        $campañas_grupos_revolucion = array(
+            "HSBC"  => "BALANCE_TRASNFER_REV','HSBC-STO-REVO-BT','HSBC-REVOLUCION','HSBC-STO-REVO-SEGURO','ADMIN-ESPECIALSUPERV','HSBC-STO-LABREV-COS','HSBC-STO-REV-CON-VAL','HSBC-STO-REV-CONSUMO','HSBC-CONSUMOS','ADMIN-ESPECIALCONSUM','LAB-CONSUMOS','HSBC-STO-LABREV-GA','HSBC-STO-REV-GA','LAB-G4"
+        );
+
+        $sucursalesInternas = array ('escorza','revolucion','tlajomulco');
+        $clientes = array ('HSBC','SANTANDER','INVEX');
+
+        $all_prefijos      =   array(
+            'Marcatel'    =>  "15','777",
+            'MCM'         =>  "11','999",
+            'Ipcom'       =>  "28','444",
+            'Haz'         =>  "14','555"
+        );
+        foreach ($hsbc_escorza as $campanias => $grupos) {
+            switch ($this->carrier) {
                 case "15','777":
-                    // $costo_movil = 0.11;
-                    // $costo_fijo = 0.04;
-                    $consumoEnMinutosMovil  =  $row_consumo_pesos->mtel_movil;
-                    $consumoEnMinutosFijo  =  $row_consumo_pesos->mtel_fijo;
+                    $costo_movil = 0.11;
+                    $costo_fijo = 0.04;
                     break;
-    
-                // case "28','444":
-                //     $costo_movil = 0.11;
-                //     $costo_fijo = 0.04;
-                    $consumoEnMinutosMovil  =  $row_consumo_pesos->ipcom_movil;
-                    $consumoEnMinutosFijo  =  $row_consumo_pesos->ipcom_fijo;
+                case "28','444":
+                    $costo_movil = 0.11;
+                    $costo_fijo = 0.04;
                     break;
-    
                 case "11','999":
-                    // $costo_movil = 0.11;
-                    // $costo_fijo = 0.05;
-                    $consumoEnMinutosMovil  =  $row_consumo_pesos->mcm_movil;
-                    $consumoEnMinutosFijo  =  $row_consumo_pesos->mcm_fijo;
+                    $costo_movil = 0.11;
+                    $costo_fijo = 0.05;
                     break;
-    
                 case "14','555":
-                    // $costo_movil = 0.09 / 60;
-                    // $costo_fijo = 0.04 / 60;
-                    $consumoEnMinutosMovil  =  $row_consumo_pesos->haz_movil;
-                    $consumoEnMinutosFijo  =  $row_consumo_pesos->haz_fijo;
+                    $costo_movil = 0.09 / 60;
+                    $costo_fijo = 0.04 / 60;
                     break;
             }
-            
-            $costo_movil     = 0.11;
-            $costo_fijo      = 0.04;
-            $costo_fijo_mcm  = 0.05;
-            $costo_movil_haz = 0.09/60;
-            $costo_fijo_haz  = 0.04/60;
 
-            $pesos_total_general = ($row_consumo_pesos->mtel_movil  * $costo_movil) 
-            + ($row_consumo_pesos->mtel_fijo   * $costo_fijo) 
-            + ($row_consumo_pesos->mcm_movil   * $costo_movil) 
-            + ($row_consumo_pesos->mcm_fijo    * $costo_fijo_mcm)
-            + ($row_consumo_pesos->ipcom_movil * $costo_movil)
-            + ($row_consumo_pesos->ipcom_fijo  * $costo_fijo)
-            + ($row_consumo_pesos->haz_movil   * $costo_movil_haz)
-            + ($row_consumo_pesos->haz_fijo    * $costo_fijo_haz);
+            foreach ($sucursalesInternas as $sucursal) {    
+                foreach ($clientes AS $cliente) {
+                    echo $obt_grupos_vici = "SELECT DISTINCT(nombre_grupo) FROM sucu_campa_grup
+                    WHERE sucursal = '{$sucursal}' AND campania LIKE ('%{$cliente}%') AND tipo = 'I'";
+                    $answer = $this->conexion->query($obt_grupos_vici);
+                    while ($row = $answer->fetch_object()) {
+                        echo $row->nombre_grupo;
+                        echo "<br>";
+                    }
+                    echo "<br>";
+                }
 
 
 
-            $pesos_consumo_movil = $consumoEnMinutosMovil  * $costo_movil;
-            $pesos_consumo_fijo  = $consumoEnMinutosFijo   * $costo_fijo;
-            $pesos_total_por_carrier  =  $pesos_consumo_fijo + $pesos_consumo_movil;
 
-            $porcent=round((($pesos_total_por_carrier/$pesos_total_general)*100),2); 
+            }
 
 
+                    $query_escorza_hsbc =
+                        "SELECT
+                            (SELECT SUM(consumo) FROM reporte_telefonia
+                            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+                            AND grupo IN ('{$grupos}')
+                            AND tipo='movil' AND prefijo IN ('{$this->carrier}')) AS movil,
+                            (SELECT SUM(consumo) FROM reporte_telefonia
+                            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
+                            AND grupo IN ('{$grupos}')
+                            AND tipo='fijo' AND prefijo IN ('{$this->carrier}')) AS fijo;";
 
-            ?>
-            <tr>
-                <td><?php echo "$ ".$pesos_consumo_movil ;?></td>
-                <td><?php echo "$ ".$pesos_consumo_fijo;?></td>
-                <td><?php echo "$ ".$pesos_total_por_carrier;?></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div>
-                        <div class="progress" style="height: 15px;">
-                            <p><?php echo $porcent;?>%</p><br/>
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    $consumo_modal = array();
+                    $resultado_esc_hsbc = $this->conexion->query($query_escorza_hsbc);
+                    while ($row_esc_hsbc = $resultado_esc_hsbc->fetch_object()) {
+                        
+                        $consumo_movil    = $row_esc_hsbc->movil;
+                        $consumo_fijo     = $row_esc_hsbc->fijo;
+                        $total_min        = $consumo_movil + $consumo_fijo;
 
-            <?php
+                        $con_movil = $consumo_movil * $costo_movil;
+                        $con_fijo = $consumo_fijo * $costo_fijo;
+                        $total_con = $con_movil + $con_fijo;
 
-
-            //var_dump($totalPorCarrier,$pesos_consumo_movil,$pesos_consumo_fijo,$pesos_total);
-
+                        
+                        array_push($consumo_modal,$campanias,$con_movil,$con_fijo,$total_con);
+                    }
+                    return $consumo_modal;
         }
-        //return $totalPorCarrier;
-    }    
+    }
 }

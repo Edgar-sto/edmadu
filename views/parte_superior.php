@@ -113,6 +113,9 @@
 		.dataWeek::-webkit-scrollbar {
  			display: none;
 		}
+		.y-hiden1::-webkit-scrollbar {
+ 			display: none;
+		}
 
 		body {
 			font-family: 'JetBrains Mono', monospace;

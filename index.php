@@ -48,126 +48,23 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		<!-- END Fila N -->
 
 		<!--Start Dashboard Content-->
-		<!-- FILA UNO DISTRIBUCION DE CONSUMO POR CARRIER MINUTOS-->
+		<!-- FILA UNO -->
 		<div class="card mt-3">
 			<div class="card-content">
 				<div id="fila-uno-consumo-dividido-carrier" class="row row-group m-0 p-4">
-					<!--
-						Área de impresión de resultados por Formulario
-					-->
-					<!-- MARCATEL -->
-					<div class="col-sm-3 col-12 col-lg-6 text-center">
+					<!-- INFORMACIÖN -->
+					<div class="col-12 text-center">
 						<div class="card m-3" style="width: 100%;">
 							<div class="card-header">
-								<h5 class="card-title">Marcatel</h5>
+								<h5 class="card-title">Consumo</h5>
 							</div>
 							<div class="card-body">
-									<div class="table-responsive-lg card-text">
-										<table class="table table-sm table-hover">
-											<thead class="">
-												<tr>
-													<th scope="col">Movil</th>
-													<th scope="col">Fijo</th>
-													<th scope="col">Total</th>
-												</tr>
-											</thead>
-											<tbody>
-												
-													<?php
-													$consumo_marcatel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_marcatel);
-													$consumo_marcatel->consumoMovilFijo();
-													?>
-												
-											</tbody>
-										</table>
-									</div>
-							</div>
-						</div>
-					</div>
-					<!-- MCM -->
-					<div class="col-sm-3 col-12 col-lg-6 text-center">
-						<div class="card m-3" style="width: 100%;">
-							<div class="card-header">
-								<h5 class="card-title">MCM</h5>
-							</div>
-							<div class="card-body">
-									<div class="table-responsive-lg card-text">
-										<table class="table table-sm table-hover">
-											<thead class="">
-												<tr>
-													<th scope="col">Movil</th>
-													<th scope="col">Fijo</th>
-													<th scope="col">Total</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<?php
-													$consumo_mcm = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
-													$consumo_mcm->consumoMovilFijo();
-													?>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-							</div>
-						</div>
-					</div>
-					<!-- HAZ -->
-					<div class="col-sm-3 col-12 col-lg-6 text-center">
-						<div class="card m-3" style="width: 100%;">
-							<div class="card-header">
-								<h5 class="card-title">Haz</h5>
-							</div>
-							<div class="card-body">
-									<div class="table-responsive-lg card-text">
-										<table class="table table-sm table-hover">
-											<thead class="">
-												<tr>
-													<th scope="col">Movil</th>
-													<th scope="col">Fijo</th>
-													<th scope="col">Total</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<?php
-													$consumo_haz = new ConsumoPorCarrier($conexion, $date, $date, prefijos_haz);
-													$consumo_haz->consumoMovilFijo();
-													?>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-							</div>
-						</div>
-					</div>
-					<!-- IPCOM -->
-					<div class="col-sm-3 col-12 col-lg-6 text-center">
-						<div class="card m-3" style="width: 100%;">
-							<div class="card-header">
-								<h5 class="card-title">Ipcom</h5>
-							</div>
-							<div class="card-body">
-									<div class="table-responsive-lg card-text">
-										<table class="table table-sm table-hover">
-											<thead class="">
-												<tr>
-													<th scope="col">Movil</th>
-													<th scope="col">Fijo</th>
-													<th scope="col">Total</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<?php
-													$consumo_ipcom = new ConsumoPorCarrier($conexion, $date, $date, prefijos_ipcom);
-													$consumo_ipcom->consumoMovilFijo();
-													?>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+								<div class="table-responsive-lg card-text">
+									<?php
+									$porcentaje = new ConsumoPorCarrier($conexion, $date, $date, prefijos_marcatel);
+									$porcentaje->porcentaje();
+									?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -175,184 +72,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			</div>
 		</div>
 
-		<!-- FILA DOS "Consumo por vici" - "Porcentaje del dia anterior por carrier" - "Costo movil fijo por carrier"-->
-		<div class="row">
-			<!-- <div class="col-lg-4 col-xl-4 col-12 "> -->
-			<!--Distribucion de consumo por Reporte -->
-			<div class="col-lg-6 col-lg-4 col-12 ">
-				<section class="card" style="height: 420px;">
-					<div class="card-header">Consumo por vici
-						<header>
-							<ul class="nav nav-tabs">
-								<li class="nav-item col col-sm active">
-									<a class="nav-link " href="#reporte_mtel" data-toggle="tab">Mtel</a>
-								</li>
-								<li class="nav-item col col-sm">
-									<a class="nav-link " href="#reporte_mcm" data-toggle="tab">Mcm</a>
-								</li>
-								<li class="nav-item col col-sm">
-									<a class="nav-link " href="#reporte_ipcom" data-toggle="tab">Ipcom</a>
-								</li>
-								<li class="nav-item col col-sm">
-									<a class="nav-link " href="#reporte_haz" data-toggle="tab">Haz</a>
-								</li>
-							</ul>
-						</header>
-					</div>
-					<div id="consumoPorReportes" class="body tab-content" style="height: 400px; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-						<!--
-							Área de impresión de resultados por Formulario
-						-->
-						<div id="reporte_mtel" class="tab-pane active" role="tabpanel">
-							<h6 class="tab-header text-center">
-								<small class="badge badge-sm float-center badge-light">
-									Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Minutos
-								</small>
-							</h6>
-							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
-									<thead>
-										<tr>
-											<th scope="col">Reporte</th>
-											<th scope="col">Movil</th>
-											<th scope="col">Fijo</th>
-											<th scope="col">Total</th>
-										</tr>
-									</thead>
-									<tbody class="text-right">
-										<?php
-										$reporte_mtel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_marcatel);
-										$reporte_mtel->distribucion_por_reportes();
-										?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-						<div id="reporte_mcm" class="tab-pane" role="tabpanel">
-							<h6 class="tab-header text-center">
-								<small class="badge badge-sm float-center badge-light">
-									Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Minutos
-								</small>
-							</h6>
-							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
-									<thead>
-										<tr>
-											<th scope="col">Reporte</th>
-											<th scope="col">Movil</th>
-											<th scope="col">Fijo</th>
-											<th scope="col">Total</th>
-										</tr>
-									</thead>
-									<tbody class="text-right">
-										<?php
-										$reporte_mcm = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
-										$reporte_mcm->distribucion_por_reportes();
-										?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-						<div id="reporte_ipcom" class="tab-pane" role="tabpanel">
-							<h6 class="tab-header text-center">
-								<small class="badge badge-sm float-center badge-light">
-									Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Minutos
-								</small>
-							</h6>
-							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
-									<thead>
-										<tr>
-											<th scope="col">Reporte</th>
-											<th scope="col">Movil</th>
-											<th scope="col">Fijo</th>
-											<th scope="col">Total</th>
-										</tr>
-									</thead>
-									<tbody class="text-right">
-										<?php
-										$reporte_ipcom = new ConsumoPorCarrier($conexion, $date, $date, prefijos_ipcom);
-										$reporte_ipcom->distribucion_por_reportes();
-										?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-						<div id="reporte_haz" class="tab-pane" role="tabpanel">
-							<h6 class="tab-header text-center">
-								<small class="badge badge-sm float-center badge-light">
-									Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Segundos
-								</small>
-							</h6>
-							<div class="table-responsive" style="overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-								<table class="table table-sm" style="font-size:8px;">
-									<thead>
-										<tr>
-											<th scope="col">Reporte</th>
-											<th scope="col">Movil</th>
-											<th scope="col">Fijo</th>
-											<th scope="col">Total</th>
-										</tr>
-									</thead>
-									<tbody class="text-right">
-										<?php
-										$reporte_haz = new ConsumoPorCarrier($conexion, $date, $date, prefijos_haz);
-										$reporte_haz->distribucion_por_reportes();
-										?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-			<!-- Porcentaje consumo -->
-			<div id="contenido" class="col-lg-6 col-lg-4 col-12">
-				<section class="card">
-					<div class="card-header">Porcetaje por carrier</div>
-					<div id="porcentaje-por-carrier">
-						<!--
-								Área de impresión de resultados por Formulario
-							-->
-						<div id="idConsumoPorcentajes" class="tab-pane" style="font-size:9px;">
-							<?php
-							$total_all_min  =   new ConsumoPorCarrier($conexion, $date, $date, all_prefijos);
-							$total_all_min->consumo_porcetnaje();
-							?>
-						</div>
-						<hr>
-						<div id="consumoDivididoPorCarrier">
-							<div class="table-responsive">
-								<table class="table align-items-center" style="font-size: 10px;">
-									<thead>
-										<tr>
-											<th scope="col">Carrier</th>
-											<th scope="col">Movil</th>
-											<th scope="col">Fijo</th>
-											<th scope="col">Total</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-										$costoPesos = new ConsumoPorCarrier($conexion, $date, $date, all_prefijos);
-										$costoPesos->consumoDivididoCarrierMovilFijo();
-										?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-			<!--Distribucion graficada -->
-		</div>
-
-		<!-- FILA consumo por dia 
-			No se a agregado a index.html
-		-->
+		<!-- FILA DOS -->
 		<div id="consumoDiarioCarriers" class="">
 			<div class="card mt-3">
 				<div id="consumo-diario">
@@ -391,16 +111,8 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 				</div>
 			</div>
 		</div>
-
-		<div id="consumoDiarioCarriersSegundos" class="">
-			<div class="card mt-3">
-				<div id="consumo-diario-segundos">
-					
-				</div>
-			</div>
-		</div>
-
-		<!-- FILA DISTRIBUCIÓN CE CONSUMO POR CENTROS -->
+		
+		<!-- FILA TRES-->
 		<div class="card mt-3">
 			<h3 class="card-title p-2">Sucusales Internas</h3>
 			<h6 class="tab-header text-center">
@@ -412,29 +124,34 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 				<div class="col-lg-12">
 					<h4 class="card-header p-3">Escorza</h4>
 				</div>
-				<div class="col-lg-3 card-body table-responsive">	
-					<?php
-						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
-						$EscorzaMtel->consumoEscorza();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
-						$EscorzaMcm->consumoEscorza();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
-						$EscorzaHaz->consumoEscorza();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
-						$EscorzaIpcom->consumoEscorza();
-					?>
+				<div class="col-lg-6 card-body table-responsive">	
+					<table class="table" style="font-size: 0.6em;">
+						<thead class="thead-inverse table-light  text-center">
+							<tr>
+								<th class="fs-5" colspan="4">Marcatel</th>
+							</tr>
+							<tr class="text-right">
+								<th class="text-center"><strong>Campaña</strong></th>
+								<th><strong>Movil</strong></th>
+								<th><strong>Fijo</strong></th>
+								<th><strong>Total</strong></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<?php
+								$consumo_sucursal = new ConsumoPorCarrier($conexion,$date,$date,prefijos_marcatel);
+								$consumo_sucursal->consumoInterno();
+								foreach ($consumo_sucursal->consumoInterno() as $value) {
+									echo "<td>";	
+										echo $value;
+									echo "</td>";
+									//echo "<br>";
+								}
+							?>
+							</tr>
+						</tbody>
+        			</table>
 				</div>
 			</div>
 			<br>
@@ -446,24 +163,6 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 					<?php
 						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
 						$EscorzaMtel->consumoRevolucion();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
-						$EscorzaMcm->consumoRevolucion();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
-						$EscorzaHaz->consumoRevolucion();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
-						$EscorzaIpcom->consumoRevolucion();
 					?>
 				</div>
 			</div>
@@ -478,24 +177,6 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 						$EscorzaMtel->consumoTlajomulco();
 					?>
 				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
-						$EscorzaMcm->consumoTlajomulco();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
-						$EscorzaHaz->consumoTlajomulco();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
-						$EscorzaIpcom->consumoTlajomulco();
-					?>
-				</div>
 			</div>
 			<br>
 			<div class="row card-content">
@@ -506,24 +187,6 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 					<?php
 						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
 						$EscorzaMtel->consumoDropBuzon();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
-						$EscorzaMcm->consumoDropBuzon();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
-						$EscorzaHaz->consumoDropBuzon();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
-						$EscorzaIpcom->consumoDropBuzon();
 					?>
 				</div>
 			</div>
@@ -538,31 +201,147 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 						$EscorzaMtel->consumoAdministrativo();
 					?>
 				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaMcm = new SucursalesInternas($conexion,$date,$date,carrier_mcm,prefijos_mcm);
-						$EscorzaMcm->consumoAdministrativo();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaHaz = new SucursalesInternas($conexion,$date,$date,carrier_haz,prefijos_haz);
-						$EscorzaHaz->consumoAdministrativo();
-					?>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">
-					<?php
-						$EscorzaIpcom = new SucursalesInternas($conexion,$date,$date,carrier_ipcom,prefijos_ipcom);
-						$EscorzaIpcom->consumoAdministrativo();
-					?>
-				</div>
 			</div>
 		</div>
-		
+		 
+		<!-- FILA CUATRO -->
+		<div class="card mt-3">
+			<!--Distribucion de consumo por Reporte -->
+			<div class="card-content">
+				<div class=" col col-12">
+					<section class="card mt-3" style="width:100%; height: 420px;">
+						<div class="card-header">Consumo por vici
+							<header>
+								<ul class="nav nav-tabs">
+									<li class="nav-item col col-sm active">
+										<a class="nav-link " href="#reporte_mtel" data-toggle="tab">Mtel</a>
+									</li>
+									<li class="nav-item col col-sm">
+										<a class="nav-link " href="#reporte_mcm" data-toggle="tab">Mcm</a>
+									</li>
+									<li class="nav-item col col-sm">
+										<a class="nav-link " href="#reporte_ipcom" data-toggle="tab">Ipcom</a>
+									</li>
+									<li class="nav-item col col-sm">
+										<a class="nav-link " href="#reporte_haz" data-toggle="tab">Haz</a>
+									</li>
+								</ul>
+							</header>
+						</div>
+						<div id="consumoPorReportes" class="body tab-content dataWeek y-hiden1" style="height: 400px;">
+							<!--
+								Área de impresión de resultados por Formulario
+							-->
+							<div id="reporte_mtel" class="tab-pane active" role="tabpanel">
+								<h6 class="tab-header text-center">
+									<small class="badge badge-sm float-center badge-light">
+										Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Minutos
+									</small>
+								</h6>
+								<div class="table-responsive dataWeek y-hiden1">
+									<table class="table table-sm" style="font-size:8px;">
+										<thead>
+											<tr>
+												<th scope="col">Reporte</th>
+												<th scope="col">Movil</th>
+												<th scope="col">Fijo</th>
+												<th scope="col">Total</th>
+											</tr>
+										</thead>
+										<tbody class="text-right">
+											<?php
+											$reporte_mtel = new ConsumoPorCarrier($conexion, $date, $date, prefijos_marcatel);
+											$reporte_mtel->distribucion_por_reportes();
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
 
-		
-		
+							<div id="reporte_mcm" class="tab-pane" role="tabpanel">
+								<h6 class="tab-header text-center">
+									<small class="badge badge-sm float-center badge-light">
+										Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Minutos
+									</small>
+								</h6>
+								<div class="table-responsive dataWeek y-hiden1">
+									<table class="table table-sm" style="font-size:8px;">
+										<thead>
+											<tr>
+												<th scope="col">Reporte</th>
+												<th scope="col">Movil</th>
+												<th scope="col">Fijo</th>
+												<th scope="col">Total</th>
+											</tr>
+										</thead>
+										<tbody class="text-right">
+											<?php
+											$reporte_mcm = new ConsumoPorCarrier($conexion, $date, $date, prefijos_mcm);
+											$reporte_mcm->distribucion_por_reportes();
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
 
+							<div id="reporte_ipcom" class="tab-pane" role="tabpanel">
+								<h6 class="tab-header text-center">
+									<small class="badge badge-sm float-center badge-light">
+										Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Minutos
+									</small>
+								</h6>
+								<div class="table-responsive dataWeek y-hiden1">
+									<table class="table table-sm" style="font-size:8px;">
+										<thead>
+											<tr>
+												<th scope="col">Reporte</th>
+												<th scope="col">Movil</th>
+												<th scope="col">Fijo</th>
+												<th scope="col">Total</th>
+											</tr>
+										</thead>
+										<tbody class="text-right">
+											<?php
+											$reporte_ipcom = new ConsumoPorCarrier($conexion, $date, $date, prefijos_ipcom);
+											$reporte_ipcom->distribucion_por_reportes();
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<div id="reporte_haz" class="tab-pane" role="tabpanel">
+								<h6 class="tab-header text-center">
+									<small class="badge badge-sm float-center badge-light">
+										Del Día <?php echo $date; ?> al día <?php echo $date; ?> en Segundos
+									</small>
+								</h6>
+								<div class="table-responsive dataWeek y-hiden1">
+									<table class="table table-sm" style="font-size:8px;">
+										<thead>
+											<tr>
+												<th scope="col">Reporte</th>
+												<th scope="col">Movil</th>
+												<th scope="col">Fijo</th>
+												<th scope="col">Total</th>
+											</tr>
+										</thead>
+										<tbody class="text-right">
+											<?php
+											$reporte_haz = new ConsumoPorCarrier($conexion, $date, $date, prefijos_haz);
+											$reporte_haz->distribucion_por_reportes();
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!--Distribucion graficada -->
+		</div>		
+	
 		<!--End Dashboard Content-->
 
 		<!--start overlay-->
