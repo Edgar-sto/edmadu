@@ -701,16 +701,16 @@ class ConsumoPorCarrier
 
     public function consumoInterno() {
         /****campañas y grupos****/
-        $hsbc_escorza = array(
-            "HSBC" => "ADMIN-ESPECIALBALANC','HSBC-STO-ESCOR-LOWBT','HSBC-STO-ESCOR-MEDBT','HSBC-STO-ESCOR-TOPBT','LAB-BT','ADMIN-ESPECIALSUPERV','HSBC-STO-ESCORZA-BT','STO_BALANCE_TRASNFER','HSBC-STO-ESCORZA-LEC','HSBC-GERENTES','HSBC-STO-ESCORZA-MA','HSBC-STO-LABESCO-MA','ADMIN','VALIDACION','HSBC-STO-ESCORZA-M','ESPECIAL-CAMPAA','STO-FORMALIZACION','HSBC-STO-ESCORZA-CEC','HSBC-PPM','LAB-PPM','ADMIN-ESPECIALPPM','HSBC-SEGUROS','STO-STO-ESC-LABSEGUR"
-        );
 
-        $campañas_grupos_revolucion = array(
-            "HSBC"  => "BALANCE_TRASNFER_REV','HSBC-STO-REVO-BT','HSBC-REVOLUCION','HSBC-STO-REVO-SEGURO','ADMIN-ESPECIALSUPERV','HSBC-STO-LABREV-COS','HSBC-STO-REV-CON-VAL','HSBC-STO-REV-CONSUMO','HSBC-CONSUMOS','ADMIN-ESPECIALCONSUM','LAB-CONSUMOS','HSBC-STO-LABREV-GA','HSBC-STO-REV-GA','LAB-G4"
-        );
+        
+        $escorza =  array("Escorza" => 'HSBC','SANTANDER','INVEX');
+        $revolucion = array("Revolucion",'HSBC','SANTANDER','INVEX');
+        $tlajomulco = array("Tlajomulco",'HSBC','SANTANDER','INVEX');
 
-        $sucursalesInternas = array ('escorza','revolucion','tlajomulco');
-        $clientes = array ('HSBC','SANTANDER','INVEX');
+        // $sucursalesInternas = array ('escorza'      => "","SANTANDER","",
+        //                              'revolucion'  => "HSBC","SANTANDER","INVEX",
+        //                              'tlajomulco' => "HSBC","SANTANDER","INVEX");
+        //$clientes = array ('HSBC','SANTANDER','INVEX');
 
         $all_prefijos      =   array(
             'Marcatel'    =>  "15','777",
@@ -718,71 +718,39 @@ class ConsumoPorCarrier
             'Ipcom'       =>  "28','444",
             'Haz'         =>  "14','555"
         );
-        foreach ($hsbc_escorza as $campanias => $grupos) {
-            switch ($this->carrier) {
-                case "15','777":
-                    $costo_movil = 0.11;
-                    $costo_fijo = 0.04;
-                    break;
-                case "28','444":
-                    $costo_movil = 0.11;
-                    $costo_fijo = 0.04;
-                    break;
-                case "11','999":
-                    $costo_movil = 0.11;
-                    $costo_fijo = 0.05;
-                    break;
-                case "14','555":
-                    $costo_movil = 0.09 / 60;
-                    $costo_fijo = 0.04 / 60;
-                    break;
-            }
-
-            foreach ($sucursalesInternas as $sucursal) {    
-                foreach ($clientes AS $cliente) {
-                    echo $obt_grupos_vici = "SELECT DISTINCT(nombre_grupo) FROM sucu_campa_grup
-                    WHERE sucursal = '{$sucursal}' AND campania LIKE ('%{$cliente}%') AND tipo = 'I'";
-                    $answer = $this->conexion->query($obt_grupos_vici);
-                    while ($row = $answer->fetch_object()) {
-                        echo $row->nombre_grupo;
-                        echo "<br>";
-                    }
-                    echo "<br>";
-                }
-
-
-
-
-            }
-
-
-                    $query_escorza_hsbc =
-                        "SELECT
-                            (SELECT SUM(consumo) FROM reporte_telefonia
-                            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                            AND grupo IN ('{$grupos}')
-                            AND tipo='movil' AND prefijo IN ('{$this->carrier}')) AS movil,
-                            (SELECT SUM(consumo) FROM reporte_telefonia
-                            WHERE fecha_inicio>='{$this->start_date} 00:00:00' AND fecha_termino<='{$this->end_date} 23:59:59'
-                            AND grupo IN ('{$grupos}')
-                            AND tipo='fijo' AND prefijo IN ('{$this->carrier}')) AS fijo;";
-
-                    $consumo_modal = array();
-                    $resultado_esc_hsbc = $this->conexion->query($query_escorza_hsbc);
-                    while ($row_esc_hsbc = $resultado_esc_hsbc->fetch_object()) {
-                        
-                        $consumo_movil    = $row_esc_hsbc->movil;
-                        $consumo_fijo     = $row_esc_hsbc->fijo;
-                        $total_min        = $consumo_movil + $consumo_fijo;
-
-                        $con_movil = $consumo_movil * $costo_movil;
-                        $con_fijo = $consumo_fijo * $costo_fijo;
-                        $total_con = $con_movil + $con_fijo;
-
-                        
-                        array_push($consumo_modal,$campanias,$con_movil,$con_fijo,$total_con);
-                    }
-                    return $consumo_modal;
+        
+        switch ($this->carrier) {
+            case "15','777":
+                $costo_movil = 0.11;
+                $costo_fijo = 0.04;
+                break;
+            case "28','444":
+                $costo_movil = 0.11;
+                $costo_fijo = 0.04;
+                break;
+            case "11','999":
+                $costo_movil = 0.11;
+                $costo_fijo = 0.05;
+                break;
+            case "14','555":
+                $costo_movil = 0.09 / 60;
+                $costo_fijo = 0.04 / 60;
+                break;
         }
+
+        foreach ($sucursales as $sucursal => $cliente) {
+                echo $sucursal ."  ". $cliente;
+                echo "<br>";
+                echo $obt_grupos_vici = "SELECT DISTINCT(nombre_grupo) FROM sucu_campa_grup
+                WHERE sucursal = '{$sucursal}' AND campania LIKE ('%{$cliente}%') AND tipo = 'I'";
+                $answer = $this->conexion->query($obt_grupos_vici);
+                while ($row = $answer->fetch_object()) {
+                    
+                    echo $row->nombre_grupo;
+                    echo "<br>";
+                }//llave cierre while query
+                echo "<br>";
+        }//llave cierre sucursales
+
     }
 }

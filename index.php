@@ -142,42 +142,19 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							<?php
 								$consumo_sucursal = new ConsumoPorCarrier($conexion,$date,$date,prefijos_marcatel);
 								$consumo_sucursal->consumoInterno();
-								foreach ($consumo_sucursal->consumoInterno() as $value) {
-									echo "<td>";	
-										echo $value;
-									echo "</td>";
-									//echo "<br>";
-								}
+								// foreach ($consumo_sucursal->consumoInterno() as $value) {
+								// 	echo "<td>";	
+								// 		echo $value;
+								// 	echo "</td>";
+								// 	//echo "<br>";
+								// }
 							?>
 							</tr>
 						</tbody>
         			</table>
 				</div>
 			</div>
-			<br>
-			<div class="row card-content">
-				<div class="col-lg-12">
-					<h4 class="card-header p-3">Revolución</h4>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">	
-					<?php
-						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
-						$EscorzaMtel->consumoRevolucion();
-					?>
-				</div>
-			</div>
-			<br>
-			<div class="row card-content">
-				<div class="col-lg-12">
-					<h4 class="card-header p-3">Tlájomulco</h4>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">	
-					<?php
-						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
-						$EscorzaMtel->consumoTlajomulco();
-					?>
-				</div>
-			</div>
+			<!--DROP BUZON CONSUMO ADMINISTRATIVO -->
 			<br>
 			<div class="row card-content">
 				<div class="col-lg-12">
