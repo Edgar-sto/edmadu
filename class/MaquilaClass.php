@@ -249,21 +249,22 @@
                 $query_dos = "SELECT DISTINCT sucursal, nombre_grupo, campania
                 FROM sucu_campa_grup
                 WHERE nombre_grupo = '{$grupo}';";
+                //echo "<br>";
 
                 $answer_dos = $this->conexion->query($query_dos);
                 while ($row_dos=$answer_dos->fetch_object()) {
                     $sucursal = $row_dos->sucursal;
                     $nom_grupcliente = $row_dos->campania;
-
-                    if (isset($sucursal)) {
-                        $status_maquila = "Maquila reconocida";
-                    } else {
+                    // var_dump($row_dos->sucursal);
+                    // echo "<br>";
+                    if (empty($sucursal)) {
                         $status_maquila = "Maquila NO reconocida";
+                    } else {
+                        $status_maquila = "Maquila reconocida";
                     }
                     ?>
-                        <!--Generar parte logica que determine si existe o no y lo notifique
-                            Segunda parte de la hoja
-                            codigo de abajo solo se peguo no se ha configurado para esta funcion
+                        <!--
+                            No reconoce los resultados nullos
                         -->
                         <tr>
                             <td><?php echo $sucursal;?></td>
