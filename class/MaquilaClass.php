@@ -234,7 +234,7 @@
         }
 
         public function detector_maquilas($dato) {
-           $query_detector="SELECT DISTINCT rt.reporte, rt.campania, rt.grupo
+           $query_detector="SELECT DISTINCT rt.campania, rt.grupo
            FROM reporte_telefonia rt
            WHERE fecha_inicio>='{$this->date_start} 00:00:00' AND fecha_termino<='{$this->date_end} 23:59:59'
            AND reporte='{$dato}' AND grupo !='N/A'
@@ -242,11 +242,11 @@
 
             $answer_detector = $this->conexion ->query($query_detector);
             while ($row_content=$answer_detector->fetch_object()){
-                $reporte = $row_content->reporte;
+                //$reporte = $row_content->reporte;
                 $campania = $row_content->campania;
                 $grupo = $row_content->grupo;
 
-                $query_dos = "SELECT sucursal, nombre_grupo, campania
+                $query_dos = "SELECT DISTINCT sucursal, nombre_grupo, campania
                 FROM sucu_campa_grup
                 WHERE nombre_grupo = '{$grupo}';";
 
@@ -254,25 +254,33 @@
                 while ($row_dos=$answer_dos->fetch_object()) {
                     $sucursal = $row_dos->sucursal;
                     $nom_grupcliente = $row_dos->campania;
+
+                    if (isset($sucursal)) {
+                        $status_maquila = "Maquila reconocida";
+                    } else {
+                        $status_maquila = "Maquila NO reconocida";
+                    }
                     ?>
                         <!--Generar parte logica que determine si existe o no y lo notifique
                             Segunda parte de la hoja
                             codigo de abajo solo se peguo no se ha configurado para esta funcion
                         -->
                         <tr>
-                            <td><?php echo $w->sucursal;?></td>
-                            <td><?php echo $w->nombre_grupo;?></td>
-                            <td><?php echo $w->campania;?></td>
+                            <td><?php echo $sucursal;?></td>
+                            <td><?php echo $nom_grupcliente?></td>
+                            <td><?php echo $campania?></td>
+                            <td><?php echo $grupo?></td>
+                            <td><?php echo $status_maquila?></td>
                             <td>
-                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalMaquila<?php echo $w->nombre_grupo.$w->campania; ?>">
+                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalMaquila<?php echo $grupo.$campania; ?>">
                                     Información detallada
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="modalMaquila<?php echo $w->nombre_grupo.$w->campania; ?>" tabindex="-1" role="dialog" aria-labelledby="modalEscorzaTitle" aria-hidden="true">
+                                <div class="modal fade" id="modalMaquila<?php echo $grupo.$campania; ?>" tabindex="-1" role="dialog" aria-labelledby="modalEscorzaTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-info">
-                                                <h5 class="modal-title text-dark" id="exampleModalLongTitle"><?php echo $w->sucursal; ?></h5>
+                                                <h5 class="modal-title text-dark" id="exampleModalLongTitle"><?php echo $sucursal; ?></h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -309,7 +317,7 @@
                                                                       END ) AS Tipo
                                                                     FROM reporte_telefonia a
                                                                     WHERE prefijo IN ('{$prefijo_usado}')
-                                                                      AND a.campania = '{$w->campania}'
+                                                                      AND a.campania = '{$campania}'
                                                                       AND fecha_inicio>='{$this->date_start} 00:00:00'
                                                                       AND fecha_termino<='{$this->date_end} 23:59:59'
                                                                       AND grupo NOT IN ('HSBC-STO-ESCORZA-MA', 'ADMIN')

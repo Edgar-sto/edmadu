@@ -24,8 +24,10 @@ foreach ($maquilas->obt_vici_maquila() AS $vici) {
                         <thead class="">
                             <tr>
                                 <th scope="col">Sucursal</th>
-                                <th scope="col">Nombre Grupo</th>
-                                <th scope="col">Cam paña</th>
+                                <th scope="col">Camapaña Cliente</th>
+                                <th scope="col">Campaña Interna</th>
+                                <th scope="col">Grupo Vici</th>
+                                <th scope="col">Estado</th>
                                 <th scope="col">Info</th>
                             </tr>
                         </thead>
