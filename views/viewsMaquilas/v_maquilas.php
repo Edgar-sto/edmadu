@@ -31,6 +31,7 @@ foreach ($maquilas->obt_vici_maquila() AS $vici) {
                         </thead>
                         <tbody>
                         <?php
+                            
                             $maquilas->obt_maquilas($vici);
                             //$maquilas->detector_maquilas($vici);                           
                             // foreach ($maquilas->obt_maquilas($vici) as $key) {
