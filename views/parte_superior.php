@@ -123,7 +123,7 @@
 	</style>
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme4">
 	<div id="wrapper">
 		<!--Start sidebar-wrapper-->
 		<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true" style="font-size: 0.6rem;">
@@ -377,3 +377,4 @@
 		<!--End topbar header-->
 
 		<!-- <div class="clearfix"></div> -->
+	</div>

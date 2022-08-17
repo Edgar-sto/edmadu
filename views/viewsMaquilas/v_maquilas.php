@@ -24,17 +24,15 @@ foreach ($maquilas->obt_vici_maquila() AS $vici) {
                         <thead class="">
                             <tr>
                                 <th scope="col">Sucursal</th>
-                                <th scope="col">Camapaña Cliente</th>
                                 <th scope="col">Campaña Interna</th>
                                 <th scope="col">Grupo Vici</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Info</th>
+                                <th scope="col">Detalles</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
-                            //$maquilas->obt_maquilas($vici);
-                            $maquilas->detector_maquilas($vici);                           
+                            $maquilas->obt_maquilas($vici);
+                            //$maquilas->detector_maquilas($vici);                           
                             // foreach ($maquilas->obt_maquilas($vici) as $key) {
                             //     echo $key." ";
                             // }
