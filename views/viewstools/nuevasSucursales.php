@@ -6,7 +6,7 @@ $sucursal   =   $_POST['name_sucursal_nueva'];
 $tipo       =   $_POST['tipo'];
 $campania   =   $_POST['campania']; 
 $name_group =   $_POST['nameGrupo_sucursal_nueva'];
-$conexion = conexion_local('telefonia', '10.9.2.234');
+$conexion = conexion_local('telefonia', '10.9.2.147');
 
 // if (isset($sucursal) || isset($name_group)) {
 //     echo "Llena los campos correspondientes!";

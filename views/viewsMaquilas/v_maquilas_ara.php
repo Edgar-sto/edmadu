@@ -4,7 +4,7 @@ include_once '../../class/prefijos.php';
 include_once '../../class/MaquilaClass.php';
 $fecha_inicio   =   $_POST['fecha_inicio'];
 $fecha_fin      =   $_POST['fecha_termino'];
-$conexion = conexion_local('telefonia', '10.9.2.234');
+$conexion = conexion_local('telefonia', '10.9.2.147');
 $conexion21 = conexion_21('telefonia', '10.9.2.21');
 
 $ara_maqui = new MaquilaClass($conexion,$fecha_inicio,$fecha_fin);

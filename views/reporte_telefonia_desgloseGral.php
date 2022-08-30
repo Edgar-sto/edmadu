@@ -4,7 +4,7 @@ include_once '../class/sucursalesExternas.php';
 include_once '../class/ConsumoPorCarrier.php';
 
 
-$conexion = conexion_local("telefonia", "10.9.2.234");
+$conexion = conexion_local("telefonia", "10.9.2.147");
 $carrier = $_POST['carrier'];
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_termino = $_POST['fecha_termino'];
@@ -57,7 +57,7 @@ if ($carrier == 'marcatel') {
 </div>
 
 <div class="row text-center">
-    <a class="" role="button" href="http://10.9.2.234/edmadu/export/export_telefonia_excel.php?fecha_inicio=<?php echo "{$fecha_inicio}"; ?>&&fecha_termino=<?php echo "{$fecha_termino}"; ?>&&carrier=<?php echo "{$carrier}"; ?>">
+    <a class="" role="button" href="http://10.9.2.147/edmadu/export/export_telefonia_excel.php?fecha_inicio=<?php echo "{$fecha_inicio}"; ?>&&fecha_termino=<?php echo "{$fecha_termino}"; ?>&&carrier=<?php echo "{$carrier}"; ?>">
         <svg class="icon icon-tabler icon-tabler-file-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>

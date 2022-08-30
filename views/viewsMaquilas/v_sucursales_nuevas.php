@@ -5,7 +5,7 @@ $d_start = $_POST['date_sucursal_start'];
 $d_end   = $_POST['date_sucursal_end'];
 
 
-$conexion = conexion_local('telefonia','10.9.2.234');
+$conexion = conexion_local('telefonia','10.9.2.147');
 
 
 ?>

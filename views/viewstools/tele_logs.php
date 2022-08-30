@@ -4,7 +4,7 @@ include_once '../../class/conexion.php';
 
 $fecha = $_POST['date_logs'];
 $ip    = $_SERVER['REMOTE_ADDR'];
-$conexion = conexion_local('telefonia', '10.9.2.234');
+$conexion = conexion_local('telefonia', '10.9.2.147');
 
 $insertarLogDeConsultas = new TeleLogs($conexion,$fecha,$ip);
 $insertarLogDeConsultas->registro_log_por_btn();

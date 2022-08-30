@@ -4,7 +4,7 @@
 
     $date_start = $_POST['fecha_inicio'];
     $date_end   = $_POST['fecha_termino'];
-    $conexion = conexion_local('telefonia', '10.9.2.234');
+    $conexion = conexion_local('telefonia', '10.9.2.147');
 
     if ($date_start != $date_end) {
         ?>
