@@ -8,7 +8,7 @@ require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
 require_once 'class/SucursalesExternas.php';
 require_once 'class/ConsumoPorDia.php';
-$conexion = conexion_local('telefonia', '10.9.2.234');
+$conexion = conexion_local('telefonia', '10.9.2.147');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 
 ?> 
@@ -47,8 +47,10 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 		</div>
 		<!-- END Fila N -->
 
-		<!--Start Dashboard Content-->
-		<!-- FILA UNO -->
+		<!--
+			FILA UNO
+			DESGLOSE GENERAL
+		-->
 		<div class="card mt-3">
 			<div class="card-content">
 				<div id="fila-uno-consumo-dividido-carrier" class="row row-group m-0 p-4">
@@ -72,116 +74,52 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			</div>
 		</div>
 
-		<!-- FILA DOS -->
-		<div id="consumoDiarioCarriers" class="">
-			<div class="card mt-3">
-				<div id="consumo-diario">
+		<!--
+			FILA DOS 
+			DESGLOSE POR DÍA
+		-->
+		<div class="card mt-3">
+			<div id="consumo-diario" class="card-content">
 				<label for="floatingInputValue">Datos por día</label>
-				<div class="row">
+				<div id="consumoDiarioCarriers" class="row">
 					<div class="col col-lg-12 col-lg-6 col-lg-3 table-responsive">
-						<table class="table table-sm table-hover table-borderless" style="font-size:0.625em;">
-							<thead class="text-center align-middle">
-								<tr class="">
-									<th scope="col" rowspan="2" class="align-middle">Fechas</th>
-									<th scope="col" colspan="2">Marcatel</th>
-									<th scope="col" colspan="2">MCM</th>
-									<th scope="col" colspan="2">Ipcom</th>
-									<th scope="col" colspan="2">Haz</th> 
-								</tr>
-								<tr class="">
-									<th scope="col">$ Movil</th>
-									<th scope="col">$ Fijo</th>
-									<th scope="col">$ Movil</th>
-									<th scope="col">$ Fijo</th>
-									<th scope="col">$ Movil</th>
-									<th scope="col">$ Fijo</th>
-									<th scope="col">$ Movil</th>
-									<th scope="col">$ Fijo</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php 
-									$consumo_por_dia= new ConsumoPorDia($conexion,$date,$date,prefijos_individuales_por_carrier);
-									$consumo_por_dia->desgloseDiario();
-								?>
-							</tbody>
-						</table>
+							<table class="table table-sm table-hover table-borderless" style="font-size:0.625em;">
+								<thead class="text-center align-middle">
+									<tr class="">
+										<th scope="col" rowspan="2" class="align-middle">Fechas</th>
+										<th scope="col" colspan="2">Marcatel</th>
+										<th scope="col" colspan="2">MCM</th>
+										<th scope="col" colspan="2">Ipcom</th>
+										<th scope="col" colspan="2">Haz</th> 
+									</tr>
+									<tr class="">
+										<th scope="col">$ Movil</th>
+										<th scope="col">$ Fijo</th>
+										<th scope="col">$ Movil</th>
+										<th scope="col">$ Fijo</th>
+										<th scope="col">$ Movil</th>
+										<th scope="col">$ Fijo</th>
+										<th scope="col">$ Movil</th>
+										<th scope="col">$ Fijo</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php 
+										$consumo_por_dia= new ConsumoPorDia($conexion,$date,$date,prefijos_individuales_por_carrier);
+										$consumo_por_dia->desgloseDiario();
+									?>
+								</tbody>
+							</table>
 					</div>
 				</div>
-				</div>
 			</div>
 		</div>
+
+		<!--
+			FILA TRES
+			DESGLOSE POR REPORTE
+		-->
 		
-		<!-- FILA TRES-->
-		<div class="card mt-3">
-			<h3 class="card-title p-2">Sucusales Internas</h3>
-			<h6 class="tab-header text-center">
-				<small class="badge badge-sm float-center badge-light">
-					De  <?php echo $date;?>  al  <?php echo $date;?>
-				</small>
-			</h6>
-			<div class="row card-content">
-				<div class="col-lg-12">
-					<h4 class="card-header p-3">Escorza</h4>
-				</div>
-				<div class="col-lg-6 card-body table-responsive">	
-					<table class="table" style="font-size: 0.6em;">
-						<thead class="thead-inverse table-light  text-center">
-							<tr>
-								<th class="fs-5" colspan="4">Marcatel</th>
-							</tr>
-							<tr class="text-right">
-								<th class="text-center"><strong>Campaña</strong></th>
-								<th><strong>Movil</strong></th>
-								<th><strong>Fijo</strong></th>
-								<th><strong>Total</strong></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<?php
-								$consumo_sucursal = new ConsumoPorCarrier($conexion,$date,$date,prefijos_marcatel);
-								$consumo_sucursal->consumoInterno();
-								// foreach ($consumo_sucursal->consumoInterno() as $value) {
-								// 	echo "<td>";	
-								// 		echo $value;
-								// 	echo "</td>";
-								// 	//echo "<br>";
-								// }
-							?>
-							</tr>
-						</tbody>
-        			</table>
-				</div>
-			</div>
-			<!--DROP BUZON CONSUMO ADMINISTRATIVO -->
-			<br>
-			<div class="row card-content">
-				<div class="col-lg-12">
-					<h4 class="card-header p-3">Drop - Buzón</h4>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">	
-					<?php
-						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
-						$EscorzaMtel->consumoDropBuzon();
-					?>
-				</div>
-			</div>
-			<br>
-			<div class="row card-content">
-				<div class="col-lg-12">
-					<h4 class="card-header p-3">Administrativo</h4>
-				</div>
-				<div class="col-lg-3 card-body table-responsive">	
-					<?php
-						$EscorzaMtel = new SucursalesInternas($conexion,$date,$date,carrier_mtel,prefijos_marcatel);
-						$EscorzaMtel->consumoAdministrativo();
-					?>
-				</div>
-			</div>
-		</div>
-		 
-		<!-- FILA CUATRO -->
 		<div class="card mt-3">
 			<!--Distribucion de consumo por Reporte -->
 			<div class="card-content">
@@ -216,7 +154,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 									</small>
 								</h6>
 								<div class="table-responsive dataWeek y-hiden1">
-									<table class="table table-sm" style="font-size:8px;">
+									<table class="table table-sm" style="font-size:1rem;">
 										<thead>
 											<tr>
 												<th scope="col">Reporte</th>
@@ -242,7 +180,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 									</small>
 								</h6>
 								<div class="table-responsive dataWeek y-hiden1">
-									<table class="table table-sm" style="font-size:8px;">
+									<table class="table table-sm" style="font-size:1rem;">
 										<thead>
 											<tr>
 												<th scope="col">Reporte</th>
@@ -268,7 +206,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 									</small>
 								</h6>
 								<div class="table-responsive dataWeek y-hiden1">
-									<table class="table table-sm" style="font-size:8px;">
+									<table class="table table-sm" style="font-size:1rem;">
 										<thead>
 											<tr>
 												<th scope="col">Reporte</th>
@@ -294,7 +232,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 									</small>
 								</h6>
 								<div class="table-responsive dataWeek y-hiden1">
-									<table class="table table-sm" style="font-size:8px;">
+									<table class="table table-sm" style="font-size:1rem;">
 										<thead>
 											<tr>
 												<th scope="col">Reporte</th>

@@ -318,24 +318,10 @@
 			type: 'POST',
 			data: $('#form_maquilas').serialize(),
 			beforeSend: function() {
-				$("#resultado_maquilas").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+				$("#answer-week").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
 			},
 			success: function(res) {
-				$('#resultado_maquilas').html(res);
-			}
-		});
-	});
-
-	$('#btn_maquilas_ara').click(function() {
-		$.ajax({
-			url: 'views/viewsMaquilas/v_maquilas_ara.php',
-			type: 'POST',
-			data: $('#form_maquilas').serialize(),
-			beforeSend: function() {
-				$("#resultado_maquilas").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
-			},
-			success: function(res) {
-				$('#resultado_maquilas').html(res);
+				$('#answer-week').html(res);
 			}
 		});
 	});

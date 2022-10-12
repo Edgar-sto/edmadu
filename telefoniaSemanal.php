@@ -7,57 +7,12 @@ require_once 'class/FechaReportes.php';
 require_once 'class/ConsumoPorCarrier.php';
 require_once 'class/SucursalesInternas.php';
 require_once 'class/SemaforoScript.php';
-$conexion = conexion_local('telefonia', '10.9.2.234');
+$conexion = conexion_local('telefonia', '10.9.2.147');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 ?> 
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
-		<!-- START Fila N -->
-		<!-- CALENDARIO  -->
-		<div class="card mt-1 mb-1">
-			<div class="card-content">
-				<div class="row row-group m-0">
-					<?php
-
-					foreach ($meses as $mes) {
-					?>
-						<div class="col col-sm">
-							<a class="bg-active text-capitalize" data-toggle="collapse" href="#<?php echo $mes; ?>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-								<?php echo $mes; ?>
-								<!-- <small class="badge float-right badge-light">Edgar</small> -->
-							</a>
-						</div>
-						<br> 
-					<?php
-					}
-
-					foreach ($anno2022 as $mese => $d) {
-					?>
-						<div class="collapse multi-collapse" id="<?php echo $mese; ?>">
-							<div class="card card-body">
-								<div class="table-responsive">
-									<h5 class="card-title text-capitalize"><?php echo $mese; ?></h5>
-									<p class="card-text">
-										<?php foreach ($d as $dia) { ?>
-											<a href="#" class="link-light" onclick="miAlerta('2022-<?php echo $mese; ?>-<?php echo $dia; ?>')"><?php echo $dia; ?></a>
-										<?php } ?>
-									</p>
-								</div>
-							</div>
-							<script>
-								function miAlerta(fecha) {
-									//event.preventDefault();
-									alert("Día" + fecha); 
-								}
-							</script>
-						</div>
-					<?php
-					}
-					?>
-				</div>
-			</div>
-		</div>
 		<!-- FORMULARIO  -->
 		<div class="card mt-1">
 			<form id="form_maquilas" method="POST">
@@ -78,11 +33,17 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 							</td>
 							<td>
 								<div class="form-group">
+									<label for="input-1">Cliente</label>
+									<select name="cliente" id="cliente" class="form-control"> 
+										<option value="hsbc">HSBC</option>
+										<option value="invex">INVEX</option>
+									</select>
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
 									<label for="input-1">Acción</label><br>
 									<input id="btn_consumo_maquilas" name="btn_consumo_maquilas" type="button" class="btn btn-light" value="Buscar">
-								</div>
-                                <div class="form-group">
-									<input id="btn_maquilas_ara" name="btn_maquilas_ara" type="button" class="btn btn-light" value="Maquilas Ara">
 								</div>
 							</td>
 						</tr>
@@ -95,7 +56,7 @@ $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
-						<div id="resultado_maquilas">
+						<div id="answer-week">
 							
 						</div>
 					</div>

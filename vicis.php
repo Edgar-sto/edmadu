@@ -12,7 +12,7 @@ require_once 'views/parte_superior.php';
                         <div class="contenedor-vicis">
                             <div class="grid-container">
                                 <?php
-                                    $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","201");
+                                    $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","74","75","76","78","79","201");
                                     foreach ($servidores as $vici) {
                                     ?>
                                         <button type="button" class="btn btn-light px-5" id="vici_<?php echo $vici;?>">

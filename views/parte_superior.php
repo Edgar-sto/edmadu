@@ -123,7 +123,7 @@
 	</style>
 </head>
 
-<body class="bg-theme bg-theme4">
+<body class="bg-theme bg-theme1">
 	<div id="wrapper">
 		<!--Start sidebar-wrapper-->
 		<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true" style="font-size: 0.6rem;">
@@ -288,7 +288,7 @@
 				</li>
 				<!--MAQUILAS-->
 				<li>
-					<a href="maquila.php">
+					<a href="telefoniaSemanal.php">
 					<svg class="icon icon-tabler icon-tabler-building-factory" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12" />
@@ -297,7 +297,7 @@
 						<line x1="3" y1="21" x2="22" y2="21" />
 						</svg>
 					<span>Maquilas</span>
-						<small class="badge float-right badge-light">Telefonia</small>
+						<small class="badge float-right badge-light">Telefonia Semanal</small>
 					</a>
 				</li>
 			</ul>

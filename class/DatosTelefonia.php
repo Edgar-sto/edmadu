@@ -17,7 +17,7 @@
 
         public function obtener_grupo ($conection) {
 
-            $conexion = conexion_global("10.9.2.234","3dg4rm4n","secretosdenegus","telefonia");
+            $conexion = conexion_global("10.9.2.147","3dg4rm4n","secretosdenegus","telefonia");
 
             $query_group = "SELECT DISTINCT reporte,campania,grupo FROM reporte_telefonia
             WHERE fecha_inicio>='2022-07-01 00:00:00' and fecha_termino<='2022-07-15 23:59:59'

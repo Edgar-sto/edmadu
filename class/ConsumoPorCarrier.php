@@ -536,6 +536,7 @@ class ConsumoPorCarrier
         <?php
     }
     
+    //FUNCION USADA EN INDEX FILA UNO
     public function porcentaje()
     {
         $all_prefijos_min   =   "15','777','11','999','28','444";
@@ -590,20 +591,19 @@ class ConsumoPorCarrier
         $total_consumido_   = number_format($total_consumido,2);
         ?>
         <h6 class="tab-header text-center">
-		    <small class="badge badge-sm float-center badge-light">
+		    <small class="badge badge-sm float-center badge-light w-100" style="font-size: 1.3rem;">
                 De  <?php echo $this->start_date;?>  al  <?php echo $this->end_date;?>
 			</small>
 		</h6>
         <div class="table-responsive">
 			<table class="table table-sm"> 
 				<thead>
-                    <tr>
+                    <tr class="table-secondary text-dark text-center" style="font-size: 0.9rem;">
 						<th scope="col">Carrier</th>
                         <th scope="col">Móvil</th>
                         <th scope="col">Fijo</th>
                         <th scope="col">Total</th>
-						<th scope="col">Porcentaje</th>
-						<th scope="col">Grafico</th>
+						<th scope="col" colspan=2>Porcentaje</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -648,8 +648,8 @@ class ConsumoPorCarrier
                             <td><?php echo "$ ". number_format($total_for_carrier,2);?></td>
                             <td ><?php echo $porcent;?>%</td>
                             <td>
-                                <div class="progress" style="height: 15px;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>
+                                <div class="progress" style="height: 20px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 20px; width:<?php echo $porcent;?>%"></div>
                                 </div>
                             </td>
                         </tr>
@@ -684,8 +684,8 @@ class ConsumoPorCarrier
                             <td><?php echo "$ ".number_format($total_for_carrier,2);?></td>
                             <td ><?php echo $porcent;?>%</td>
                             <td>
-                                <div class="progress" style="height: 15px;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 15px; width:<?php echo $porcent;?>%"></div>
+                                <div class="progress" style="height: 20px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="height: 20px; width:<?php echo $porcent;?>%"></div>
                                 </div>
                             </td>
                         </tr>

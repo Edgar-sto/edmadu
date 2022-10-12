@@ -238,7 +238,7 @@ class MaquilaClass
     
 
 
-
+ 
     public function maquilas_ara($reporte)
     {
 

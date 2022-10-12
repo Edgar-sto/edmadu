@@ -17,7 +17,9 @@ class SucursalesInternas
         $campañas_grupos_escorza = array(
             "HSBC BT"  => "ADMIN-ESPECIALBALANC','HSBC-STO-ESCOR-LOWBT','HSBC-STO-ESCOR-MEDBT','HSBC-STO-ESCOR-TOPBT','LAB-BT','ADMIN-ESPECIALSUPERV','HSBC-STO-ESCORZA-BT','STO_BALANCE_TRASNFER",
             "HSBC LEC" => "HSBC-STO-ESCORZA-LEC",
-            "HSBC MA"  => "HSBC-GERENTES','HSBC-STO-ESCORZA-MA','HSBC-STO-LABESCO-MA','ADMIN','VALIDACION','HSBC-STO-ESCORZA-M','ESPECIAL-CAMPAA','STO-FORMALIZACION','HSBC-STO-ESCORZA-CEC",
+            "HSBC CEC" => "HSBC-STO-ESCORZA-CEC",
+            "HSBC MA"  => "HSBC-GERENTES','HSBC-STO-ESCORZA-MA','HSBC-STO-LABESCO-MA','ADMIN','HSBC-STO-ESCORZA-M','ESPECIAL-CAMPAA",
+            "HSBC VAL.FOR" => "VALIDACION','STO-FORMALIZACION",
             "HSBC PPM" => "HSBC-PPM','LAB-PPM','ADMIN-ESPECIALPPM",
             "HSBC SG"  => "HSBC-SEGUROS','STO-STO-ESC-LABSEGUR",
             "HSBC CONS" => "n/a",
@@ -271,10 +273,11 @@ class SucursalesInternas
         $campañas_grupos_revolucion = array(
             "HSBC BT"  => "BALANCE_TRASNFER_REV','HSBC-STO-REVO-BT",
             "HSBC LEC" => "n/a",
+            "HSBC CEC" => "n/a",
             "HSBC MA"  => "HSBC-REVOLUCION",
             "HSBC PPM" => "n/a",
             "HSBC SG"  => "HSBC-STO-REVO-SEGURO",
-            "HSBC CONS" => "ADMIN-ESPECIALSUPERV','HSBC-STO-LABREV-COS','HSBC-STO-REV-CON-VAL','HSBC-STO-REV-CONSUMO','HSBC-CONSUMOS','ADMIN-ESPECIALCONSUM','LAB-CONSUMOS",
+            "HSBC CONS" => "HSBC-STO-LABREV-COS','HSBC-STO-REV-CON-VAL','HSBC-STO-REV-CONSUMO','HSBC-CONSUMOS','ADMIN-ESPECIALCONSUM','LAB-CONSUMOS",
             "HSBC GA"  => "HSBC-STO-LABREV-GA','HSBC-STO-REV-GA','LAB-G4",
             "HSBC AC"  => "n/a",
             "HSBC COM" => "n/a",
@@ -509,6 +512,7 @@ class SucursalesInternas
         $campañas_grupos_tlajomulco = array(
             "HSBC BT"  => "BALANCE_TRANSFER_TLA','HSBC-STO-TLA-BT','HSBC-STO-TLAJO-LOWBT','HSBC-STO-TLAJO-MEDBT','HSBC-STO-TLAJO-TOPBT','HSBC-STO-TLALAB-BT",
             "HSBC LEC" => "n/a",
+            "HSBC CEC" => "n/a",
             "HSBC MA"  => "HSBC_TLAJOMULCO','HSBC-TLAJOMULCO','HSBC-STO-LABTLA-MA','ADMIN-ESPECIAL-SUPER",
             "HSBC PPM" => "n/a",
             "HSBC SG"  => "",

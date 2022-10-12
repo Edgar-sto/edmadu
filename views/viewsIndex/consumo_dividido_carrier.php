@@ -24,9 +24,26 @@ $date_end_form    = $_POST['fecha_termino'];
     </h6>
 </div> -->
 
+<!-- INFORMACIÖN -->
+<div class="col-12 text-center">
+	<div class="card m-3" style="width: 100%;">
+		<div class="card-header">
+			<h5 class="card-title">Consumo</h5>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive-lg card-text">
+				<?php
+				$porcentaje = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_marcatel);
+				$porcentaje->porcentaje();
+				?>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- MARCATEL -->
-<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-    <!-- <div class="card-body text-center"> -->
+<!-- <div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
     <table class="table table-sm" style="font-size: 0.6em;">
         <thead class="text-center align-middle">
             <tr class="">
@@ -42,16 +59,14 @@ $date_end_form    = $_POST['fecha_termino'];
         </thead>
         <tbody>
             <?php
-            $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_marcatel);
-            $consumo_marcatel->consumoDividido();
+            // $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_marcatel);
+            // $consumo_marcatel->consumoDividido();
             ?>
         </tbody>
     </table>
-    <!-- </div> -->
-</div>
+</div> -->
 <!-- MCM -->
-<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-    <!-- <div class="card-body"> -->
+<!-- <div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
     <table class="table table-sm" style="font-size: 0.6em;">
         <thead class="text-center align-middle">
             <tr class="">
@@ -67,16 +82,14 @@ $date_end_form    = $_POST['fecha_termino'];
         </thead>
         <tbody>
             <?php
-            $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_mcm);
-            $consumo_marcatel->consumoDividido();
+            // $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_mcm);
+            // $consumo_marcatel->consumoDividido();
             ?>
         </tbody>
     </table>
-    <!-- </div> -->
-</div>
+</div> -->
 <!-- IPCOM -->
-<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-    <!-- <div class="card-body"> -->
+<!-- <div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
     <table class="table table-sm" style="font-size: 0.6em;">
         <thead class="text-center align-middle">
             <tr class="">
@@ -92,16 +105,14 @@ $date_end_form    = $_POST['fecha_termino'];
         </thead>
         <tbody>
             <?php
-            $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_ipcom);
-            $consumo_marcatel->consumoDividido();
+            // $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_ipcom);
+            // $consumo_marcatel->consumoDividido();
             ?>
         </tbody>
     </table>
-    <!-- </div> -->
-</div>
+</div> -->
 <!-- HAZ -->
-<div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
-    <!-- <div class="card-body"> -->
+<!-- <div class="col-12 col-lg-6 col-sm-3 table-responsive xy-hiden">
     <table class="table table-sm" style="font-size: 0.6em;">
         <thead class="text-center align-middle">
             <tr class="">
@@ -117,9 +128,9 @@ $date_end_form    = $_POST['fecha_termino'];
         </thead>
         <tbody>
             <?php
-            $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_haz);
-            $consumo_marcatel->consumoDividido();
+            // $consumo_marcatel = new ConsumoPorCarrier($conexion, $date_start_form, $date_end_form, prefijos_haz);
+            // $consumo_marcatel->consumoDividido();
             ?>
         </tbody>
     </table>
-</div>
+</div> -->
