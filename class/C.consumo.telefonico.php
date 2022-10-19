@@ -483,6 +483,12 @@ class C_consumo_telefonico
                     break;
             }
             ?>
+                <tr class="text-center bg-white text-dark">
+                    <td colspan="4">
+                        Del día <?php echo $this->start_date ." al dia ".$this->end_date; ?>
+                    </td>
+                </tr>
+
                 <tr class="text-center <?php echo $fondoCliente?>">
                     <td colspan="4" class="table-active">
                             <?php echo $cliente; ?>

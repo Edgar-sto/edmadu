@@ -1,3 +1,9 @@
+<?php
+require_once 'views/parte_superior.php';
+require_once 'class/conexion.php';
+$conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -327,14 +333,14 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<form class="search-bar">
+						<!-- <form class="search-bar">
 							<input type="text" class="form-control" placeholder="Enter keywords">
 							<a href="javascript:void();"><i class="icon-magnifier"></i></a>
 						</form>
-					</li>
+					</li> -->
 				</ul>
-
-				<ul class="navbar-nav align-items-center right-nav-link">
+				
+				<!-- <ul class="navbar-nav align-items-center right-nav-link">
 					<li class="nav-item dropdown-lg">
 						<a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
 							href="javascript:void();">
@@ -383,7 +389,7 @@
 							<li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
 						</ul>
 					</li>
-				</ul>
+				</ul> -->
 			</nav>
 		</header>
 		<!--End topbar header-->

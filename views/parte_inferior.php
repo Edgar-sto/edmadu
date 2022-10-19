@@ -253,6 +253,23 @@
 			}
 		});
 	});
+
+	$('#btn_consumo_telefonico').click(function() {
+		$.ajax({
+			url: 'views/viewconsumotelefonico/v.consumo.telefonico.por.campania.php',
+			type: 'POST',
+			data: $('#form_consumo_telefonia').serialize(),
+			beforeSend: function() {
+				$("#tConsumoPorCampania").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#tConsumoPorCampania').html(res);
+			}
+		});
+	});
+
+
+
 </script>
 
 <!-- SCRIPT HERRAMIENTAS-->

@@ -1,6 +1,8 @@
 <?php
 require_once 'views/parte_superior.php';
-?>
+require_once 'class/conexion.php';
+$conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
+?> 
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
     <div class="container-fluid" style="height: 85vh;">
@@ -12,14 +14,44 @@ require_once 'views/parte_superior.php';
                         <div class="contenedor-vicis">
                             <div class="grid-container">
                                 <?php
-                                    $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","74","75","76","78","79","201");
-                                    foreach ($servidores as $vici) {
-                                    ?>
-                                        <button type="button" class="btn btn-light px-5" id="vici_<?php echo $vici;?>">
-                                            <a href="http://10.9.2.<?php echo $vici;?>/vicidial/realtime_report.php" target="_blank"
-                                                rel="noopener noreferrer" class='testbutton'><?php echo $vici;?></a>
+                                    // $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","74","75","76","78","79","201");
+                                    // foreach ($servidores as $vici) {
+                                    $queryServidores = "SELECT SUBSTRING(vici,8,2) AS ser FROM tbl_vicis WHERE active='Y'";
+                                    $answerServidores=$conexion->query($queryServidores);
+                                    while ($rowServidores=$answerServidores->fetch_object()) {
+                                        $rowServidores->ser;
+
+                                        if ($rowServidores->ser == "5" || $rowServidores->ser == "22" ||
+                                            $rowServidores->ser == "27" || $rowServidores->ser == "28" ||
+                                            $rowServidores->ser == "39" || $rowServidores->ser == "48" ||
+                                            $rowServidores->ser == "57" || $rowServidores->ser == "74" ||
+                                            $rowServidores->ser == "76" || $rowServidores->ser == "79" ||
+                                            $rowServidores->ser == "44" || $rowServidores->ser == "45" ||
+                                            $rowServidores->ser == "47")
+                                        {
+                                            $fondoBoton="text-danger";
+                                        }
+                                        else if ($rowServidores->ser == "36" || $rowServidores->ser == "37" || $rowServidores->ser == "41")
+                                        {
+                                            $fondoBoton="text-success";
+                                        }
+                                        else if ($rowServidores->ser == "29")
+                                        {
+                                            $fondoBoton="text-info";
+                                        }
+                                        else if ($rowServidores->ser == "30")
+                                        {
+                                            $fondoBoton="text-warning";
+                                        }
+                                    
+                                    ?>  
+                                        
+                                        <button type="button" class="btn btn-light px-5" id="vici_<?php echo $rowServidores->ser;?>">
+                                            <a href="http://10.9.2.<?php echo $rowServidores->ser;?>/vicidial/realtime_report.php" target="_blank"
+                                                rel="noopener noreferrer" class='testbutton <?php echo $fondoBoton;?>'><?php echo $rowServidores->ser;?></a>
                                             
                                         </button>
+                                        
                                     <?php
                                     }
                                 ?>
