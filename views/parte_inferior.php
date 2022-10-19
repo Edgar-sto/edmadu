@@ -223,6 +223,38 @@
 	});
 </script>
 
+
+<!-- SCRIPT definitivo consumotelefonico.php-->
+<script>
+	$('#btn_consumo_telefonico').click(function() {
+		$.ajax({
+			url: 'views/viewconsumotelefonico/v.consumo.telefonico.php',
+			type: 'POST',
+			data: $('#form_consumo_telefonia').serialize(),
+			beforeSend: function() {
+				$("#tConsumoPorCarrier").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#tConsumoPorCarrier').html(res);
+			}
+		});
+	});
+
+	$('#btn_consumo_telefonico').click(function() {
+		$.ajax({
+			url: 'views/viewconsumotelefonico/v.consumo.telefonico.por.dia.php',
+			type: 'POST',
+			data: $('#form_consumo_telefonia').serialize(),
+			beforeSend: function() {
+				$("#tConsumoPorDia").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+			},
+			success: function(res) {
+				$('#tConsumoPorDia').html(res);
+			}
+		});
+	});
+</script>
+
 <!-- SCRIPT HERRAMIENTAS-->
 <script>
 	$('#btn-pixel-em').click(function() {

@@ -11,10 +11,10 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
-		<!-- START Fila N -->
+		
 		<!-- FORMULARIO  -->
 		<div class="card mt-1">
-			<form id="form_index" method="POST">
+			<form id="form_consumo_telefonia" method="POST">
 				<table id="tbl_telefonia_index" class="table">
 					<tbody class="text-center form-group">
 						<tr>
@@ -33,7 +33,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 							<td>
 								<div class="form-group">
 									<label for="input-1">Acción</label><br>
-									<input id="btn_consumo_index" name="btn_consumo_index" type="button" class="btn btn-light" value="Buscar">
+									<input id="btn_consumo_telefonico" name="btn_consumo_telefonico" type="button" class="btn btn-light" value="Buscar">
 								</div>
 							</td>
 						</tr>
@@ -41,8 +41,8 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 				</table>
 			</form>
 		</div>
-		<!-- END Fila N -->
-		<!--    FILA UNO DESGLOSE GENERAL   -->
+
+		<!--    FILA 1 DESGLOSE GENERAL POR CARRIER -->
 		<div class="card mt-3">
 			<div class="card-content">
 					<!-- INFORMACIÖN -->
@@ -53,11 +53,6 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 							</div>
 							<div class="card-body">
 								<div class="table-responsive-lg card-text">
-                                    <h6 class="tab-header text-center">
-                                        <small class="badge badge-sm float-center badge-light w-100">
-                                            De  <?php echo $date;?>  al  <?php echo $date;?>
-                                        </small>
-                                    </h6>
                                     <table class="table"> 
                                         <thead style="font-size: 1.3rem;">
                                             <tr class="table-active">
@@ -68,7 +63,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                                 <th scope="col" colspan="2">Porcentaje</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tConsumoPorCarrier">
                                             <?php
                                                 $porcentaje = new C_consumo_telefonico($conexion, $date, $date);
                                                 $porcentaje->consumoTotal();
@@ -82,63 +77,71 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 			</div>
 		</div>
 
-		<!--
-			FILA DOS 
-			DESGLOSE POR DÍA
-		-->
+		<!-- FILA 2 DESGLOSE POR DÍA POR CARRIER-->
 		<div class="card mt-3">
-			<div id="consumo-diario" class="card-content">
-				<label for="floatingInputValue">Datos por día</label>
-				<div id="consumoDiarioCarriers" class="row">
-					<div class="col col-lg-12 col-lg-6 col-lg-3 table-responsive">
-							<table class="table table-sm table-hover table-borderless" style="font-size:0.625em;">
-								<thead class="text-center align-middle">
-									<tr class="">
-										<th scope="col" rowspan="2" class="align-middle">Fechas</th>
-										<th scope="col" colspan="2">Marcatel</th>
-										<th scope="col" colspan="2">MCM</th>
-										<th scope="col" colspan="2">Ipcom</th>
-										<th scope="col" colspan="2">Haz</th> 
-									</tr>
-									<tr class="">
-										<th scope="col">$ Movil</th>
-										<th scope="col">$ Fijo</th>
-										<th scope="col">$ Movil</th>
-										<th scope="col">$ Fijo</th>
-										<th scope="col">$ Movil</th>
-										<th scope="col">$ Fijo</th>
-										<th scope="col">$ Movil</th>
-										<th scope="col">$ Fijo</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php 
-										// $consumo_por_dia= new ConsumoPorDia($conexion,$date,$date,prefijos_individuales_por_carrier);
-										// $consumo_por_dia->desgloseDiario();
-									?>
-								</tbody>
-							</table>
+			<div class="card-content">
+				<div class="col col-lg-12">
+					<div class="card mt-3" style="width: 100%;">
+						<div class="card-header">
+							<h5 class="card-title">Desglose por día</h5>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive-lg card-text">
+								<table class="table table-hover table-borderless">
+									<thead class="text-center align-middle table-active">
+										<tr class="">
+											<th scope="col" rowspan="2" class="align-middle">Fechas</th>
+											<th scope="col" colspan="2">Marcatel</th>
+											<th scope="col" colspan="2">MCM</th>
+											<th scope="col" colspan="2">Haz</th> 
+										</tr>
+										<tr class="">
+											<th scope="col">$ Movil</th>
+											<th scope="col">$ Fijo</th>
+											<th scope="col">$ Movil</th>
+											<th scope="col">$ Fijo</th>
+											<th scope="col">$ Movil</th>
+											<th scope="col">$ Fijo</th>
+										</tr>
+									</thead>
+									<tbody id="tConsumoPorDia">
+											<?php 
+												$consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
+												$consumo_por_dia->consumoPorDia();
+											?>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!--
-			FILA TRES
-			DESGLOSE POR REPORTE
-		-->
-		
+		<!-- FILA 3 DESGLOSE POR DÍA POR CARRIER-->
 		<div class="card mt-3">
-			<!--Distribucion de consumo por Reporte -->
 			<div class="card-content">
-				<div class=" col col-12">
-					<section class="card mt-3" style="width:100%; height: 420px;">
-						
-					</section>
+				<div class="col col-lg-12">
+					<div class="card mt-3" style="width: 100%;">
+						<div class="card-header">
+							<h5 class="card-title">Desglose por campaña</h5>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive-lg card-text">
+								<table class="table table-hover table-borderless">
+									<tbody id="tConsumoPorCampania">
+									<?php 
+										$consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
+										$consumo_por_dia->consumoPorCampania();
+									?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<!--Distribucion graficada -->
-		</div>		
+		</div>	
 	
 		<!--End Dashboard Content-->
 

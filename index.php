@@ -11,7 +11,7 @@ require_once 'class/ConsumoPorDia.php';
 $conexion = conexion_local('telefonia', '10.9.2.147');
 $conexion_21 = conexion_21('telefonia', '10.9.2.21');
 
-?> 
+?>  
 <!-- Start content-wrapper-->
 <div class="content-wrapper">
 	<div class="container-fluid">
