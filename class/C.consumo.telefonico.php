@@ -452,12 +452,38 @@ class C_consumo_telefonico
     }
 
     public function consumoPorCampania() {
-        $clientes = array('HSBC'/*,'INVEX','Santander','Royal','Royal Prestige','ExpoChina'*/);
+        $clientes = array('HSBC','INVEX','Santander','Royal Prestige','ExpoChina');
         $carriers = array ("marcatel","mcm","haz");
 
         foreach ($clientes AS $cliente) {
+            switch ($cliente) {
+                case 'HSBC':
+                    $fondoCliente="bg-danger-light2";
+                    $fondoCampania="bg-danger";
+                    break;
+
+                case 'INVEX':
+                    $fondoCliente="bg-success-light2";
+                    $fondoCampania="bg-success";
+                    break;
+
+                case 'Santander':
+                    $fondoCliente="bg-info-light2";
+                    $fondoCampania="bg-info";
+                    break;
+
+                case 'Royal Prestige':
+                    $fondoCliente="bg-primary-light2";
+                    $fondoCampania="bg-primary";
+                    break;
+
+                case 'ExpoChina':
+                    $fondoCliente="bg-warning-light2";
+                    $fondoCampania="bg-warning";
+                    break;
+            }
             ?>
-                <tr class="text-center bg-danger-light2">
+                <tr class="text-center <?php echo $fondoCliente?>">
                     <td colspan="4" class="table-active">
                             <?php echo $cliente; ?>
                     </td>
@@ -472,61 +498,61 @@ class C_consumo_telefonico
                     $row_cliente->siglas;
                     $row_cliente->vicis;
                     ?>
-                    <tr class="text-left bg-danger">
+                    <tr class="text-left <?php echo $fondoCampania?>">
                         <td colspan="4"><?php echo $row_cliente->campania."(". $row_cliente->siglas.")"?></td>
                     </tr>
-                    <tr class="text-lg-center bg-danger-light1" style="font-size:medium;">
-				    	<th scope="col">Carrier</th>
-				    	<th scope="col">Movil</th>
-				    	<th scope="col">Fijo</th>
-				    	<th scope="col">Total</th>
-				    </tr>
-                    
-                    <?php
-                    foreach ($carriers as $value) {
-                        $query_carrier="SELECT costo_movil,costo_fijo,prefijos
-                                FROM telefonia_carrier
-                                WHERE carrier = '{$value}'";
-                        $answer_carrier=$this->conexion->query($query_carrier);
-                        while ($consumoCampania=$answer_carrier->fetch_object()) {
-                            $consumoCampania->costo_movil;
-                            $consumoCampania->costo_fijo;
-                            $consumoCampania->prefijos;
-                            $queryConsumoCamapania="SELECT 
-                                (SELECT
-                                    SUM(consumo) AS total
-                                FROM reporte_mensual
-                                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
-                                AND tipo IN ('movil','Buzon Movil','Drop Movil')
-                                AND reporte IN ('{$row_cliente->vicis}')
-                                AND prefijo IN ('{$consumoCampania->prefijos}')) AS movil,
+                        <tr class="text-lg-center bg-light" style="font-size:medium;">
+                            <th scope="col">Carrier</th>
+                            <th scope="col">Movil</th>
+                            <th scope="col">Fijo</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                        
+                        <?php
+                        foreach ($carriers as $value) {
+                            $query_carrier="SELECT costo_movil,costo_fijo,prefijos
+                                    FROM telefonia_carrier
+                                    WHERE carrier = '{$value}'";
+                            $answer_carrier=$this->conexion->query($query_carrier);
+                            while ($consumoCampania=$answer_carrier->fetch_object()) {
+                                $consumoCampania->costo_movil;
+                                $consumoCampania->costo_fijo;
+                                $consumoCampania->prefijos;
+                                $queryConsumoCamapania="SELECT 
+                                    (SELECT
+                                        SUM(consumo) AS total
+                                    FROM reporte_mensual
+                                    WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                                    AND tipo IN ('movil','Buzon Movil','Drop Movil')
+                                    AND reporte IN ('{$row_cliente->vicis}')
+                                    AND prefijo IN ('{$consumoCampania->prefijos}')) AS movil,
 
-                                (SELECT
-                                    SUM(consumo) AS total
-                                FROM reporte_mensual
-                                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
-                                AND tipo IN ('fijo','Buzon Fijo','Drop Fijo')
-                                AND reporte IN ('{$row_cliente->vicis}')
-                                AND prefijo IN ('{$consumoCampania->prefijos}')) AS fijo;";
-                            $answer_marcatel=$this->conexion->query($queryConsumoCamapania);
-                            while ($rowConsumo=$answer_marcatel->fetch_object()) {
-                                $rowConsumo->movil;
-                                $rowConsumo->fijo;
-                                $costomovilCampania = $rowConsumo->movil * $consumoCampania->costo_movil;
-                                $costofijoCampania  = $rowConsumo->fijo * $consumoCampania->costo_fijo;
-                                $costototalCampania = $costomovilCampania+$costofijoCampania;
-                                ?>
-                                <tr>
-                                <td><?php echo  $value;?></td>
-                                <td><?php echo $costomovilCampania;?></td>
-                                <td><?php echo $costofijoCampania;?></td>
-                                <td><?php echo $costototalCampania;?></td>
-                                </tr>
-                                <?php
+                                    (SELECT
+                                        SUM(consumo) AS total
+                                    FROM reporte_mensual
+                                    WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                                    AND tipo IN ('fijo','Buzon Fijo','Drop Fijo')
+                                    AND reporte IN ('{$row_cliente->vicis}')
+                                    AND prefijo IN ('{$consumoCampania->prefijos}')) AS fijo;";
+                                $answer_marcatel=$this->conexion->query($queryConsumoCamapania);
+                                while ($rowConsumo=$answer_marcatel->fetch_object()) {
+                                    $rowConsumo->movil;
+                                    $rowConsumo->fijo;
+                                    $costomovilCampania = $rowConsumo->movil * $consumoCampania->costo_movil;
+                                    $costofijoCampania  = $rowConsumo->fijo * $consumoCampania->costo_fijo;
+                                    $costototalCampania = $costomovilCampania+$costofijoCampania;
+                                    ?>
+                                    <tr>
+                                        <td><?php echo  $value;?></td>
+                                        <td><?php echo number_format($costomovilCampania,2);?></td>
+                                        <td><?php echo number_format($costofijoCampania,2);?></td>
+                                        <td><?php echo number_format($costototalCampania,2);?></td>
+                                    </tr>
+                                    <?php
+                                }
                             }
                         }
-                    }
-                    ?>
+                        ?>
                     <tr>
                         <td colspan="4"></td>
                     </tr>
