@@ -16,7 +16,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                 <?php
                                     // $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","74","75","76","78","79","201");
                                     // foreach ($servidores as $vici) {
-                                    $queryServidores = "SELECT SUBSTRING(vici,8,2) AS ser FROM tbl_vicis WHERE active='Y'";
+                                    $queryServidores = "SELECT SUBSTRING(vici,8,3) AS ser FROM tbl_vicis WHERE active='Y'";
                                     $answerServidores=$conexion->query($queryServidores);
                                     while ($rowServidores=$answerServidores->fetch_object()) {
                                         $rowServidores->ser;

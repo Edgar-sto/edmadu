@@ -225,52 +225,67 @@
 
 
 <!-- SCRIPT definitivo consumotelefonico.php-->
-<script>
-	$('#btn_consumo_telefonico').click(function() {
-		$.ajax({
-			url: 'views/viewconsumotelefonico/v.consumo.telefonico.php',
-			type: 'POST',
-			data: $('#form_consumo_telefonia').serialize(),
-			beforeSend: function() {
-				$("#tConsumoPorCarrier").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
-			},
-			success: function(res) {
-				$('#tConsumoPorCarrier').html(res);
-			}
+	<script>
+		$('#btn_consumo_telefonico').click(function() {
+			$.ajax({
+				url: 'views/viewconsumotelefonico/v.consumo.telefonico.php',
+				type: 'POST',
+				data: $('#form_consumo_telefonia').serialize(),
+				beforeSend: function() {
+					$("#tConsumoPorCarrier").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+				},
+				success: function(res) {
+					$('#tConsumoPorCarrier').html(res);
+				}
+			});
 		});
-	});
 
-	$('#btn_consumo_telefonico').click(function() {
-		$.ajax({
-			url: 'views/viewconsumotelefonico/v.consumo.telefonico.por.dia.php',
-			type: 'POST',
-			data: $('#form_consumo_telefonia').serialize(),
-			beforeSend: function() {
-				$("#tConsumoPorDia").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
-			},
-			success: function(res) {
-				$('#tConsumoPorDia').html(res);
-			}
+		$('#btn_consumo_telefonico').click(function() {
+			$.ajax({
+				url: 'views/viewconsumotelefonico/v.consumo.telefonico.por.dia.php',
+				type: 'POST',
+				data: $('#form_consumo_telefonia').serialize(),
+				beforeSend: function() {
+					$("#tConsumoPorDia").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+				},
+				success: function(res) {
+					$('#tConsumoPorDia').html(res);
+				}
+			});
 		});
-	});
 
-	$('#btn_consumo_telefonico').click(function() {
-		$.ajax({
-			url: 'views/viewconsumotelefonico/v.consumo.telefonico.por.campania.php',
-			type: 'POST',
-			data: $('#form_consumo_telefonia').serialize(),
-			beforeSend: function() {
-				$("#tConsumoPorCampania").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
-			},
-			success: function(res) {
-				$('#tConsumoPorCampania').html(res);
-			}
+		$('#btn_consumo_telefonico').click(function() {
+			$.ajax({
+				url: 'views/viewconsumotelefonico/v.consumo.telefonico.por.campania.php',
+				type: 'POST',
+				data: $('#form_consumo_telefonia').serialize(),
+				beforeSend: function() {
+					$("#tConsumoPorCampania").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+				},
+				success: function(res) {
+					$('#tConsumoPorCampania').html(res);
+				}
+			});
 		});
-	});
 
+	</script>
 
-
-</script>
+<!-- SCRIPT FECHAS CON CONSUMO fechas.php-->
+	<script>
+		$('#btnFechasConConsumo').click(function() {
+			$.ajax({
+				url: 'views/viewconsumotelefonico/v.consumo.fechas.al.dia.php',
+				type: 'POST',
+				data: $('#formFechasConConsumo').serialize(),
+				beforeSend: function() {
+					$("#tblFechasConConsumo").html("<div class='text-center'><samp>Calculando registros consumidos...</samp><br><img src='assets/images/loading/ajax-loader.gif' alt='Consumo'></div>");
+				},
+				success: function(res) {
+					$('#tblFechasConConsumo').html(res);
+				}
+			});
+		});
+	</script>
 
 <!-- SCRIPT HERRAMIENTAS-->
 <script>
