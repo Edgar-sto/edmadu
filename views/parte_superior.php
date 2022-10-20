@@ -187,7 +187,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					</a>
 				</li>
 				<!--DISTRIBUCION SERVERS-->
-				<li>
+				<!-- <li>
 					<a href="distribucionServer.php">
 					<svg class="icon icon-tabler icon-tabler-server" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -198,7 +198,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					</svg>
 						<span>Distribución Server</span>
 					</a>
-				</li>
+				</li> -->
 				<!--REPORTE TELEFONIA-->
 				<li>
 					<a href="reporte_telefonia.php">
@@ -280,7 +280,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					</a>
 				</li>
 				<!--FUTBOL-->
-				<li>
+				<!-- <li>
 					<a href="futbol.php">
 					<svg class="icon icon-tabler icon-tabler-atom" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -291,9 +291,9 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					<span>Edgar</span>
 						<small class="badge float-right badge-light">∴</small>
 					</a>
-				</li>
+				</li> -->
 				<!--MAQUILAS-->
-				<li>
+				<!-- <li>
 					<a href="telefoniaSemanal.php">
 					<svg class="icon icon-tabler icon-tabler-building-factory" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -305,7 +305,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					<span>Maquilas</span>
 						<small class="badge float-right badge-light">Telefonia Semanal</small>
 					</a>
-				</li>
+				</li> -->
 				<!--NUEVO PANEL TELEFONIA-->
 				<li>
 					<a href="consumotelefonico.php">

@@ -454,43 +454,22 @@ class C_consumo_telefonico
     public function consumoPorCampania() {
         $clientes = array('HSBC','INVEX','Santander','Royal Prestige','ExpoChina');
         $carriers = array ("marcatel","mcm","haz");
-
         foreach ($clientes AS $cliente) {
             switch ($cliente) {
-                case 'HSBC':
-                    $fondoCliente="bg-danger-light2";
-                    $fondoCampania="bg-danger";
-                    break;
-
-                case 'INVEX':
-                    $fondoCliente="bg-success-light2";
-                    $fondoCampania="bg-success";
-                    break;
-
-                case 'Santander':
-                    $fondoCliente="bg-info-light2";
-                    $fondoCampania="bg-info";
-                    break;
-
-                case 'Royal Prestige':
-                    $fondoCliente="bg-primary-light2";
-                    $fondoCampania="bg-primary";
-                    break;
-
-                case 'ExpoChina':
-                    $fondoCliente="bg-warning-light2";
-                    $fondoCampania="bg-warning";
-                    break;
+                case 'HSBC':            $fondoCliente="bg-danger-light2";   $fondoCampania="bg-danger"; break;
+                case 'INVEX':           $fondoCliente="bg-success-light2";  $fondoCampania="bg-success";break;
+                case 'Santander':       $fondoCliente="bg-info-light2";     $fondoCampania="bg-info";   break;
+                case 'Royal Prestige':  $fondoCliente="bg-primary-light2";  $fondoCampania="bg-primary";break;
+                case 'ExpoChina':       $fondoCliente="bg-warning-light2";  $fondoCampania="bg-warning";break;
             }
             ?>
                 <tr class="text-center bg-white text-dark">
-                    <td colspan="4">
+                    <td colspan="7">
                         Del día <?php echo $this->start_date ." al dia ".$this->end_date; ?>
                     </td>
                 </tr>
-
                 <tr class="text-center <?php echo $fondoCliente?>">
-                    <td colspan="4" class="table-active">
+                    <td colspan="7" class="table-active">
                             <?php echo $cliente; ?>
                     </td>
                 </tr>
@@ -505,13 +484,13 @@ class C_consumo_telefonico
                     $row_cliente->vicis;
                     ?>
                     <tr class="text-left <?php echo $fondoCampania?>">
-                        <td colspan="4"><?php echo $row_cliente->campania."(". $row_cliente->siglas.")"?></td>
+                        <td colspan="7"><?php echo $row_cliente->campania."(". $row_cliente->siglas.")"?></td>
                     </tr>
                         <tr class="text-lg-center bg-light" style="font-size:medium;">
                             <th scope="col">Carrier</th>
-                            <th scope="col">Movil</th>
-                            <th scope="col">Fijo</th>
-                            <th scope="col">Total</th>
+                            <th scope="col" colspan="2">Movil</th>
+                            <th scope="col" colspan="2">Fijo</th>
+                            <th scope="col" colspan="2">Total</th>
                         </tr>
                         
                         <?php
@@ -550,8 +529,11 @@ class C_consumo_telefonico
                                     ?>
                                     <tr>
                                         <td><?php echo  $value;?></td>
+                                        <td class="text-right">$</td>
                                         <td><?php echo number_format($costomovilCampania,2);?></td>
+                                        <td class="text-right">$</td>
                                         <td><?php echo number_format($costofijoCampania,2);?></td>
+                                        <td class="text-right">$</td>
                                         <td><?php echo number_format($costototalCampania,2);?></td>
                                     </tr>
                                     <?php
