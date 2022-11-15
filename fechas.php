@@ -87,7 +87,7 @@ $semanas = array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','1
                                                 <td class="text-center">74</td>
                                                 <td class="text-center">75</td>
                                                 <td class="text-center">76</td>
-                                                <td class="text-center">77</td>
+                                                <td class="text-center">79</td>
                                                 <td class="text-center">201</td>
                                             </tr>
                                         </thead>
