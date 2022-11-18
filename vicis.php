@@ -16,6 +16,48 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                 <?php
                                     // $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","74","75","76","78","79","201");
                                     // foreach ($servidores as $vici) {
+                                    // $queryServidores = "SELECT SUBSTRING(vici,8,3) AS ser FROM tbl_vicis WHERE active='Y'";
+                                    // $answerServidores=$conexion->query($queryServidores);
+                                    // while ($rowServidores=$answerServidores->fetch_object()) {
+                                    //     $rowServidores->ser;
+
+                                    //     if ($rowServidores->ser == "5" || $rowServidores->ser == "22" ||
+                                    //         $rowServidores->ser == "27" || $rowServidores->ser == "28" ||
+                                    //         $rowServidores->ser == "39" || $rowServidores->ser == "48" ||
+                                    //         $rowServidores->ser == "57" || $rowServidores->ser == "74" ||
+                                    //         $rowServidores->ser == "76" || $rowServidores->ser == "79" ||
+                                    //         $rowServidores->ser == "44" || $rowServidores->ser == "45" ||
+                                    //         $rowServidores->ser == "47")
+                                    //     {
+                                    //         $fondoBoton="text-danger";
+                                    //     }
+                                    //     else if ($rowServidores->ser == "36" || $rowServidores->ser == "37" || $rowServidores->ser == "41")
+                                    //     {
+                                    //         $fondoBoton="text-success";
+                                    //     }
+                                    //     else if ($rowServidores->ser == "29")
+                                    //     {
+                                    //         $fondoBoton="text-info";
+                                    //     }
+                                    //     else if ($rowServidores->ser == "30")
+                                    //     {
+                                    //         $fondoBoton="text-warning";
+                                    //     }
+                                    
+                                    // ?>  
+                                        
+                                         <!-- <button type="button" class="btn btn-light px-5" id="vici_<?php echo $rowServidores->ser;?>">
+                                             <a href="http://10.9.2.<?php echo $rowServidores->ser;?>/vicidial/realtime_report.php" target="_blank"
+                                                 rel="noopener noreferrer" class='testbutton <?php echo $fondoBoton;?>'><?php echo $rowServidores->ser;?></a>
+                                            
+                                         </button> -->
+                                        
+                                     <?php
+                                    // }
+                                ?>
+                                <?php
+                                    // $servidores = array("5", "6", "8", "9", "11", "14", "15", "22", "24", "27", "28","29", "30", "34", "35", "36","37", "38","39","40", "41", "42", "43", "44", "45", "46", "47", "48","57","60","74","75","76","78","79","201");
+                                    // foreach ($servidores as $vici) {
                                     $queryServidores = "SELECT SUBSTRING(vici,8,3) AS ser FROM tbl_vicis WHERE active='Y'";
                                     $answerServidores=$conexion->query($queryServidores);
                                     while ($rowServidores=$answerServidores->fetch_object()) {
@@ -47,10 +89,14 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                     ?>  
                                         
                                         <button type="button" class="btn btn-light px-5" id="vici_<?php echo $rowServidores->ser;?>">
-                                            <a href="http://10.9.2.<?php echo $rowServidores->ser;?>/vicidial/realtime_report.php" target="_blank"
-                                                rel="noopener noreferrer" class='testbutton <?php echo $fondoBoton;?>'><?php echo $rowServidores->ser;?></a>
-                                            
+                                            <a href="javascript:popUp<?php echo $rowServidores->ser;?>('http://10.9.2.<?php echo $rowServidores->ser;?>/vicidial/realtime_report.php')" class='testbutton <?php echo $fondoBoton;?>' ><?php echo $rowServidores->ser;?></a>
                                         </button>
+                                        <!-- GENERAR VENTAN POPup-->
+                                        <script type="text/javascript">
+                                            function popUp<?php echo $rowServidores->ser;?>(URL) {
+                                                window.open(URL, 'VICI <?php echo $rowServidores->ser;?>', 'toolbar=1,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=500,height=500,left = 390,top = 50');
+                                            }
+                                        </script>
                                         
                                     <?php
                                     }
