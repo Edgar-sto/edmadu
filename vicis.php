@@ -94,7 +94,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                         <!-- GENERAR VENTAN POPup-->
                                         <script type="text/javascript">
                                             function popUp<?php echo $rowServidores->ser;?>(URL) {
-                                                window.open(URL, 'VICI <?php echo $rowServidores->ser;?>', 'toolbar=1,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=500,height=500,left = 390,top = 50');
+                                                window.open(URL, 'VICI <?php echo $rowServidores->ser;?>', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=650,height=500,left = 390,top = 50');
                                             }
                                         </script>
                                         
