@@ -119,6 +119,31 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 		</div>
 
 		<!-- FILA 3 TABLA Desglose por campaña todo en uno-->
+		<!-- <div class="card mt-3">
+			<div class="card-content">
+				<div class="col col-lg-12">
+					<div class="card mt-3" style="width: 100%;">
+						<div class="card-header">
+							<h5 class="card-title">Desglose por campaña</h5>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive-lg card-text">
+								<table class="table table-hover table-borderless">
+									<tbody id="tConsumoPorCampania">
+									<?php 
+										// $consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
+										// $consumo_por_dia->consumoPorCampania();
+									?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- FILA 3 ORIGINAL TABLA Desglose por campaña-->
 		<div class="card mt-3">
 			<div class="card-content">
 				<div class="col col-lg-12">
@@ -132,7 +157,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 									<tbody id="tConsumoPorCampania">
 									<?php 
 										$consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
-										$consumo_por_dia->consumoPorCampania();
+										$consumo_por_dia->consumoPorCampaniaAll();
 									?>
 									</tbody>
 								</table>
@@ -141,32 +166,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<!-- FILA 3 ORIGINAL TABLA Desglose por campaña-->
-		<!-- <div class="card mt-3">
-			<div class="card-content">
-				<div class="col col-lg-12">
-					<div class="card mt-3" style="width: 100%;">
-						<div class="card-header">
-							<h5 class="card-title">Desglose por campaña</h5>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive-lg card-text">
-								<table class="table table-hover table-borderless">
-									<tbody id="tConsumoPorCampania">
-									<?php 
-										$consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
-										$consumo_por_dia->consumoPorCampania();
-									?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>	 -->
+		</div>	
 	
 		<!--End Dashboard Content-->
 

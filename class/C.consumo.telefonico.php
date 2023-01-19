@@ -553,103 +553,169 @@ class C_consumo_telefonico
     }
 
     public function consumoPorCampaniaAll() {
-        $clientes = array('HSBC','INVEX','Santander','Royal Prestige','ExpoChina');
+        $clientes = array('HSBC','INVEX','Santander','Royal Prestige');
         $carriers = array ("marcatel","mcm","haz");
+        
         foreach ($clientes AS $cliente) {
+
             switch ($cliente) {
-                case 'HSBC':            $fondoCliente="bg-danger-light2";   $fondoCampania="bg-danger"; break;
-                case 'INVEX':           $fondoCliente="bg-success-light2";  $fondoCampania="bg-success";break;
-                case 'Santander':       $fondoCliente="bg-info-light2";     $fondoCampania="bg-info";   break;
-                case 'Royal Prestige':  $fondoCliente="bg-primary-light2";  $fondoCampania="bg-primary";break;
-                case 'ExpoChina':       $fondoCliente="bg-warning-light2";  $fondoCampania="bg-warning";break;
-            }
-            ?>
+                case 'HSBC':
+                    $campaniaCliente = array (
+                        "MA" => "10.9.2.5','10.9.2.22','10.9.2.27','10.9.2.28','10.9.2.39','10.9.2.48','10.9.2.57','10.9.2.74','10.9.2.76','10.9.2.79",
+                        "V-F" => "10.9.2.6','10.9.2.47",
+                        "Act" => "10.9.2.15",
+                        "CON" => "10.9.2.11",
+                        "GA" => "10.9.2.44",
+                        "LEC" => "10.9.2.8",
+                        "CEC" => "10.9.2.60",
+                        "BT" => "10.9.2.45",
+                        "PPM" => "10.9.2.201",
+                    );
+                    $fondoCliente="bg-danger-light2";
+                    $fondoCampania="bg-danger";
+                    break;
+                
+                case 'INVEX':
+                    $campaniaCliente = array (
+                        "MAI" => "10.9.2.37','10.9.2.41",
+                        "CEI" => "10.9.2.36"
+                    );
+                    $fondoCliente="bg-success-light2";
+                    $fondoCampania="bg-success";
+                    break;
+                
+                case 'Santander':
+                    $campaniaCliente = array (
+                        "MAS" => "10.9.2.29"  
+                    );
+                    $fondoCliente="bg-info-light2";
+                    $fondoCampania="bg-info";
+                    break;
+                    
+                case 'Royal Prestige':
+                    $campaniaCliente = array (
+                        "RP" => "10.9.2.30"
+                    );
+                    $fondoCliente="bg-primary-light2";
+                    $fondoCampania="bg-primary";
+                    break;
+            } ?>
                 <tr class="text-center bg-white text-dark">
-                    <td colspan="7">
+                    <td colspan="8">
                         Del día <?php echo $this->start_date ." al dia ".$this->end_date; ?>
                     </td>
                 </tr>
                 <tr class="text-left <?php echo $fondoCliente?>">
-                    <td colspan="7" class="table-active">
+                    <td colspan="8" class="table-active">
                             <?php echo $cliente; ?>
                     </td>
                 </tr>
-                <tr class="text-lg-center bg-light" style="font-size:medium;">
-                    <th scope="col">Campaña</th>
-                    <th scope="col" colspan="2">Marcatel</th>
-                    <th scope="col" colspan="2">MCM</th>
-                    <th scope="col" colspan="2">Haz</th>
+                <tr class="text-center">
+                    <td scope="col" class="align-middle">Campaña</td>
+                    <td scope="col" >Marcatel</td>
+                    <td scope="col" >MCM</td>
+                    <td scope="col" >Haz</td>
+                    <td scope="col" >Total</td>
                 </tr>
-                
             <?php
-                $query_cliente="SELECT * FROM campanias_clientes WHERE cliente = '{$cliente}'";
-                $answer_cliente=$this->conexion->query($query_cliente);
-                while ($row_cliente=$answer_cliente->fetch_object()) {
-                    $row_cliente->cliente;
-                    $row_cliente->campania;
-                    $row_cliente->siglas;
-                    $row_cliente->vicis;
-                    ?>
-                    <tr class="text-left <?php echo $fondoCampania?>">
-                        <td rowspan="2"><?php echo $row_cliente->campania."(". $row_cliente->siglas.")"?></td>
-                    </tr>
-                        
-                        <?php
-                        foreach ($carriers as $value) {
-                            $query_carrier="SELECT costo_movil,costo_fijo,prefijos
-                                    FROM telefonia_carrier
-                                    WHERE carrier = '{$value}'";
-                            $answer_carrier=$this->conexion->query($query_carrier);
-                            while ($consumoCampania=$answer_carrier->fetch_object()) {
-                                $consumoCampania->costo_movil;
-                                $consumoCampania->costo_fijo;
-                                $consumoCampania->prefijos;
-                                $queryConsumoCamapania="SELECT 
-                                    (SELECT
-                                        SUM(consumo) AS total
-                                    FROM reporte_mensual
-                                    WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
-                                    AND tipo IN ('movil','Buzon Movil','Drop Movil')
-                                    AND reporte IN ('{$row_cliente->vicis}')
-                                    AND prefijo IN ('{$consumoCampania->prefijos}')) AS movil,
+            foreach ($campaniaCliente as $campania => $vicis) {
+                
+                $queryConsumo="SELECT 
+                (SELECT
+                    SUM(consumo*0.11) AS pesos
+                FROM reporte_mensual
+                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                AND tipo IN ('movil','Buzon Movil','Drop Movil')
+                AND reporte IN ('{$vicis}')
+                AND prefijo IN ('15','777')) AS mtel_movil,
+                
+                (SELECT
+                    SUM(consumo*0.04) AS total
+                FROM reporte_mensual
+                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                AND tipo IN ('fijo','Buzon Fijo','Drop Fijo')
+                AND reporte IN ('{$vicis}')
+                AND prefijo IN ('15','777')) AS mtel_fijo,
+                
+                (SELECT
+                    SUM(consumo*0.11) AS pesos
+                FROM reporte_mensual
+                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                AND tipo IN ('movil','Buzon Movil','Drop Movil')
+                AND reporte IN ('{$vicis}')
+                AND prefijo IN ('11','999')) AS mcm_movil,
+                
+                (SELECT
+                    SUM(consumo*0.05) AS total
+                FROM reporte_mensual
+                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                AND tipo IN ('fijo','Buzon Fijo','Drop Fijo')
+                AND reporte IN ('{$vicis}')
+                AND prefijo IN ('11','999')) AS mcm_fijo,
+                
+                (SELECT
+                    SUM(consumo*0.0015) AS total
+                FROM reporte_mensual
+                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                AND tipo IN ('movil','Buzon Movil','Drop Movil')
+                AND reporte IN ('{$vicis}')
+                AND prefijo IN ('14','555')) AS haz_movil,
+                
+                (SELECT
+                    SUM(consumo*0.000666667) AS total
+                FROM reporte_mensual
+                WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
+                AND tipo IN ('fijo','Buzon Fijo','Drop Fijo')
+                AND reporte IN ('{$vicis}')
+                AND prefijo IN ('14','555')) AS haz_fijo;";
 
-                                    (SELECT
-                                        SUM(consumo) AS total
-                                    FROM reporte_mensual
-                                    WHERE fecha_inicio>='{$this->start_date} 00:00:00'  AND  fecha_termino<='{$this->end_date} 23:59:59'
-                                    AND tipo IN ('fijo','Buzon Fijo','Drop Fijo')
-                                    AND reporte IN ('{$row_cliente->vicis}')
-                                    AND prefijo IN ('{$consumoCampania->prefijos}')) AS fijo;";
-                                $answer_marcatel=$this->conexion->query($queryConsumoCamapania);
-                                while ($rowConsumo=$answer_marcatel->fetch_object()) {
-                                    $rowConsumo->movil;
-                                    $rowConsumo->fijo;
-                                    $costomovilCampania = $rowConsumo->movil * $consumoCampania->costo_movil;
-                                    $costofijoCampania  = $rowConsumo->fijo * $consumoCampania->costo_fijo;
-                                    $costototalCampania = $costomovilCampania+$costofijoCampania;
-                                    ?>
-                                    <tr>
-                                        <td><?php echo  $value;?></td>
-                                        <td class="text-right">$</td>
-                                        <td><?php echo number_format($costomovilCampania,2);?></td>
-                                        <td class="text-right">$</td>
-                                        <td><?php echo number_format($costofijoCampania,2);?></td>
-                                        <td class="text-right">$</td>
-                                        <td><?php echo number_format($costototalCampania,2);?></td>
-                                    </tr>
-                                    <?php
-                                }
-                            }
-                        }
-                        ?>
-                    <tr>
-                        <td colspan="4"></td>
-                    </tr>
-                    <?php
-                }
+                $answerConsumo=$this->conexion->query($queryConsumo);
+                while ($rowConsumo=$answerConsumo->fetch_object()){
+                    $mtel_movil     =   number_format($rowConsumo->mtel_movil,2);
+                    $mtel_fijo      =   number_format($rowConsumo->mtel_fijo,2);
+                    $t_mtel         =   $rowConsumo->mtel_movil + $rowConsumo->mtel_fijo;
+                    $to_mtel        =   number_format($t_mtel,2);
+
+                    $mcm_movil      =   number_format($rowConsumo->mcm_movil,2);
+                    $mcm_fijo       =   number_format($rowConsumo->mcm_fijo,2);
+                    $t_mcm          =   $rowConsumo->mcm_movil + $rowConsumo->mcm_fijo;
+                    $to_mcm         =   number_format($t_mcm,2);
+                    
+
+                    $haz_movil      =   number_format($rowConsumo->haz_movil,2);
+                    $haz_fijo       =   number_format($rowConsumo->haz_fijo,2);
+                    $t_haz          =   $rowConsumo->haz_movil + $rowConsumo->haz_fijo;
+                    $to_haz         =   number_format($t_haz,2);
+
+
+                    $totalCampanias =   $rowConsumo->mtel_movil+$rowConsumo->mtel_fijo+$rowConsumo->mcm_movil+$rowConsumo->mcm_fijo+$rowConsumo->haz_movil+$rowConsumo->haz_fijo;
+                    $totalCam =   number_format($totalCampanias,2);
                 ?>
-                
-            <?php
+                    <tr class="text-right">
+                        <td class="text-center"><?php echo $campania; ?></td>
+                        <!-- <td>$<?php echo $mtel_movil; ?></td>
+                        <td>$<?php echo $mtel_fijo; ?></td> -->
+                        <td>$<?php echo $to_mtel; ?></td>
+
+                        <!-- <td>$<?php echo $mcm_movil; ?></td>
+                        <td>$<?php echo $mcm_fijo; ?></td> -->
+                        <td>$<?php echo $to_mcm; ?></td>
+
+                        <!-- <td>$<?php echo $haz_movil; ?></td>
+                        <td>$<?php echo $haz_fijo; ?></td> -->
+                        <td>$<?php echo $to_haz; ?></td>
+
+                        <td>$<?php echo $totalCam; ?></td>
+                    </tr>
+
+
+                <?php
+                    // echo "-------------------------------------------------------------------------------------------------------------------------\n";
+                    // printf ("|%s\t|$%7s\t|$%7s\t|$%7s\t|$%7s\t|$%7s\t|$%7s\t|$%7s\t|\n",$campania,$mtel_movil,$mtel_fijo,$mcm_movil,$mcm_fijo,$haz_movil,$haz_fijo,$totalCam);
+                }   
+            }
+            // echo "-------------------------------------------------------------------------------------------------------------------------\n";        
+            //echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n\n";
         }
     }
 }

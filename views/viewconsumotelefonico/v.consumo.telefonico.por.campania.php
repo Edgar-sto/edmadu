@@ -13,4 +13,4 @@ echo $date_start_form  = $_POST['fecha_inicio'];
 echo $date_end_form    = $_POST['fecha_termino'];
 
 $consumo_por_dia= new C_consumo_telefonico($conexion, $date_start_form, $date_end_form);
-$consumo_por_dia->consumoPorCampania();
+$consumo_por_dia->consumoPorCampaniaAll();
