@@ -141,34 +141,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 					</div>
 				</div>
 			</div>
-		</div>	
-
-		<!-- FILA 4 TABLA Desglose por campaña todo en uno-->
-		<div class="card mt-3">
-			<div class="card-content">
-				<div class="col col-lg-12">
-					<div class="card mt-3" style="width: 100%;">
-						<div class="card-header">
-							<h5 class="card-title">Reporte de Telefonía</h5>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive-lg card-text">
-								<table class="table table-hover table-borderless">
-									<tbody id="tReporteTelefonia">
-									<?php 
-										// $consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
-										// $consumo_por_dia->consumoPorCampania();
-									?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	
+		</div>		
 		<!--End Dashboard Content-->
 
 		<!--start overlay-->

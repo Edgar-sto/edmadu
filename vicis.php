@@ -69,7 +69,7 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                             $rowServidores->ser == "57" || $rowServidores->ser == "74" ||
                                             $rowServidores->ser == "76" || $rowServidores->ser == "79" ||
                                             $rowServidores->ser == "44" || $rowServidores->ser == "45" ||
-                                            $rowServidores->ser == "47")
+                                            $rowServidores->ser == "47" || $rowServidores->ser == "16")
                                         {
                                             $fondoBoton="text-danger";
                                         }
