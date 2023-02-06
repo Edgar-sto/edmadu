@@ -74,7 +74,7 @@ require_once 'views/parte_superior.php';
 												</td>
 											</tr>
 										</tbody>
-									</table>
+									</table> 
 								</form>
 							</div>
 							<!-- END FORMULARIOS -->

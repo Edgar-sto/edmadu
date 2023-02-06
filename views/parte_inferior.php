@@ -64,37 +64,37 @@
 	// });
 
 	/**Obtener datos telefonía*/
-	$('#btn_telefonia_mensual').click(function() {
-		$.ajax({
-			url: 'views/reporte_telefonia_mensual.php',
-			type: 'POST',
-			data: $('#form_telefonia_mensual').serialize(),
-			beforeSend: function() {
-				$("#resultado_telefonia_mensual").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
-			},
-			success: function(res) {
-				$('#resultado_telefonia_mensual').html(res);
-			}
-		});
-	});
+	// $('#btn_telefonia_mensual').click(function() {
+	// 	$.ajax({
+	// 		url: 'views/reporte_telefonia_mensual.php',
+	// 		type: 'POST',
+	// 		data: $('#form_telefonia_mensual').serialize(),
+	// 		beforeSend: function() {
+	// 			$("#resultado_telefonia_mensual").html("<div style='text-align:center;'><samp>Calculando registros consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+	// 		},
+	// 		success: function(res) {
+	// 			$('#resultado_telefonia_mensual').html(res);
+	// 		}
+	// 	});
+	// });
+
+	// $('#btn_telefonia_mensual').click(function() {
+	// 	$.ajax({
+	// 		url: 'views/reporte_telefonia_sucursales.php',
+	// 		type: 'POST',
+	// 		data: $('#form_telefonia_mensual').serialize(),
+	// 		beforeSend: function() {
+	// 			$("#resultadoTelefoniaCentrosInternos").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
+	// 		},
+	// 		success: function(res) {
+	// 			$('#resultadoTelefoniaCentrosInternos').html(res);
+	// 		}
+	// 	});
+	// });
 
 	$('#btn_telefonia_mensual').click(function() {
 		$.ajax({
-			url: 'views/reporte_telefonia_sucursales.php',
-			type: 'POST',
-			data: $('#form_telefonia_mensual').serialize(),
-			beforeSend: function() {
-				$("#resultadoTelefoniaCentrosInternos").html("<div style='text-align:center;'><samp>Calculando registros Internos consumidos...</samp><br><br><br><img src='assets/images/loading/ajax-loader.gif' alt='Telefonia Mensual'></div>");
-			},
-			success: function(res) {
-				$('#resultadoTelefoniaCentrosInternos').html(res);
-			}
-		});
-	});
-
-	$('#btn_telefonia_mensual').click(function() {
-		$.ajax({
-			url: 'views/reporte_telefonia_desgloseGral.php',
+			url: 'views/viewconsumotelefonico/v.consumo.mensual.php',
 			type: 'POST',
 			data: $('#form_telefonia_mensual').serialize(),
 			beforeSend: function() {
