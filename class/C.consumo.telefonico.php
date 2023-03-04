@@ -312,8 +312,9 @@ class C_consumo_telefonico
 
     public function desgloseDiaPorDia(){
         $prefijos_individuales = array("15','777", "11','999", "14','555");
-        $queryFechas="SELECT SUBSTRING(fecha_inicio,1,10) AS fecha FROM reporte_mensual
-        WHERE fecha_inicio BETWEEN '{$this->start_date} 00:00:00' AND '{$this->end_date} 23:59:59' GROUP BY fecha";
+        echo $queryFechas="SELECT SUBSTRING(fecha_inicio,1,10) AS fecha FROM reporte_mensual
+        WHERE fecha_inicio BETWEEN '{$this->start_date} 00:00:00' AND '{$this->end_date} 23:59:59' AND
+        reporte='10.9.2.201' GROUP BY fecha";
         $answerFechas=$this->conexion->query($queryFechas);
         //echo "<br>";
         while ($rowFecha=$answerFechas->fetch_object())

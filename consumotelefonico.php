@@ -106,8 +106,8 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 									</thead>
 									<tbody id="tConsumoPorDia">
 											<?php 
-												$consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
-												$consumo_por_dia->consumoPorDia();
+												// $consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
+												// $consumo_por_dia->consumoPorDia();
 											?>
 									</tbody>
 								</table>
