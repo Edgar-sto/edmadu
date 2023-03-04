@@ -10,8 +10,8 @@ class GeneradorDePass {
     public function generatePasswordLevelSeven()
     {
         $key = "";
-	$pattern = "qpbd";
-        //$pattern = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    //$pattern = "qpbd";
+        $pattern = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         //$pattern = "1234567890abcdefghijklmñnopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ.-_*/=[]{}#@|~¬&()?¿";
         $max = strlen($pattern)-1;
         for($i = 0; $i < $this->tamanio; $i++){
