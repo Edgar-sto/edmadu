@@ -65,8 +65,8 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
                                         </thead>
                                         <tbody id="tConsumoPorCarrier">
                                             <?php
-                                                $porcentaje = new C_consumo_telefonico($conexion, $date, $date);
-                                                $porcentaje->consumoTotal();
+                                                // $porcentaje = new C_consumo_telefonico($conexion, $date, $date);
+                                                // $porcentaje->consumoTotal();
                                             ?>
                                         </tbody>
                                     </table>
@@ -131,8 +131,8 @@ $conexion = conexion_global( '10.9.2.244','soporte','Z3pu0rg','telefonia',);
 								<table class="table table-hover table-borderless">
 									<tbody id="tConsumoPorCampania">
 									<?php 
-										$consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
-										$consumo_por_dia->consumoPorCampaniaAll();
+										// $consumo_por_dia= new C_consumo_telefonico($conexion, $date, $date);
+										// $consumo_por_dia->consumoPorCampaniaAll();
 									?>
 									</tbody>
 								</table>
